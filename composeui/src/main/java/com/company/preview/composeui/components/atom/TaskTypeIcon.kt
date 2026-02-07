@@ -1,6 +1,5 @@
 package com.company.preview.composeui.components.atom
 
-import android.accessibilityservice.GestureDescription
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -24,17 +23,16 @@ fun TaskTypeIcon(
     @DrawableRes iconRes:Int,
     modifier: Modifier= Modifier,
     contentDescription: String?=null,
-    size: Int=36
 ){
-    val shape=RoundedCornerShape(Theme.radius.sm)
+    val shape=RoundedCornerShape(Theme.spacing.radiusSm)
     Box(
         modifier = modifier
-            .size(size.dp)
+            .size(Theme.spacing.x3l)
             .clip(shape = shape)
             .background(Theme.colors.surface)
             .border(
-                width = Theme.spacing.borderSize,
-                color = Theme.colors.outline,
+                width = Theme.spacing.buttonBorderSize,
+                color = Theme.colors.greyOutlined,
                 shape = shape
             ),
         contentAlignment = Alignment.Center

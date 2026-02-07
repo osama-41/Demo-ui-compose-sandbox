@@ -20,16 +20,6 @@ object Theme {
         @ReadOnlyComposable
         get() = localSpacing.current
 
-    val radius: AppRadius
-        @Composable
-        @ReadOnlyComposable
-        get() = localRadius.current
-
-    val elevation: AppElevation
-        @Composable
-        @ReadOnlyComposable
-        get() = localElevation.current
-
     val icons: AppIcons
         @Composable
         @ReadOnlyComposable

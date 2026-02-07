@@ -16,12 +16,12 @@ fun ThemeSmokePreview_LTR() {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Theme.colors.background)
+                .background(Theme.colors.white)
                 .padding(Theme.spacing.lg)
         ) {
-            Text("Title Large", style = Theme.typography.titleLarge, color = Theme.colors.textPrimary)
+            Text("Title Large", style = Theme.typography.titleLarge, color = Theme.colors.black)
             Spacer(Modifier.height(Theme.spacing.md))
-            Text("Body Medium", style = Theme.typography.bodyMedium, color = Theme.colors.textSecondary)
+            Text("Body Medium", style = Theme.typography.bodyMedium, color = Theme.colors.secondaryText)
         }
     }
 }
@@ -33,12 +33,14 @@ fun ThemeSmokePreview_RTL() {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Theme.colors.background)
+                .background(Theme.colors.white)
                 .padding(Theme.spacing.lg)
         ) {
-            Text("عنوان", style = Theme.typography.titleLarge, color = Theme.colors.textPrimary)
+            Text("عنوان", style = Theme.typography.titleLarge, color = Theme.colors.black)
             Spacer(Modifier.height(Theme.spacing.md))
-            Text("نص تجريبي", style = Theme.typography.bodyMedium, color = Theme.colors.textSecondary)
+            Text("نص تجريبي", style = Theme.typography.bodyMedium, color = Theme.colors.secondaryText)
         }
     }
+
 }
+

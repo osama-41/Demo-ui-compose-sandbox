@@ -35,20 +35,20 @@ fun PrimaryButton(
     Button(
         onClick = onClick,
         enabled = enabled,
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .height(Theme.spacing.buttonHeight),
-        shape = RoundedCornerShape(Theme.radius.sm),
+        shape = RoundedCornerShape(Theme.spacing.radiusCard),
         colors = ButtonDefaults.buttonColors(
             containerColor = Theme.colors.primary,
-            contentColor = Theme.colors.onPrimary,
+            contentColor = Theme.colors.white,
             disabledContainerColor = Theme.colors.disabled,
-            disabledContentColor = Theme.colors.onPrimary
+            disabledContentColor = Theme.colors.white
         ),
         elevation = ButtonDefaults.buttonElevation(
-            defaultElevation = Theme.elevation.sm,
-            pressedElevation = Theme.elevation.md,
-            disabledElevation = Theme.elevation.none
+            defaultElevation = Theme.spacing.elevationSm,
+            pressedElevation = Theme.spacing.elevationMd,
+            disabledElevation = Theme.spacing.elevationNone
         ),
         contentPadding = PaddingValues(
             horizontal = Theme.spacing.lg,
@@ -64,7 +64,7 @@ fun PrimaryButton(
                     painter = painterResource(iconRes),
                     contentDescription = contentDescription,
                     modifier= Modifier.size(Theme.spacing.iconSize),
-                    tint = Theme.colors.onPrimary
+                    tint = Theme.colors.white
 
                 )
                 Spacer(modifier = Modifier.size(Theme.spacing.sm))
@@ -72,7 +72,7 @@ fun PrimaryButton(
             Text(
                 text = text,
                 style = Theme.typography.button,
-                color = Theme.colors.onPrimary
+                color = Theme.colors.white
             )
         }
     }
@@ -85,7 +85,7 @@ private fun PrimaryButtonPreview_LTR() {
     ThemedPreview {
         PrimaryButton(
             text = "Start Pickup",
-            iconRes = Theme.icons.start, // from drawable via Theme.icons
+            iconRes = Theme.icons.start,
             onClick = {}
         )
     }

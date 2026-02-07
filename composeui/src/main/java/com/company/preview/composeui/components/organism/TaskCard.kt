@@ -38,18 +38,18 @@ fun TaskCard(
     onLocationClick: () -> Unit,
     onStartClick: () -> Unit,
 ){
-    val shape = RoundedCornerShape(Theme.radius.card)
+    val shape = RoundedCornerShape(Theme.spacing.radiusCard)
 
     Column(
         modifier = modifier
             .fillMaxWidth()
             .shadow(
-                elevation = Theme.elevation.card,
+                elevation = Theme.spacing.elevationCard,
                 shape = shape
             )
             .clip(shape)
-            .background(Theme.colors.background)
-            .border(width = Theme.spacing.borderSize, color = Theme.colors.textPrimary, shape = shape)
+            .background(Theme.colors.surface)
+            .border(width = Theme.spacing.cardBorderSize, color = Theme.colors.black, shape = shape)
             .padding(Theme.spacing.lg)
     ) {
         TaskHeader(
@@ -95,7 +95,7 @@ private fun OrderTaskCardPreview_LTR() {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Theme.colors.background)
+                .background(Theme.colors.white)
                 .padding(Theme.spacing.lg)
         ) {
             TaskCard (
@@ -122,7 +122,7 @@ private fun OrderTaskCardPreview_RTL() {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Theme.colors.background)
+                .background(Theme.colors.white)
                 .padding(Theme.spacing.lg)
         ) {
             TaskCard (
@@ -130,7 +130,7 @@ private fun OrderTaskCardPreview_RTL() {
                 progressText = "(١/٣)",
                 timer = "٠١:١٦",
                 progress = 0.35f,
-                orderText = "طلب #05323",
+                orderText = "طلب #٠٥٣٢٣",
                 storeName = "متجر نينجا",
                 locationText = "موقع الالتقاط",
                 startText = "ابدأ الالتقاط",

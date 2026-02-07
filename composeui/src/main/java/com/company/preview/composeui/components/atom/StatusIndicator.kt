@@ -30,15 +30,15 @@ fun StatusIndicator(
         modifier = modifier
             .width(width)
             .height(height)
-            .clip(RoundedCornerShape(Theme.radius.pill))
-            .background(Theme.colors.outline)
+            .clip(RoundedCornerShape(Theme.spacing.radiusPill))
+            .background(Theme.colors.secondary)
     ){
         Box(
             modifier = modifier
                 .width(fillWidth)
                 .fillMaxHeight()
-                .clip(RoundedCornerShape(Theme.radius.pill))
-                .background(Theme.colors.success)
+                .clip(RoundedCornerShape(Theme.spacing.radiusPill))
+                .background(Theme.colors.greenSuccess)
         )
     }
 }

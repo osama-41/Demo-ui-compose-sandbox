@@ -17,7 +17,7 @@ fun OrderTimer(
         text = time,
         style = Theme.typography.titleLarge,
         modifier = modifier,
-        color = Theme.colors.textPrimary
+        color = Theme.colors.black
     )
 }
 @Preview(showBackground = true)

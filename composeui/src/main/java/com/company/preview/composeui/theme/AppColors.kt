@@ -7,24 +7,25 @@ import androidx.compose.ui.graphics.Color
 @Immutable
 data class AppColors (
     val primary: Color,
-    val onPrimary: Color,
-    val background: Color,
+    val secondary: Color,
+    val white: Color,
+    val black: Color,
     val surface: Color,
-    val textPrimary: Color,
-    val textSecondary: Color,
-    val success: Color,
+    val secondaryText: Color,
+    val greyOutlined: Color,
     val disabled: Color,
-    val outline: Color
+    val greenSuccess:Color
 )
-private val lightColors= AppColors(
+private val lightColors = AppColors(
     primary = Color(0xFF27272A),
-    onPrimary = Color(0xFFFFFFFF),
-    background = Color(0xFFF4F4F5),
-    surface = Color(0xFFFFFFFF),
-    textPrimary = Color(0xFF111111),
-    textSecondary = Color(0xFF6B6B6B),
-    success = Color(0xFF16A34A),
+    secondary = Color(0xFFD2D0D0),
+    white = Color(0xFFFFFFFF),
+    surface = Color(0xFFF4F4F5),
+    black = Color(0xFF111111),
+    secondaryText = Color(0xFF6B6B6B),
+    greyOutlined = Color(0xFFDCDBDB),
+    greenSuccess = Color(0xFF16A34A),
     disabled = Color(0xFFBDBDBD),
-    outline = Color(0xFFE6E6E6)
-)
+    )
+
 val localColors= staticCompositionLocalOf { lightColors }

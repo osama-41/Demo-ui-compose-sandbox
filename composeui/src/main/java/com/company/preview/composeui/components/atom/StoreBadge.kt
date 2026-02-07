@@ -29,15 +29,15 @@ fun StoreBadge(
     Row(
         modifier = modifier
             .defaultMinSize(Theme.spacing.xl)
-            .clip(RoundedCornerShape(Theme.radius.xs))
-            .background(Theme.colors.outline)
+            .clip(RoundedCornerShape(Theme.spacing.radiusXs))
+            .background(Theme.colors.secondary)
             .padding(padding),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
             text = text,
             style = Theme.typography.titleMedium,
-            color = Theme.colors.textPrimary
+            color = Theme.colors.black
         )
     }
 }

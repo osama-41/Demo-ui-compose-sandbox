@@ -10,25 +10,21 @@ fun AppTheme(
     colors: AppColors = localColors.current,
     typography: AppTypography = localAppTypography.current,
     spacing: AppSpacing = localSpacing.current,
-    radius: AppRadius = localRadius.current,
-    elevation: AppElevation = localElevation.current,
     icons: AppIcons = localIcons.current,
     content: @Composable () -> Unit
 ){
     val scheme = lightColorScheme(
         primary = colors.primary,
-        onPrimary = colors.onPrimary,
-        background = colors.background,
+        onPrimary = colors.secondary,
+        background = colors.white,
         surface = colors.surface,
-        onSurface = colors.textPrimary,
-        outline = colors.outline,
+        onSurface = colors.surface,
+        outline = colors.greyOutlined,
     )
     CompositionLocalProvider(
         localColors provides colors,
         localAppTypography provides typography,
         localSpacing provides spacing,
-        localRadius provides radius,
-        localElevation provides elevation,
         localIcons provides icons,
     ) {
         MaterialTheme(

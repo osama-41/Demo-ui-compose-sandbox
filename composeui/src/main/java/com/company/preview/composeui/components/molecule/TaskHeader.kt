@@ -38,7 +38,7 @@ fun TaskHeader(
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            TaskTypeIcon(iconRes = taskIconRes, size = 36)
+            TaskTypeIcon(iconRes = taskIconRes)
 
             Spacer(modifier = Modifier.width(Theme.spacing.md))
 
@@ -53,7 +53,7 @@ fun TaskHeader(
                     Text(
                         text = progressText,
                         style = Theme.typography.bodyMedium,
-                        color = Theme.colors.textSecondary
+                        color = Theme.colors.secondaryText
                     )
                 }
             }

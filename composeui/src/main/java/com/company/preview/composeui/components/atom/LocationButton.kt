@@ -36,20 +36,20 @@ fun LocationButton(
     Button(
         onClick = onClick,
         enabled = enabled,
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .height(Theme.spacing.buttonHeight),
-        shape = RoundedCornerShape(Theme.radius.card),
+        shape = RoundedCornerShape(Theme.spacing.radiusCard),
         colors = ButtonDefaults.buttonColors(
-            containerColor = Theme.colors.surface,
-            contentColor = Theme.colors.textPrimary,
+            containerColor = Theme.colors.white,
+            contentColor = Theme.colors.black,
             disabledContainerColor = Theme.colors.disabled,
-            disabledContentColor = Theme.colors.textPrimary
+            disabledContentColor = Theme.colors.black
       ),
-        border = BorderStroke(Theme.spacing.borderSize, Theme.colors.outline),
+        border = BorderStroke(Theme.spacing.buttonBorderSize, Theme.colors.greyOutlined),
         contentPadding = PaddingValues(
             horizontal = Theme.spacing.lg,
-            vertical = Theme.spacing.md
+            vertical = Theme.spacing.lg
         ),
     ) {
         Row(
@@ -60,13 +60,13 @@ fun LocationButton(
                 painter = painterResource(iconRes),
                 contentDescription = contentDescription,
                 modifier = Modifier.size(Theme.spacing.iconSize),
-                tint = Theme.colors.textPrimary
+                tint = Theme.colors.black
             )
             Spacer(modifier = Modifier.size(Theme.spacing.sm))
             Text(
                 text = text,
                 style = Theme.typography.bodyMedium,
-                color = Theme.colors.textPrimary
+                color = Theme.colors.black
             )
         }
     }
