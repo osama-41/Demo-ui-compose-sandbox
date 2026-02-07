@@ -16,9 +16,9 @@ import com.company.preview.composeui.theme.AppTheme
 import com.company.preview.composeui.theme.Theme
 
 @Composable
-fun RtlPreview(content: @Composable () -> Unit) {
+fun LtrPreview(content: @Composable () -> Unit) {
     AppTheme {
-        CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
+        CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
             content()
         }
     }
@@ -26,25 +26,25 @@ fun RtlPreview(content: @Composable () -> Unit) {
 
 @Preview
 @Composable
-private fun OrderSummaryPreview_RTL() {
-    RtlPreview {
+private fun OrderSummaryPreview_EN() {
+    LtrPreview {
         Column(
             modifier = Modifier.padding(Theme.spacing.lg)
         ) {
             ActiveOrderSummaryCard(
                 completed = 1,
                 total = 3,
-                timeText = "٠٠:٤٤",
+                timeText = "00:44",
                 timerIconRes = Theme.icons.timerFlash,
-                progressSubtitleText = "المهام",
-                progressCenterText = "١ من ٣",
-                timerLabelText = "مؤقت الطلب",
+                progressSubtitleText = "Tasks",
+                progressCenterText = "1 of 3",
+                timerLabelText = "Order timer",
                 onClick = {}
             )
 
             Spacer(modifier = Modifier.height(Theme.spacing.xl))
 
-            SectionHeaderDivider(title = "قائمة المهام")
+            SectionHeaderDivider(title = "Tasks list")
         }
     }
 }
