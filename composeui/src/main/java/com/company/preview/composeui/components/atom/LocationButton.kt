@@ -59,7 +59,7 @@ fun LocationButton(
             Icon(
                 painter = painterResource(iconRes),
                 contentDescription = contentDescription,
-                modifier = Modifier.size(Theme.spacing.iconSize),
+                modifier = Modifier.size(Theme.spacing.buttonIconSize),
                 tint = Theme.colors.black
             )
             Spacer(modifier = Modifier.size(Theme.spacing.sm))

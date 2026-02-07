@@ -11,6 +11,7 @@ data class AppSpacing(
     val cardBorderSize: Dp = 2.dp,
     val buttonHeight: Dp = 56.dp,
     val iconSize: Dp = 30.dp,
+    val buttonIconSize: Dp = 20.dp,
     val indicatorWidth: Dp = 50.dp,
     val indicatorHeight: Dp = 6.dp,
 
