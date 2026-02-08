@@ -27,12 +27,15 @@ data class AppTypography(
     val labelLarge get() = materialTypography.labelLarge
     val labelMedium get() = materialTypography.labelMedium
     val labelSmall get() = materialTypography.labelSmall
+
     val titleSmallBold get() =
-        materialTypography.titleSmall.copy(fontWeight = FontWeight.Bold)
+        materialTypography.titleSmall.copy(fontWeight = FontWeight.Bold, fontSize = 12.sp)
+    val titleSmallExtraBold get() =
+        materialTypography.titleSmall.copy(fontWeight = FontWeight.ExtraBold, fontSize = 12.sp)
     val titleMediumBold get() =
         materialTypography.titleMedium.copy(fontWeight = FontWeight.Bold)
     val titleLargeBold get() =
-        materialTypography.titleLarge.copy(fontWeight = FontWeight.Bold)
+        materialTypography.titleLarge.copy(fontWeight = FontWeight.Bold, fontSize = 20.sp)
     val labelSmallCompact get() =
         materialTypography.labelSmall.copy(fontSize = 9.sp)
 

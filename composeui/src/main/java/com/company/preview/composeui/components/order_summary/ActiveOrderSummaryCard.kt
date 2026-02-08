@@ -6,6 +6,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -17,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
@@ -95,36 +97,86 @@ private fun CardVerticalDivider(
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun ActiveOrderSummaryCardPreview_EN() {
     LtrPreview {
-        ActiveOrderSummaryCard(
-            completed = 1,
-            total = 3,
-            timeText = "00:44",
-            timerIconRes = Theme.icons.timerFlash,
-            progressSubtitleText = "Tasks",
-            progressCenterText = "1 of 3",
-            timerLabelText = "Order timer",
-            onClick = {}
-        )
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            ActiveOrderSummaryCard(
+                completed = 12,
+                total = 30,
+                timeText = "1:55:12",
+                timerIconRes = Theme.icons.timerFlash,
+                progressSubtitleText = "Tasks",
+                progressCenterText = "12 of 30",
+                timerLabelText = "Order timer",
+                onClick = {}
+            )
+            ActiveOrderSummaryCard(
+                completed = 4,
+                total = 7,
+                timeText = "44:23",
+                timerIconRes = Theme.icons.timerFlash,
+                progressSubtitleText = "Tasks",
+                progressCenterText = "4 of 7",
+                timerLabelText = "Order timer",
+                onClick = {}
+            )
+            ActiveOrderSummaryCard(
+                completed = 1,
+                total = 2,
+                timeText = "0:44",
+                timerIconRes = Theme.icons.timerFlash,
+                progressSubtitleText = "Tasks",
+                progressCenterText = "1 of 2",
+                timerLabelText = "Order timer",
+                onClick = {}
+            )
+        }
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun ActiveOrderSummaryCardPreview_RTL() {
     RtlPreview {
-        ActiveOrderSummaryCard(
-            completed = 1,
-            total = 3,
-            timeText = "٠٠:٤٤",
-            timerIconRes = Theme.icons.timerFlash,
-            progressSubtitleText = "المهام",
-            progressCenterText = "١ من ٣",
-            timerLabelText = "مؤقت الطلب",
-            onClick = {}
-        )
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            ActiveOrderSummaryCard(
+                completed = 12,
+                total = 30,
+                timeText = "١:٥٥:١٢",
+                timerIconRes = Theme.icons.timerFlash,
+                progressSubtitleText = "المهام",
+                progressCenterText = "١٢ من ٣٠",
+                timerLabelText = "مؤقت الطلب",
+                onClick = {}
+            )
+            ActiveOrderSummaryCard(
+                completed = 4,
+                total = 7,
+                timeText = "٤٤:٢٣",
+                timerIconRes = Theme.icons.timerFlash,
+                progressSubtitleText = "المهام",
+                progressCenterText = "٤ من ٧",
+                timerLabelText = "مؤقت الطلب",
+                onClick = {}
+            )
+            ActiveOrderSummaryCard(
+                completed = 1,
+                total = 2,
+                timeText = "٠:٤٤",
+                timerIconRes = Theme.icons.timerFlash,
+                progressSubtitleText = "المهام",
+                progressCenterText = "١ من ٢",
+                timerLabelText = "مؤقت الطلب",
+                onClick = {}
+            )
+        }
     }
 }

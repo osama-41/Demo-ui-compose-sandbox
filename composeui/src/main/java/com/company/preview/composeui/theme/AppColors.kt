@@ -12,6 +12,7 @@ data class AppColors(
     val trackGray: Color,
     val labelGray: Color,
     val mediumGray: Color,
+    val completedGreen: Color,
 )
 val DefaultAppColors = AppColors(
     primary = Color(0xFF111111),
@@ -21,6 +22,7 @@ val DefaultAppColors = AppColors(
     greyOutlined = Color(0xFFE5E5EA),
     labelGray = Color(0xFF707079),
     trackGray = Color(0xFFD4D4D8),
-    mediumGray = Color(0xFFA1A1AA)
+    mediumGray = Color(0xFFA1A1AA),
+    completedGreen = Color(0xFF22C55E),
 )
 val LocalColors = staticCompositionLocalOf { DefaultAppColors }

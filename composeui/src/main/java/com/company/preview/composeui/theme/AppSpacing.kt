@@ -15,6 +15,7 @@ data class AppSpacing(
     val indicatorWidth: Dp = 50.dp,
     val indicatorHeight: Dp = 6.dp,
 
+    val xxs: Dp = 1.dp,
     val xs: Dp = 4.dp,
     val sm: Dp = 8.dp,
     val md: Dp = 12.dp,

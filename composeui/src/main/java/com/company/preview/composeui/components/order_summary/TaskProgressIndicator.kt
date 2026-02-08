@@ -1,8 +1,12 @@
 package com.company.preview.composeui.components.order_summary
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -18,15 +22,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.unit.dp
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
 import java.text.NumberFormat
 import java.util.Locale
+import kotlin.math.cos
 import kotlin.math.max
-
-private const val SEGMENT_GAP_ANGLE: Float = 20f
-private val SEGMENT_STROKE_CAP: StrokeCap = StrokeCap.Round
+import kotlin.math.sin
 
 @Composable
 fun TaskProgressIndicator(
@@ -40,9 +44,9 @@ fun TaskProgressIndicator(
 
     val isRtl = LocalLayoutDirection.current == LayoutDirection.Rtl
 
-    // Arabic-Indic digits formatting when RTL
     val numberFormat = remember(isRtl) {
-        if (isRtl) NumberFormat.getInstance(Locale("ar")) else NumberFormat.getInstance(Locale.ENGLISH)
+        if (isRtl) NumberFormat.getInstance(Locale("ar"))
+        else NumberFormat.getInstance(Locale.ENGLISH)
     }
 
     val centerText = remember(safeCompleted, safeTotal, isRtl) {
@@ -63,17 +67,19 @@ fun TaskProgressIndicator(
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(
                 text = centerText,
-                style = Theme.typography.titleSmallBold.copy(
-                    textDirection = if (isRtl) TextDirection.Rtl else TextDirection.Ltr
+                style = Theme.typography.titleSmallExtraBold.copy(
+                    textDirection = if (isRtl) TextDirection.Rtl else TextDirection.Ltr,
                 ),
                 textAlign = TextAlign.Center,
-                color = Theme.colors.primary
+                color = Theme.colors.primary,
+                lineHeight = Theme.typography.titleSmallExtraBold.fontSize
             )
-
+            Spacer(Modifier.height(Theme.spacing.xxs))
             Text(
                 text = subtitleText,
                 style = Theme.typography.labelSmallCompact.copy(
-                    textDirection = if (isRtl) TextDirection.Rtl else TextDirection.Ltr
+                    textDirection = if (isRtl) TextDirection.Rtl else TextDirection.Ltr,
+                    lineHeight = Theme.typography.titleSmallBold.fontSize
                 ),
                 textAlign = TextAlign.Center,
                 color = Theme.colors.labelGray
@@ -88,64 +94,118 @@ private fun SegmentedRing(
     total: Int,
     modifier: Modifier = Modifier
 ) {
-    // Read tokens BEFORE Canvas (Canvas draw lambda is not composable)
     val ringSize = Theme.spacing.ringSizeLg
-    val strokeWidth = Theme.spacing.ringStroke
+    val baseStroke = Theme.spacing.ringStroke
+
     val trackColor = Theme.colors.trackGray
-    val progressColor = Theme.colors.primary
+    val currentColor = Theme.colors.primary
+    val completedColor = Theme.colors.completedGreen
 
     Canvas(modifier = modifier.size(ringSize)) {
-        val stroke = Stroke(
-            width = strokeWidth.toPx(),
-            cap = SEGMENT_STROKE_CAP
-        )
-
-        val inset = stroke.width / 2f
-        val arcSize = Size(size.width - inset * 2, size.height - inset * 2)
-        val topLeft = Offset(inset, inset)
-
-        val gap = SEGMENT_GAP_ANGLE
         val safeTotal = max(total, 1)
-        val segmentSweep = (360f - (gap * safeTotal)) / safeTotal
-        val baseStart = -90f + (gap / 2f)
+        val currentIndex = (completed - 1).coerceIn(0, safeTotal - 1)
+        val segmentAngle = 360f / safeTotal
 
         for (i in 0 until safeTotal) {
-            val start = baseStart + i * (segmentSweep + gap)
-            val color = if (i < completed) progressColor else trackColor
+            val color = when {
+                completed <= 0 -> trackColor
+                i < currentIndex -> completedColor
+                i == currentIndex -> currentColor
+                else -> trackColor
+            }
 
-            drawArc(
-                color = color,
-                startAngle = start,
-                sweepAngle = segmentSweep,
-                useCenter = false,
-                topLeft = topLeft,
-                size = arcSize,
-                style = stroke
-            )
+            if (safeTotal >= 19) {
+                val radialHeight = when {
+                    safeTotal >= 19 -> baseStroke.toPx() * 0.5f
+                    else -> baseStroke.toPx() * 1.4f
+                }
+                val angularWidth = when {
+                    safeTotal >= 25 -> baseStroke.toPx() * 0.65f
+                    else -> baseStroke.toPx() * 0.85f
+                }
+
+                val angleRad = Math.toRadians((-90f + i * segmentAngle).toDouble())
+                val cosA = cos(angleRad).toFloat()
+                val sinA = sin(angleRad).toFloat()
+
+                val center = Offset(size.width / 2, size.height / 2)
+                val outerRadius = size.minDimension / 2 - angularWidth / 2
+                val innerRadius = outerRadius - radialHeight
+
+                val start = center + Offset(cosA * innerRadius, sinA * innerRadius)
+                val end = center + Offset(cosA * outerRadius, sinA * outerRadius)
+
+                drawLine(
+                    color = color,
+                    start = start,
+                    end = end,
+                    strokeWidth = angularWidth,
+                    cap = StrokeCap.Round
+                )
+            } else {
+                val strokePx = baseStroke.toPx() * 1f
+                val stroke = Stroke(width = strokePx, cap = StrokeCap.Round)
+
+                val inset = stroke.width / 2f
+                val arcSize = Size(size.width - inset * 2, size.height - inset * 2)
+                val topLeft = Offset(inset, inset)
+
+                val radiusPx = arcSize.minDimension / 2f
+                val capExtDeg = (strokePx / (2 * radiusPx)) * (180f / Math.PI.toFloat())
+
+                val targetRatio = 0.95f
+                val sweepDeg = (segmentAngle * targetRatio - 2 * capExtDeg).coerceAtLeast(0.1f)
+                val startAngle = -90f + i * segmentAngle + (segmentAngle - sweepDeg) / 2f
+
+                drawArc(
+                    color = color,
+                    startAngle = startAngle,
+                    sweepAngle = sweepDeg,
+                    useCenter = false,
+                    topLeft = topLeft,
+                    size = arcSize,
+                    style = stroke
+                )
+            }
         }
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
-fun TaskProgressIndicatorPreview_EN() {
+fun TaskProgressIndicator_PhotoCases_Preview() {
     LtrPreview {
-        TaskProgressIndicator(
-            completed = 2,
-            total = 12,
-            subtitleText = "Tasks"
-        )
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(32.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            TaskProgressIndicator(completed = 12, total = 30, subtitleText = "Tasks")
+            TaskProgressIndicator(completed = 4, total = 7, subtitleText = "Tasks")
+            TaskProgressIndicator(completed = 3, total = 5, subtitleText = "Tasks")
+            TaskProgressIndicator(completed = 2, total = 3, subtitleText = "Tasks")
+            TaskProgressIndicator(completed = 1, total = 2, subtitleText = "Tasks")
+            TaskProgressIndicator(completed = 1, total = 3, subtitleText = "Tasks")
+            TaskProgressIndicator(completed = 0, total = 10, subtitleText = "Tasks")
+        }
     }
 }
-
-@Preview
+@Preview(showBackground = true)
 @Composable
-fun TaskProgressIndicatorPreview_RTL() {
-    RtlPreview {
-        TaskProgressIndicator(
-            completed = 2,
-            total = 12,
-            subtitleText = "المهام"
-        )
+fun TaskProgressIndicator_PhotoCases_Preview_Rtl() {
+     RtlPreview {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(32.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            TaskProgressIndicator(completed = 12, total = 30, subtitleText = "Tasks")
+            TaskProgressIndicator(completed = 4, total = 7, subtitleText = "Tasks")
+            TaskProgressIndicator(completed = 3, total = 5, subtitleText = "Tasks")
+            TaskProgressIndicator(completed = 2, total = 3, subtitleText = "Tasks")
+            TaskProgressIndicator(completed = 1, total = 2, subtitleText = "Tasks")
+            TaskProgressIndicator(completed = 1, total = 3, subtitleText = "Tasks")
+            TaskProgressIndicator(completed = 0, total = 10, subtitleText = "Tasks")
+        }
     }
 }
