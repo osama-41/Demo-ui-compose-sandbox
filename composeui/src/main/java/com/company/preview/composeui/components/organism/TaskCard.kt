@@ -74,7 +74,7 @@ fun TaskCard(
         Spacer(modifier = Modifier.height(Theme.spacing.lg))
 
         AppButton(
-            text = startText,
+            text = locationText,
             onClick = onStartClick,
             modifier = Modifier.fillMaxWidth(),
             radius = Theme.spacing.radiusMd,
@@ -90,7 +90,7 @@ fun TaskCard(
         Spacer(modifier = Modifier.height(Theme.spacing.md))
 
         AppButton(
-            text = locationText,
+            text = startText,
             onClick = onLocationClick,
             modifier = Modifier.fillMaxWidth(),
             contentDescription = "Start icon",

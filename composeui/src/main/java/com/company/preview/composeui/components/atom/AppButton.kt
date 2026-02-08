@@ -128,7 +128,7 @@ fun AppButtonPreview_Ltr() {
                 )
 
                 AppButton(
-                    text = "Start task",
+                    text = "Start Pickup",
                     onClick = {},
                     modifier = Modifier.fillMaxWidth(),
                     contentDescription = "Start icon",
