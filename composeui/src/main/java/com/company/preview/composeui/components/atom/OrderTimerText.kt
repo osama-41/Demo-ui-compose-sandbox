@@ -1,11 +1,16 @@
 package com.company.preview.composeui.components.atom
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.preview.RtlPreview
-import com.company.preview.composeui.preview.ThemedPreview
 import com.company.preview.composeui.theme.Theme
 
 @Composable
@@ -23,14 +28,35 @@ fun OrderTimer(
 @Preview(showBackground = true)
 @Composable
 private fun OrderTimerPreview_LTR() {
-    ThemedPreview {
-        OrderTimer(time = "01:16")
+    LtrPreview {
+        Surface(
+            modifier = Modifier.padding(16.dp),
+            color = Theme.colors.white
+        ) {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                OrderTimer(time = "01:16")
+                OrderTimer(time = "01:16:16")
+            }
+        }
     }
 }
+
 @Preview(showBackground = true)
 @Composable
 private fun OrderTimerPreview_RTL() {
     RtlPreview {
-        OrderTimer(time = "٠١:١٦")
+        Surface(
+            modifier = Modifier.padding(16.dp),
+            color = Theme.colors.white
+        ) {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                OrderTimer(time = "٠١:١٦")
+                OrderTimer(time = "٠١:١٦:١٦")
+            }
+        }
     }
 }

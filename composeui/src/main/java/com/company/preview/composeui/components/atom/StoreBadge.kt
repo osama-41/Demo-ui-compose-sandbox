@@ -1,19 +1,22 @@
 package com.company.preview.composeui.components.atom
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
-import com.company.preview.composeui.preview.RtlPreview
-import com.company.preview.composeui.preview.ThemedPreview
+import androidx.compose.ui.unit.dp
+import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.theme.Theme
 
 @Composable
@@ -44,14 +47,34 @@ fun StoreBadge(
 @Preview(showBackground = true)
 @Composable
 private fun StoreBadgePreview_LTR() {
-    ThemedPreview {
-        StoreBadge(text = "Ninja Grocery")
+    LtrPreview {
+        Surface(
+            modifier = Modifier.padding(16.dp),
+            color = Theme.colors.white
+        ) {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                StoreBadge(text = "Ninja Grocery")
+
+            }
+        }
     }
 }
 @Preview(showBackground = true)
 @Composable
-private fun StoreBadgePreview_RTL() {
-    RtlPreview {
-        StoreBadge(text = "متجر نينجا")
+private fun StoreBadgePreview_Rtl() {
+    LtrPreview {
+        Surface(
+            modifier = Modifier.padding(16.dp),
+            color = Theme.colors.white
+        ) {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                StoreBadge(text = "متجر نينجا")
+
+            }
+        }
     }
 }
