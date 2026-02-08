@@ -135,6 +135,16 @@ fun ActiveOrderSummaryCardPreview_EN() {
                 timerLabelText = "Order timer",
                 onClick = {}
             )
+            ActiveOrderSummaryCard(
+                completed = 1,
+                total = 3,
+                timeText = "0:44",
+                timerIconRes = Theme.icons.timerFlash,
+                progressSubtitleText = "Tasks",
+                progressCenterText = "1 of 2",
+                timerLabelText = "Order timer",
+                onClick = {}
+            )
         }
     }
 }
@@ -174,6 +184,16 @@ fun ActiveOrderSummaryCardPreview_RTL() {
                 timerIconRes = Theme.icons.timerFlash,
                 progressSubtitleText = "المهام",
                 progressCenterText = "١ من ٢",
+                timerLabelText = "مؤقت الطلب",
+                onClick = {}
+            )
+            ActiveOrderSummaryCard(
+                completed = 1,
+                total = 3,
+                timeText = "٠:٤٤",
+                timerIconRes = Theme.icons.timerFlash,
+                progressSubtitleText = "المهام",
+                progressCenterText = "١ من ٣",
                 timerLabelText = "مؤقت الطلب",
                 onClick = {}
             )

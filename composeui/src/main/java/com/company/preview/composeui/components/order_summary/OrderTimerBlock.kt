@@ -108,6 +108,16 @@ fun OrderTimerBlock_RTL_Preview() {
                 iconRes = R.drawable.ic_timer_flash,
             )
             OrderTimerBlock(
+                timeText = "٤٤:٢٣",
+                labelText = "مؤقت الطلب",
+                iconRes = R.drawable.ic_timer_flash,
+            )
+            OrderTimerBlock(
+                timeText = "٧:٣٢",
+                labelText = "مؤقت الطلب",
+                iconRes = R.drawable.ic_timer_flash,
+            )
+            OrderTimerBlock(
                 timeText = "٠:٤٤",
                 labelText = "مؤقت الطلب",
                 iconRes = R.drawable.ic_timer_flash,
