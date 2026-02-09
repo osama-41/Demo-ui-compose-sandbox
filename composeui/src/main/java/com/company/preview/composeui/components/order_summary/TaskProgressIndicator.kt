@@ -19,10 +19,8 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.LayoutDirection
-import androidx.compose.ui.unit.dp
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
@@ -67,9 +65,7 @@ fun TaskProgressIndicator(
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(
                 text = centerText,
-                style = Theme.typography.titleSmallExtraBold.copy(
-                    textDirection = if (isRtl) TextDirection.Rtl else TextDirection.Ltr,
-                ),
+                style = Theme.typography.titleSmallExtraBold,
                 textAlign = TextAlign.Center,
                 color = Theme.colors.primary,
                 lineHeight = Theme.typography.titleSmallExtraBold.fontSize
@@ -77,10 +73,7 @@ fun TaskProgressIndicator(
             Spacer(Modifier.height(Theme.spacing.xxs))
             Text(
                 text = subtitleText,
-                style = Theme.typography.labelSmallCompact.copy(
-                    textDirection = if (isRtl) TextDirection.Rtl else TextDirection.Ltr,
-                    lineHeight = Theme.typography.titleSmallBold.fontSize
-                ),
+                style = Theme.typography.labelSmallCompactLineHeight,
                 textAlign = TextAlign.Center,
                 color = Theme.colors.labelGray
             )
@@ -115,10 +108,7 @@ private fun SegmentedRing(
             }
 
             if (safeTotal >= 19) {
-                val radialHeight = when {
-                    safeTotal >= 19 -> baseStroke.toPx() * 0.5f
-                    else -> baseStroke.toPx() * 1.4f
-                }
+                val radialHeight = baseStroke.toPx() * 0.5f
                 val angularWidth = when {
                     safeTotal >= 25 -> baseStroke.toPx() * 0.65f
                     else -> baseStroke.toPx() * 0.85f
@@ -170,42 +160,36 @@ private fun SegmentedRing(
         }
     }
 }
-
 @Preview(showBackground = true)
 @Composable
 fun TaskProgressIndicator_PhotoCases_Preview() {
+    val locale = Locale.ENGLISH
     LtrPreview {
         Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(32.dp),
+            modifier = Modifier.padding(Theme.spacing.lg),
+            verticalArrangement = Arrangement.spacedBy(Theme.spacing.xxl),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            TaskProgressIndicator(completed = 12, total = 30, subtitleText = "Tasks")
-            TaskProgressIndicator(completed = 4, total = 7, subtitleText = "Tasks")
-            TaskProgressIndicator(completed = 3, total = 5, subtitleText = "Tasks")
-            TaskProgressIndicator(completed = 2, total = 3, subtitleText = "Tasks")
-            TaskProgressIndicator(completed = 1, total = 2, subtitleText = "Tasks")
-            TaskProgressIndicator(completed = 1, total = 3, subtitleText = "Tasks")
-            TaskProgressIndicator(completed = 0, total = 10, subtitleText = "Tasks")
+            TaskProgressIndicator(12, 30, "Tasks")
+            TaskProgressIndicator(4, 7, "Tasks")
+            TaskProgressIndicator(0, 10, "Tasks")
         }
     }
 }
+
 @Preview(showBackground = true)
 @Composable
 fun TaskProgressIndicator_PhotoCases_Preview_Rtl() {
-     RtlPreview {
+    val locale = Locale("ar")
+    RtlPreview {
         Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(32.dp),
+            modifier = Modifier.padding(Theme.spacing.lg),
+            verticalArrangement = Arrangement.spacedBy(Theme.spacing.xxl),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            TaskProgressIndicator(completed = 12, total = 30, subtitleText = "Tasks")
-            TaskProgressIndicator(completed = 4, total = 7, subtitleText = "Tasks")
-            TaskProgressIndicator(completed = 3, total = 5, subtitleText = "Tasks")
-            TaskProgressIndicator(completed = 2, total = 3, subtitleText = "Tasks")
-            TaskProgressIndicator(completed = 1, total = 2, subtitleText = "Tasks")
-            TaskProgressIndicator(completed = 1, total = 3, subtitleText = "Tasks")
-            TaskProgressIndicator(completed = 0, total = 10, subtitleText = "Tasks")
+            TaskProgressIndicator(12, 30, "Tasks")
+            TaskProgressIndicator(4, 7,  "Tasks")
+            TaskProgressIndicator(0, 10, "Tasks")
         }
     }
 }

@@ -11,7 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
@@ -49,8 +48,8 @@ fun SectionHeaderDivider(
 fun SectionHeaderDivider_AllCases_Preview() {
     LtrPreview {
         Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(24.dp)
+            modifier = Modifier.padding(Theme.spacing.lg),
+            verticalArrangement = Arrangement.spacedBy(Theme.spacing.xl)
         ) {
             SectionHeaderDivider(title = "Tasks list")
             SectionHeaderDivider(title = "Order summary")
@@ -64,8 +63,8 @@ fun SectionHeaderDivider_AllCases_Preview() {
 fun SectionHeaderDivider_RTL_Preview() {
     RtlPreview {
         Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(24.dp)
+            modifier = Modifier.padding(Theme.spacing.lg),
+            verticalArrangement = Arrangement.spacedBy(Theme.spacing.xl)
         ) {
             SectionHeaderDivider(title = "قائمة المهام")
             SectionHeaderDivider(title = "ملخص الطلب")

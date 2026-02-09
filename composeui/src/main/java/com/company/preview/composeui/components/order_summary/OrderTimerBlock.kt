@@ -16,8 +16,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import com.company.preview.composeui.R
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
@@ -36,7 +34,7 @@ fun OrderTimerBlock(
         Text(
             text = timeText,
             style = Theme.typography.titleLargeBold,
-            color = Theme.colors.onSurface
+            color = Theme.colors.primary
         )
 
         Spacer(modifier = Modifier.height(Theme.spacing.xs))
@@ -65,29 +63,29 @@ fun OrderTimerBlock(
 fun OrderTimerBlock_AllCases_Preview() {
     LtrPreview {
         Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(24.dp),
+            modifier = Modifier.padding(Theme.spacing.lg),
+            verticalArrangement = Arrangement.spacedBy(Theme.spacing.lg),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             OrderTimerBlock(
                 timeText = "1:55:12",
                 labelText = "Order timer",
-                iconRes = R.drawable.ic_timer_flash,
+                iconRes = Theme.icons.timerFlash,
             )
             OrderTimerBlock(
                 timeText = "44:23",
                 labelText = "Order timer",
-                iconRes = R.drawable.ic_timer_flash,
+                iconRes = Theme.icons.timerFlash,
             )
             OrderTimerBlock(
                 timeText = "7:32",
                 labelText = "Order timer",
-                iconRes = R.drawable.ic_timer_flash,
+                iconRes = Theme.icons.timerFlash,
             )
             OrderTimerBlock(
                 timeText = "0:44",
                 labelText = "Order timer",
-                iconRes = R.drawable.ic_timer_flash,
+                iconRes = Theme.icons.timerFlash,
             )
         }
     }
@@ -98,29 +96,29 @@ fun OrderTimerBlock_AllCases_Preview() {
 fun OrderTimerBlock_RTL_Preview() {
     RtlPreview {
         Column(
-            modifier = Modifier.padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(24.dp),
+            modifier = Modifier.padding(Theme.spacing.lg),
+            verticalArrangement = Arrangement.spacedBy(Theme.spacing.lg),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             OrderTimerBlock(
                 timeText = "١:٥٥:١٢",
                 labelText = "مؤقت الطلب",
-                iconRes = R.drawable.ic_timer_flash,
+                iconRes = Theme.icons.timerFlash,
             )
             OrderTimerBlock(
                 timeText = "٤٤:٢٣",
                 labelText = "مؤقت الطلب",
-                iconRes = R.drawable.ic_timer_flash,
+                iconRes = Theme.icons.timerFlash,
             )
             OrderTimerBlock(
                 timeText = "٧:٣٢",
                 labelText = "مؤقت الطلب",
-                iconRes = R.drawable.ic_timer_flash,
+                iconRes = Theme.icons.timerFlash,
             )
             OrderTimerBlock(
                 timeText = "٠:٤٤",
                 labelText = "مؤقت الطلب",
-                iconRes = R.drawable.ic_timer_flash,
+                iconRes = Theme.icons.timerFlash,
             )
         }
     }

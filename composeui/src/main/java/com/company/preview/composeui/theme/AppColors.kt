@@ -6,8 +6,6 @@ import androidx.compose.ui.graphics.Color
 data class AppColors(
     val primary: Color,
     val white: Color,
-    val surface: Color,
-    val onSurface: Color,
     val greyOutlined: Color,
     val trackGray: Color,
     val labelGray: Color,
@@ -17,8 +15,6 @@ data class AppColors(
 val DefaultAppColors = AppColors(
     primary = Color(0xFF111111),
     white = Color(0xFFFFFFFF),
-    surface = Color(0xFFFFFFFF),
-    onSurface = Color(0xFF111111),
     greyOutlined = Color(0xFFE5E5EA),
     labelGray = Color(0xFF707079),
     trackGray = Color(0xFFD4D4D8),

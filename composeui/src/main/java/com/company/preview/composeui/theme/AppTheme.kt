@@ -18,8 +18,6 @@ fun AppTheme(
         primary = colors.primary,
         background = colors.white,
         outline = colors.greyOutlined,
-        surface = colors.surface,
-        onSurface = colors.onSurface,
     )
 
     CompositionLocalProvider(

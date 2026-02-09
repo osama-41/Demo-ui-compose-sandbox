@@ -38,7 +38,8 @@ data class AppTypography(
         materialTypography.titleLarge.copy(fontWeight = FontWeight.Bold, fontSize = 20.sp)
     val labelSmallCompact get() =
         materialTypography.labelSmall.copy(fontSize = 9.sp)
-
+    val labelSmallCompactLineHeight get() =
+        materialTypography.labelSmall.copy(fontSize = 9.sp, lineHeight = 12.sp)
 }
 private val AppFontFamily = FontFamily(
     Font(R.font.sf_pro_display_regular, FontWeight.Normal),
