@@ -34,8 +34,8 @@ import com.company.preview.composeui.theme.Theme
 @Composable
 fun AppButton(
     text: String,
-    modifier: Modifier = Modifier,
     onClick: ()-> Unit,
+    modifier: Modifier = Modifier,
     enabled: Boolean=true,
     height: Dp = Theme.spacing.buttonHeight,
     radius: Dp = Theme.spacing.sm,
