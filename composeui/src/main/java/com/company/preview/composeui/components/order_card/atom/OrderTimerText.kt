@@ -8,7 +8,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
@@ -30,11 +29,11 @@ fun OrderTimer(
 private fun OrderTimerPreview_LTR() {
     LtrPreview {
         Surface(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(Theme.spacing.lg),
             color = Theme.colors.white
         ) {
             Column(
-                verticalArrangement = Arrangement.spacedBy(16.dp)
+                verticalArrangement = Arrangement.spacedBy(Theme.spacing.lg)
             ) {
                 OrderTimer(time = "01:16")
                 OrderTimer(time = "01:16:16")
@@ -48,11 +47,11 @@ private fun OrderTimerPreview_LTR() {
 private fun OrderTimerPreview_RTL() {
     RtlPreview {
         Surface(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(Theme.spacing.lg),
             color = Theme.colors.white
         ) {
             Column(
-                verticalArrangement = Arrangement.spacedBy(16.dp)
+                verticalArrangement = Arrangement.spacedBy(Theme.spacing.lg)
             ) {
                 OrderTimer(time = "٠١:١٦")
                 OrderTimer(time = "٠١:١٦:١٦")

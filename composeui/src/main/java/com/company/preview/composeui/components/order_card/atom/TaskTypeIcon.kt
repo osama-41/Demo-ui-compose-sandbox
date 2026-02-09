@@ -17,7 +17,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
@@ -54,11 +53,11 @@ fun TaskTypeIcon(
 private fun TaskTypeIconPreview_LTR() {
     LtrPreview {
         Surface(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(Theme.spacing.lg),
             color = Theme.colors.white
         ) {
             Column(
-                verticalArrangement = Arrangement.spacedBy(16.dp)
+                verticalArrangement = Arrangement.spacedBy(Theme.spacing.lg)
             ) {
         TaskTypeIcon(iconRes = Theme.icons.taskPickup)
              }
@@ -70,11 +69,11 @@ private fun TaskTypeIconPreview_LTR() {
 private fun TaskTypeIconPreview_RTL() {
     RtlPreview {
         Surface(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(Theme.spacing.lg),
             color = Theme.colors.white
         ) {
             Column(
-                verticalArrangement = Arrangement.spacedBy(16.dp)
+                verticalArrangement = Arrangement.spacedBy(Theme.spacing.lg)
             ) {
         TaskTypeIcon(iconRes = Theme.icons.taskPickup)
             }

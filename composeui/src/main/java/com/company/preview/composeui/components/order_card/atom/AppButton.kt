@@ -107,11 +107,11 @@ fun AppButton(
 fun AppButtonPreview_Ltr() {
     LtrPreview {
         Surface(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(Theme.spacing.lg),
             color = Theme.colors.white
         ) {
             Column(
-                verticalArrangement = Arrangement.spacedBy(16.dp)
+                verticalArrangement = Arrangement.spacedBy(Theme.spacing.lg)
             ) {
 
                 AppButton(
@@ -145,11 +145,11 @@ fun AppButtonPreview_Ltr() {
 fun AppButtonPreview_Rtl() {
     RtlPreview {
         Surface(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(Theme.spacing.lg),
             color = Theme.colors.white
         ) {
             Column(
-                verticalArrangement = Arrangement.spacedBy(16.dp)
+                verticalArrangement = Arrangement.spacedBy(Theme.spacing.lg)
             ) {
 
                 AppButton(

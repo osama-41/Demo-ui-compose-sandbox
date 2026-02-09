@@ -14,7 +14,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import com.company.preview.composeui.preview.LtrPreview
@@ -50,11 +49,11 @@ fun StatusIndicator(
 private fun StatusIndicatorPreview_25_Ltr() {
     LtrPreview {
         Surface(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(Theme.spacing.lg),
             color = Theme.colors.white
         ) {
             Column(
-                verticalArrangement = Arrangement.spacedBy(16.dp)
+                verticalArrangement = Arrangement.spacedBy(Theme.spacing.lg)
             ) {
 
                 StatusIndicator(progress = 0f,modifier = Modifier.width(Theme.spacing.indicatorWidth))
@@ -71,11 +70,11 @@ private fun StatusIndicatorPreview_25_Ltr() {
 private fun StatusIndicatorPreview_25_Rtl() {
     RtlPreview {
         Surface(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(Theme.spacing.lg),
             color = Theme.colors.white
         ) {
             Column(
-                verticalArrangement = Arrangement.spacedBy(16.dp)
+                verticalArrangement = Arrangement.spacedBy(Theme.spacing.lg)
             ) {
 
                 StatusIndicator(progress = 0f, modifier = Modifier.width(Theme.spacing.indicatorWidth))

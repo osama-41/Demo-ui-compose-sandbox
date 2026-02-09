@@ -17,7 +17,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.company.preview.composeui.components.order_card.atom.AppButton
 import com.company.preview.composeui.components.order_card.molecule.OrderInfoRow
 import com.company.preview.composeui.components.order_card.molecule.TaskHeader
@@ -75,13 +74,13 @@ fun TaskCard(
 
         AppButton(
             text = locationText,
-            onClick = onStartClick,
+            onClick = onLocationClick,
             modifier = Modifier.fillMaxWidth(),
             radius = Theme.spacing.radiusMd,
             contentDescription = "Location icon",
             containerColor = Theme.colors.white,
             contentColor = Theme.colors.black,
-            border = BorderStroke(1.dp, Theme.colors.greyOutlined),
+            border = BorderStroke(Theme.spacing.buttonBorderSize, Theme.colors.greyOutlined),
             defaultElevation = Theme.spacing.elevationNone,
             iconRes = Theme.icons.location,
 
@@ -91,7 +90,7 @@ fun TaskCard(
 
         AppButton(
             text = startText,
-            onClick = onLocationClick,
+            onClick = onStartClick,
             modifier = Modifier.fillMaxWidth(),
             contentDescription = "Start icon",
             containerColor = Theme.colors.primary,
@@ -107,7 +106,7 @@ fun TaskCard(
 fun TaskCard_Ltr() {
     LtrPreview {
         Surface(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(Theme.spacing.lg),
             color = Theme.colors.white
         ) {
             Column (
@@ -151,11 +150,11 @@ fun TaskCard_Ltr() {
 fun TaskCard_Rtl() {
     RtlPreview {
         Surface(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(Theme.spacing.lg),
             color = Theme.colors.white
         ) {
             Column (
-                verticalArrangement = Arrangement.spacedBy(16.dp)
+                verticalArrangement = Arrangement.spacedBy(Theme.spacing.lg)
             ) {
                 TaskCard(
                     taskTitle = "التقاط",
