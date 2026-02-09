@@ -10,17 +10,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.LayoutDirection
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
@@ -30,28 +27,36 @@ import kotlin.math.cos
 import kotlin.math.max
 import kotlin.math.sin
 
+/**
+ * Formatting/business logic lives here (not in the composable).
+ * Call this from the VM/presenter or the preview caller.
+ */
+fun formatTaskProgressText(
+    completed: Int,
+    total: Int,
+    locale: Locale,
+    isRtl: Boolean,
+): String {
+    val safeTotal = max(total, 1)
+    val safeCompleted = completed.coerceIn(0, safeTotal)
+
+    val nf = NumberFormat.getInstance(locale)
+    val c = nf.format(safeCompleted)
+    val t = nf.format(safeTotal)
+
+    return if (isRtl) "$c من $t" else "$c of $t"
+}
+
 @Composable
 fun TaskProgressIndicator(
     completed: Int,
     total: Int,
+    centerText: String,
     subtitleText: String,
     modifier: Modifier = Modifier
 ) {
     val safeTotal = max(total, 1)
     val safeCompleted = completed.coerceIn(0, safeTotal)
-
-    val isRtl = LocalLayoutDirection.current == LayoutDirection.Rtl
-
-    val numberFormat = remember(isRtl) {
-        if (isRtl) NumberFormat.getInstance(Locale("ar"))
-        else NumberFormat.getInstance(Locale.ENGLISH)
-    }
-
-    val centerText = remember(safeCompleted, safeTotal, isRtl) {
-        val c = numberFormat.format(safeCompleted)
-        val t = numberFormat.format(safeTotal)
-        if (isRtl) "$c من $t" else "$c of $t"
-    }
 
     Box(
         modifier = modifier.size(Theme.spacing.ringSizeLg),
@@ -133,7 +138,7 @@ private fun SegmentedRing(
                     cap = StrokeCap.Round
                 )
             } else {
-                val strokePx = baseStroke.toPx() * 1f
+                val strokePx = baseStroke.toPx()
                 val stroke = Stroke(width = strokePx, cap = StrokeCap.Round)
 
                 val inset = stroke.width / 2f
@@ -160,6 +165,7 @@ private fun SegmentedRing(
         }
     }
 }
+
 @Preview(showBackground = true)
 @Composable
 fun TaskProgressIndicator_PhotoCases_Preview() {
@@ -170,9 +176,24 @@ fun TaskProgressIndicator_PhotoCases_Preview() {
             verticalArrangement = Arrangement.spacedBy(Theme.spacing.xxl),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            TaskProgressIndicator(12, 30, "Tasks")
-            TaskProgressIndicator(4, 7, "Tasks")
-            TaskProgressIndicator(0, 10, "Tasks")
+            TaskProgressIndicator(
+                completed = 12,
+                total = 30,
+                centerText = formatTaskProgressText(12, 30, locale, isRtl = false),
+                subtitleText = "Tasks"
+            )
+            TaskProgressIndicator(
+                completed = 4,
+                total = 7,
+                centerText = formatTaskProgressText(4, 7, locale, isRtl = false),
+                subtitleText = "Tasks"
+            )
+            TaskProgressIndicator(
+                completed = 0,
+                total = 10,
+                centerText = formatTaskProgressText(0, 10, locale, isRtl = false),
+                subtitleText = "Tasks"
+            )
         }
     }
 }
@@ -187,9 +208,24 @@ fun TaskProgressIndicator_PhotoCases_Preview_Rtl() {
             verticalArrangement = Arrangement.spacedBy(Theme.spacing.xxl),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            TaskProgressIndicator(12, 30, "Tasks")
-            TaskProgressIndicator(4, 7,  "Tasks")
-            TaskProgressIndicator(0, 10, "Tasks")
+            TaskProgressIndicator(
+                completed = 12,
+                total = 30,
+                centerText = formatTaskProgressText(12, 30, locale, isRtl = true),
+                subtitleText = "المهام"
+            )
+            TaskProgressIndicator(
+                completed = 4,
+                total = 7,
+                centerText = formatTaskProgressText(4, 7, locale, isRtl = true),
+                subtitleText = "المهام"
+            )
+            TaskProgressIndicator(
+                completed = 0,
+                total = 10,
+                centerText = formatTaskProgressText(0, 10, locale, isRtl = true),
+                subtitleText = "المهام"
+            )
         }
     }
 }
