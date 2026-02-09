@@ -111,7 +111,7 @@ fun TaskCard_Ltr() {
             color = Theme.colors.white
         ) {
             Column (
-                verticalArrangement = Arrangement.spacedBy(16.dp)
+                verticalArrangement = Arrangement.spacedBy(Theme.spacing.lg)
             ) {
                     TaskCard (
                         taskTitle = "Pick up",
