@@ -41,7 +41,7 @@ fun TaskHeader(
         Row(verticalAlignment = Alignment.CenterVertically) {
             TaskTypeIcon(iconRes = taskIconRes)
 
-            Spacer(modifier = Modifier.Companion.width(Theme.spacing.md))
+            Spacer(modifier = Modifier.width(Theme.spacing.md))
 
             Column {
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -62,13 +62,13 @@ fun TaskHeader(
 
         Column(
             horizontalAlignment = Alignment.End,
-            modifier = Modifier.Companion.width(IntrinsicSize.Max)
+            modifier = Modifier.width(IntrinsicSize.Max)
         ) {
             OrderTimer(
                 time = timer,
-                modifier = Modifier.Companion.wrapContentWidth(unbounded = true)
+                modifier = Modifier.wrapContentWidth(unbounded = true)
             )
-            Spacer(modifier = Modifier.Companion.height(Theme.spacing.xs))
+            Spacer(modifier = Modifier.height(Theme.spacing.xs))
             StatusIndicator(
                 progress = progress,
                 modifier = Modifier.fillMaxWidth()

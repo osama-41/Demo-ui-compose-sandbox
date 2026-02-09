@@ -43,7 +43,7 @@ fun TaskTypeIcon(
         Image(
             painter = painterResource(iconRes),
             contentDescription = contentDescription,
-            modifier = modifier.size(Theme.spacing.iconSize)
+                modifier = Modifier.size(Theme.spacing.iconSize)
         )
     }
 }

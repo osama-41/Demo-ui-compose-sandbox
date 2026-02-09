@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import com.company.preview.composeui.preview.LtrPreview
+import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
 
 @Composable
@@ -63,7 +64,7 @@ private fun StoreBadgePreview_LTR() {
 @Preview(showBackground = true)
 @Composable
 private fun StoreBadgePreview_Rtl() {
-    LtrPreview {
+    RtlPreview {
         Surface(
             modifier = Modifier.padding(Theme.spacing.lg),
             color = Theme.colors.white
