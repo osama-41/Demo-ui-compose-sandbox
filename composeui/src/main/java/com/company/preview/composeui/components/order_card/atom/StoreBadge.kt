@@ -1,46 +1,52 @@
-package com.company.preview.composeui.components.molecule
+package com.company.preview.composeui.components.order_card.atom
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.company.preview.composeui.components.atom.StoreBadge
 import com.company.preview.composeui.preview.LtrPreview
-import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
 
 @Composable
-fun OrderInfoRow(
-    orderText: String,
-    storeName: String,
-    modifier: Modifier= Modifier
+fun StoreBadge(
+    text: String,
+    modifier: Modifier= Modifier,
+    padding: PaddingValues=PaddingValues(
+        vertical = Theme.spacing.xs,
+        horizontal = Theme.spacing.sm
+    )
 ){
+
     Row(
-        modifier = modifier,
+        modifier = modifier
+            .defaultMinSize(Theme.spacing.xl)
+            .clip(RoundedCornerShape(Theme.spacing.radiusXs))
+            .background(Theme.colors.secondary)
+            .padding(padding),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = orderText,
-            style = Theme.typography.titleLarge,
+            text = text,
+            style = Theme.typography.titleMedium,
             color = Theme.colors.black
         )
-        Spacer(modifier = Modifier.size(Theme.spacing.sm))
-        StoreBadge(text = storeName)
     }
 }
-
 @Preview(showBackground = true)
 @Composable
-private fun OrderInfoRowPreview_LTR() {
+private fun StoreBadgePreview_LTR() {
     LtrPreview {
         Surface(
             modifier = Modifier.padding(16.dp),
@@ -49,22 +55,16 @@ private fun OrderInfoRowPreview_LTR() {
             Column(
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-        OrderInfoRow(
-            orderText = "Order #05323",
-            storeName = "Ninja Grocery"
-        )
-                OrderInfoRow(
-                    orderText = "Order #0532305323",
-                    storeName = "Ninja Grocery"
-                )
-           }
+                StoreBadge(text = "Ninja Grocery")
+
+            }
         }
     }
 }
 @Preview(showBackground = true)
 @Composable
-private fun OrderInfoRowPreview_RTL() {
-    RtlPreview {
+private fun StoreBadgePreview_Rtl() {
+    LtrPreview {
         Surface(
             modifier = Modifier.padding(16.dp),
             color = Theme.colors.white
@@ -72,15 +72,9 @@ private fun OrderInfoRowPreview_RTL() {
             Column(
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-        OrderInfoRow(
-            orderText = "طلب #٠٥٣٢٣",
-            storeName = "نينجا"
-        )
-                OrderInfoRow(
-                    orderText = "طلب #٠٥٣٢٣٠٥٣٢٣",
-                    storeName = "نينجا"
-                )
-           }
+                StoreBadge(text = "متجر نينجا")
+
+            }
         }
     }
 }

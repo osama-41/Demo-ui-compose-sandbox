@@ -1,5 +1,4 @@
-package com.company.preview.composeui.components.molecule
-
+package com.company.preview.composeui.components.order_card.molecule
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Arrangement
@@ -10,6 +9,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material3.Surface
@@ -19,12 +19,80 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.company.preview.composeui.components.atom.OrderTimer
-import com.company.preview.composeui.components.atom.StatusIndicator
-import com.company.preview.composeui.components.atom.TaskTypeIcon
+import com.company.preview.composeui.components.order_card.atom.OrderTimer
+import com.company.preview.composeui.components.order_card.atom.StatusIndicator
+import com.company.preview.composeui.components.order_card.atom.StoreBadge
+import com.company.preview.composeui.components.order_card.atom.TaskTypeIcon
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
+
+@Composable
+fun OrderInfoRow(
+    orderText: String,
+    storeName: String,
+    modifier: Modifier= Modifier
+){
+    Row(
+        modifier = modifier,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = orderText,
+            style = Theme.typography.titleLarge,
+            color = Theme.colors.black
+        )
+        Spacer(modifier = Modifier.size(Theme.spacing.sm))
+        StoreBadge(text = storeName)
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun OrderInfoRowPreview_LTR() {
+    LtrPreview {
+        Surface(
+            modifier = Modifier.padding(16.dp),
+            color = Theme.colors.white
+        ) {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+        OrderInfoRow(
+            orderText = "Order #05323",
+            storeName = "Ninja Grocery"
+        )
+                OrderInfoRow(
+                    orderText = "Order #0532305323",
+                    storeName = "Ninja Grocery"
+                )
+           }
+        }
+    }
+}
+@Preview(showBackground = true)
+@Composable
+private fun OrderInfoRowPreview_RTL() {
+    RtlPreview {
+        Surface(
+            modifier = Modifier.padding(16.dp),
+            color = Theme.colors.white
+        ) {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+        OrderInfoRow(
+            orderText = "طلب #٠٥٣٢٣",
+            storeName = "نينجا"
+        )
+                OrderInfoRow(
+                    orderText = "طلب #٠٥٣٢٣٠٥٣٢٣",
+                    storeName = "نينجا"
+                )
+           }
+        }
+    }
+}
 
 @Composable
 fun TaskHeader(
@@ -43,7 +111,7 @@ fun TaskHeader(
         Row(verticalAlignment = Alignment.CenterVertically) {
             TaskTypeIcon(iconRes = taskIconRes)
 
-            Spacer(modifier = Modifier.width(Theme.spacing.md))
+            Spacer(modifier = Modifier.Companion.width(Theme.spacing.md))
 
             Column {
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -64,13 +132,13 @@ fun TaskHeader(
 
         Column(
             horizontalAlignment = Alignment.End,
-            modifier = Modifier.width(IntrinsicSize.Max)
+            modifier = Modifier.Companion.width(IntrinsicSize.Max)
         ) {
             OrderTimer(
                 time = timer,
-                modifier = Modifier.wrapContentWidth(unbounded = true)
+                modifier = Modifier.Companion.wrapContentWidth(unbounded = true)
             )
-            Spacer(modifier = Modifier.height(Theme.spacing.xs))
+            Spacer(modifier = Modifier.Companion.height(Theme.spacing.xs))
             StatusIndicator(
                 progress = progress,
                 modifier = Modifier.fillMaxWidth()
@@ -110,6 +178,7 @@ fun TaskHeaderPreview_Ltr() {
         }
     }
 }
+
 @Preview(showBackground = true)
 @Composable
 fun TaskHeaderPreview_Rtl() {

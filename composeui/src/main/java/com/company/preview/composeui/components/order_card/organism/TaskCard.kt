@@ -1,4 +1,4 @@
-package com.company.preview.composeui.components.organism
+package com.company.preview.composeui.components.order_card.organism
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
@@ -18,9 +18,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.company.preview.composeui.components.atom.AppButton
-import com.company.preview.composeui.components.molecule.OrderInfoRow
-import com.company.preview.composeui.components.molecule.TaskHeader
+import com.company.preview.composeui.components.order_card.atom.AppButton
+import com.company.preview.composeui.components.order_card.molecule.OrderInfoRow
+import com.company.preview.composeui.components.order_card.molecule.TaskHeader
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme

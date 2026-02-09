@@ -1,4 +1,4 @@
-package com.company.preview.composeui.components.atom
+package com.company.preview.composeui.components.order_card.atom
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
