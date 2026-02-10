@@ -8,7 +8,7 @@ import com.company.preview.composeui.R
 data class AppIcons(
      val taskPickup: Int,
      val location: Int,
-     val start: Int
+     val start: Int,
      val timerFlash: Int,
 )
 
