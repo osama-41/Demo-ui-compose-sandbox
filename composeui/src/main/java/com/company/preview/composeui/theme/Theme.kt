@@ -9,7 +9,6 @@ object Theme {
     @ReadOnlyComposable
     get() = localColors.current
 
-
     val typography: AppTypography
         @Composable
         @ReadOnlyComposable

@@ -24,12 +24,14 @@ fun AppTheme(
     CompositionLocalProvider(
         localColors provides colors,
         localAppTypography provides typography,
+
+
         localSpacing provides spacing,
         localIcons provides icons,
     ) {
         MaterialTheme(
             colorScheme = scheme,
-            typography = materialTypography,
+            typography = typography.materialTypography,
             content = content
         )
     }

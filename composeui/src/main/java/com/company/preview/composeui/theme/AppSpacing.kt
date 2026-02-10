@@ -15,6 +15,7 @@ data class AppSpacing(
     val indicatorWidth: Dp = 50.dp,
     val indicatorHeight: Dp = 6.dp,
 
+    val xxs: Dp = 1.dp,
     val xs: Dp = 4.dp,
     val sm: Dp = 8.dp,
     val md: Dp = 12.dp,
@@ -28,6 +29,14 @@ data class AppSpacing(
     val radiusMd: Dp = 12.dp,
     val radiusCard: Dp = 16.dp,
     val radiusPill: Dp = 999.dp,
+
+    val cardPaddingV: Dp = 14.dp,
+    val dividerHeightSm: Dp = 16.dp,
+    val dividerWidthThin: Dp = 1.dp,
+    val borderThin: Dp = 1.dp,
+
+    val ringSizeLg: Dp = 64.dp,
+    val ringStroke: Dp = 6.dp,
 
     val elevationNone: Dp = 0.dp,
     val elevationSm: Dp = 1.dp,
