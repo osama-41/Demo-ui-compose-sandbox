@@ -37,6 +37,12 @@ data class AppSpacing(
 
     val ringSizeLg: Dp = 64.dp,
     val ringStroke: Dp = 6.dp,
+
+    val elevationNone: Dp = 0.dp,
+    val elevationSm: Dp = 1.dp,
+    val elevationMd: Dp = 3.dp,
+    val elevationCard: Dp = 4.dp
+
 )
 
 val localSpacing = staticCompositionLocalOf { AppSpacing() }

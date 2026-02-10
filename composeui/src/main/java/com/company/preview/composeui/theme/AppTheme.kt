@@ -4,23 +4,28 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+
 @Composable
 fun AppTheme(
-    colors: AppColors = LocalColors.current,
-    typography: AppTypography = LocalAppTypography.current,
+    colors: AppColors = localColors.current,
+    typography: AppTypography = localAppTypography.current,
     spacing: AppSpacing = localSpacing.current,
     icons: AppIcons = localIcons.current,
     content: @Composable () -> Unit
-) {
+){
     val scheme = lightColorScheme(
         primary = colors.primary,
+        onPrimary = colors.secondary,
         background = colors.white,
+        surface = colors.surface,
+        onSurface = colors.surface,
         outline = colors.greyOutlined,
     )
-
     CompositionLocalProvider(
-        LocalColors provides colors,
-        LocalAppTypography provides typography,
+        localColors provides colors,
+        localAppTypography provides typography,
+
+
         localSpacing provides spacing,
         localIcons provides icons,
     ) {

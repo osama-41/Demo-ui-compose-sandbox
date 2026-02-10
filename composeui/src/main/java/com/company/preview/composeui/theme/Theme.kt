@@ -4,20 +4,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable
 
 object Theme {
-
     val colors: AppColors
-        @Composable @ReadOnlyComposable
-        get() = LocalColors.current
+    @Composable
+    @ReadOnlyComposable
+    get() = localColors.current
 
     val typography: AppTypography
-        @Composable @ReadOnlyComposable
-        get() = LocalAppTypography.current
+        @Composable
+        @ReadOnlyComposable
+        get() = localAppTypography.current
 
     val spacing: AppSpacing
-        @Composable @ReadOnlyComposable
+        @Composable
+        @ReadOnlyComposable
         get() = localSpacing.current
 
     val icons: AppIcons
-        @Composable @ReadOnlyComposable
+        @Composable
+        @ReadOnlyComposable
         get() = localIcons.current
 }

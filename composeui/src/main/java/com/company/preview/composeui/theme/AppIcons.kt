@@ -6,9 +6,16 @@ import com.company.preview.composeui.R
 
 @Immutable
 data class AppIcons(
-    val timerFlash: Int,
+     val taskPickup: Int,
+     val location: Int,
+     val start: Int
+     val timerFlash: Int,
 )
-val DefaultIcons = AppIcons(
-    timerFlash = R.drawable.ic_timer_flash,
+
+private val defaultIcons= AppIcons(
+    taskPickup = R.drawable.ic_task_pick,
+    location = R.drawable.ic_location,
+    start =R.drawable.ic_start,
+   timerFlash = R.drawable.ic_timer_flash
 )
-val localIcons = staticCompositionLocalOf { DefaultIcons }
+val localIcons = staticCompositionLocalOf { defaultIcons }
