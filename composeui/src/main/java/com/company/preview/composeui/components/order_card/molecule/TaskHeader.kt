@@ -53,7 +53,7 @@ fun TaskHeader(
                     Spacer(modifier = Modifier.width(Theme.spacing.xs))
                     Text(
                         text = progressText,
-                        style = Theme.typography.bodyMedium,
+                        style = Theme.typography.titleSmallExtraBold,
                         color = Theme.colors.secondaryText
                     )
                 }

@@ -30,7 +30,7 @@ fun TaskCard(
     progressText: String,
     timer: String,
     progress: Float,
-    orderText: String,
+    orderNumber: String,
     storeName: String,
     locationText: String,
     startText: String,
@@ -50,7 +50,7 @@ fun TaskCard(
             )
             .clip(shape)
             .background(Theme.colors.surface)
-            .border(width = Theme.spacing.cardBorderSize, color = Theme.colors.black, shape = shape)
+            .border(width = Theme.spacing.cardBorderSize, color = Theme.colors.primary, shape = shape)
             .padding(Theme.spacing.lg)
     ) {
         TaskHeader(
@@ -65,7 +65,7 @@ fun TaskCard(
         Spacer(modifier = Modifier.height(Theme.spacing.md))
 
         OrderInfoRow(
-            orderText = orderText,
+            orderText = orderNumber,
             storeName = storeName,
             modifier = Modifier.fillMaxWidth()
         )
@@ -117,7 +117,7 @@ fun TaskCard_Ltr() {
                         progressText = "(1/3)",
                         timer = "01:16",
                         progress = 0.35f,
-                        orderText = "Order #05323",
+                        orderNumber = "Order #05323",
                         storeName = "Ninja Grocery",
                         locationText = "Pick-up Location",
                         startText = "Start Pickup",
@@ -131,7 +131,7 @@ fun TaskCard_Ltr() {
                     progressText = "(2/3)",
                     timer = "01:1616:16",
                     progress = 0.65f,
-                    orderText = "Order #3205323",
+                    orderNumber = "Order #3205323",
                     storeName = "Ninja Grocery",
                     locationText = "Pick-up Location",
                     startText = "Start Pickup",
@@ -161,7 +161,7 @@ fun TaskCard_Rtl() {
                     progressText = "(١/٣)",
                     timer = "٠١:١٦",
                     progress = 0.35f,
-                    orderText = "طلب #٠٥٣٢٣",
+                    orderNumber = "طلب #٠٥٣٢٣",
                     storeName = "متجر نينجا",
                     locationText = "موقع الالتقاط",
                     startText = "ابدأ الالتقاط",
@@ -175,7 +175,7 @@ fun TaskCard_Rtl() {
                     progressText = "(٢/٣)",
                     timer = "٠١:١٦١٦:١٦",
                     progress = 0.65f,
-                    orderText = "طلب #٣٢٠٥٣٢٣",
+                    orderNumber = "طلب #٣٢٠٥٣٢٣",
                     storeName = "متجر نينجا",
                     locationText = "موقع الالتقاط",
                     startText = "ابدأ الالتقاط",

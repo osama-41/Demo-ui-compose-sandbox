@@ -30,7 +30,7 @@ fun OrderInfoRow(
         Text(
             text = orderText,
             style = Theme.typography.titleLarge,
-            color = Theme.colors.black
+            color = Theme.colors.primary
         )
         Spacer(modifier = Modifier.size(Theme.spacing.sm))
         StoreBadge(text = storeName)

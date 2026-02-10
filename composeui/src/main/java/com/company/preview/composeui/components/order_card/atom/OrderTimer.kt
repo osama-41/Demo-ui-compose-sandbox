@@ -19,9 +19,9 @@ fun OrderTimer(
 ){
     Text(
         text = time,
-        style = Theme.typography.titleLarge,
+        style = Theme.typography.titleMediumBold,
         modifier = modifier,
-        color = Theme.colors.black
+        color = Theme.colors.primary
     )
 }
 @Preview(showBackground = true)

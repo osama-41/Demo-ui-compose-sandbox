@@ -9,11 +9,16 @@ import androidx.compose.ui.unit.dp
 data class AppSpacing(
     val buttonBorderSize: Dp=1.dp,
     val cardBorderSize: Dp = 2.dp,
-    val buttonHeight: Dp = 56.dp,
-    val iconSize: Dp = 30.dp,
-    val buttonIconSize: Dp = 20.dp,
-    val indicatorWidth: Dp = 50.dp,
+    val taskDriverWidth: Dp = 2.dp,
     val indicatorHeight: Dp = 6.dp,
+    val buttonIconSize: Dp = 20.dp,
+    val taskDriverHeight: Dp = 28.dp,
+    val iconSize: Dp = 30.dp,
+    val topBarSideSlotSize:Dp = 48.dp,
+    val indicatorWidth: Dp = 50.dp,
+    val buttonHeight: Dp = 56.dp,
+    val topBarHeight: Dp = 56.dp,
+    val taskItemMinHeight: Dp = 72.dp,
 
     val xxs: Dp = 1.dp,
     val xs: Dp = 4.dp,
@@ -32,6 +37,7 @@ data class AppSpacing(
 
     val cardPaddingV: Dp = 14.dp,
     val dividerHeightSm: Dp = 16.dp,
+    val taskItemPadding: Dp = 6.dp,
     val dividerWidthThin: Dp = 1.dp,
     val borderThin: Dp = 1.dp,
 
