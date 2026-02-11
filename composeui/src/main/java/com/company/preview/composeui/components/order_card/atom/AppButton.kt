@@ -26,7 +26,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
@@ -160,7 +159,7 @@ fun AppButtonPreview_Rtl() {
                     contentDescription = "Location icon",
                     containerColor = Theme.colors.white,
                     contentColor = Theme.colors.black,
-                    border = BorderStroke(1.dp, Theme.colors.greyOutlined),
+                    border = BorderStroke(Theme.spacing.xxs, Theme.colors.greyOutlined),
                     defaultElevation = Theme.spacing.elevationNone,
                     iconRes = Theme.icons.location
                 )

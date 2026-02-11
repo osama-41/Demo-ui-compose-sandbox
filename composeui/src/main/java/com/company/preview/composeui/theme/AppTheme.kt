@@ -15,10 +15,9 @@ fun AppTheme(
 ){
     val scheme = lightColorScheme(
         primary = colors.primary,
-        onPrimary = colors.secondary,
+        onPrimary = colors.onPrimary,
         background = colors.white,
         surface = colors.surface,
-        onSurface = colors.surface,
         outline = colors.greyOutlined,
     )
     CompositionLocalProvider(

@@ -33,7 +33,7 @@ fun StoreBadge(
         modifier = modifier
             .defaultMinSize(Theme.spacing.xl)
             .clip(RoundedCornerShape(Theme.spacing.radiusXs))
-            .background(Theme.colors.secondary)
+            .background(Theme.colors.onPrimary)
             .padding(padding),
         verticalAlignment = Alignment.CenterVertically
     ) {

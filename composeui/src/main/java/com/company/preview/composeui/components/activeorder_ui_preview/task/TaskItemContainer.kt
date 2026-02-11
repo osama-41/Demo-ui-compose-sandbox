@@ -42,7 +42,6 @@ internal fun TaskItemContainer(
                 .fillMaxWidth()
                 .border(Theme.spacing.buttonBorderSize,Theme.colors.greyOutlined, shape = shape)
                 .padding(contentPadding)
-                .padding(top = Theme.spacing.taskItemPadding)
         ) {
             content()
         }
