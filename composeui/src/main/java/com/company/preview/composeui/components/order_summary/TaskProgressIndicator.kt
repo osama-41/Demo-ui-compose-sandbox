@@ -27,10 +27,7 @@ import kotlin.math.cos
 import kotlin.math.max
 import kotlin.math.sin
 
-/**
- * Formatting/business logic lives here (not in the composable).
- * Call this from the VM/presenter or the preview caller.
- */
+
 fun formatTaskProgressText(
     completed: Int,
     total: Int,
@@ -95,7 +92,7 @@ private fun SegmentedRing(
     val ringSize = Theme.spacing.ringSizeLg
     val baseStroke = Theme.spacing.ringStroke
 
-    val trackColor = Theme.colors.secondary
+    val trackColor = Theme.colors.onPrimary
     val currentColor = Theme.colors.primary
     val completedColor = Theme.colors.completedGreen
 

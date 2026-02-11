@@ -12,7 +12,7 @@ import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
 
 @Composable
-private fun ActiveOrderTaskStack(
+ fun ActiveOrderTaskStack(
     modifier: Modifier = Modifier,
     deliveryTitle: String,
     deliveryOrderNumber: String,
@@ -27,9 +27,8 @@ private fun ActiveOrderTaskStack(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(spacing.md)
+
     ) {
-        // line before Delivery
         TaskConnectorDivider(
             modifier = Modifier.padding(
                 start = spacing.sm,
@@ -45,7 +44,6 @@ private fun ActiveOrderTaskStack(
             iconResId = Theme.icons.accountCircle
         )
 
-        // line between cards
         TaskConnectorDivider(
             modifier = Modifier.padding(
                 start = spacing.sm,

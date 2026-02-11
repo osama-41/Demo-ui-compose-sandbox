@@ -30,7 +30,6 @@ data class AppTypography(
     val titleSmallExtraBold: TextStyle,
     val titleMediumBold: TextStyle,
     val titleLargeBold: TextStyle,
-    val labelSmallCompact: TextStyle,
     val labelSmallCompactLineHeight: TextStyle,
     val appBarBold: TextStyle
 )
@@ -47,7 +46,6 @@ private val defaultAppTypography = AppTypography(
     titleSmallExtraBold = TextStyle(fontFamily = interFont, fontWeight = FontWeight.ExtraBold, fontSize = 12.sp, lineHeight = 20.sp),
     titleMediumBold = TextStyle(fontFamily = interFont, fontWeight = FontWeight.Bold, fontSize = 16.sp, lineHeight = 20.sp),
     titleLargeBold = TextStyle(fontFamily = interFont, fontWeight = FontWeight.Bold, fontSize = 20.sp, lineHeight = 24.sp),
-    labelSmallCompact = TextStyle(fontFamily = interFont, fontWeight = FontWeight.Medium, fontSize = 9.sp, lineHeight = 12.sp),
     labelSmallCompactLineHeight = TextStyle(fontFamily = interFont, fontWeight = FontWeight.Medium, fontSize = 9.sp, lineHeight = 12.sp),
     appBarBold = TextStyle(fontFamily = interFont, fontWeight = FontWeight.SemiBold, fontSize = 18.sp),
     )

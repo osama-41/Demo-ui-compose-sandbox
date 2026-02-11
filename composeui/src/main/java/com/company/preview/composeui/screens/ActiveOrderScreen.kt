@@ -14,9 +14,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.company.preview.composeui.components.activeorder_ui_preview.task.BackToStoreTaskCard
-import com.company.preview.composeui.components.activeorder_ui_preview.task.DeliveryTaskCard
-import com.company.preview.composeui.components.activeorder_ui_preview.task.TaskConnectorDivider
+import com.company.preview.composeui.components.activeorder_ui_preview.task.ActiveOrderTaskStack
 import com.company.preview.composeui.components.activeorder_ui_preview.topbar.ActiveOrderTopBar
 import com.company.preview.composeui.components.order_card.organism.TaskCard
 import com.company.preview.composeui.components.order_summary.ActiveOrderSummaryCard
@@ -90,37 +88,22 @@ fun ActiveOrderScreen(
 
             Column(
                 modifier = Modifier.fillMaxWidth(),
-                verticalArrangement = Arrangement.spacedBy(spacing.sm)
             ) {
-                TaskConnectorDivider(
-                    modifier = Modifier.padding(start = spacing.sm)
-                )
-
-                DeliveryTaskCard(
-                    title = "Delivery",
-                    orderNumber = "#Orders-8036-5323",
-                    current = 2,
-                    total = 3,
-                    iconResId = Theme.icons.accountCircle,
-                    modifier = Modifier.fillMaxWidth()
-                )
-
-                TaskConnectorDivider(
-                    modifier = Modifier.padding(start = spacing.sm)
-                )
-
-                BackToStoreTaskCard(
-                    title = "Back to Store",
-                    current = 3,
-                    total = 3,
-                    modifier = Modifier.fillMaxWidth()
+                ActiveOrderTaskStack(
+                    deliveryTitle = "Delivery",
+                    deliveryOrderNumber = "#Orders-8036-5323",
+                    deliveryCurrent = 2,
+                    deliveryTotal = 3,
+                    backToStoreTitle = "Back to Store",
+                    backToStoreCurrent = 3,
+                    backToStoreTotal = 3
                 )
             }
 
             Spacer(modifier = Modifier.height(spacing.lg))
         }
     }
-    }
+}
 @Preview(showBackground = true, name = "ActiveOrderScreen - LTR")
 @Composable
 private fun ActiveOrderScreenPreview_Ltr() {

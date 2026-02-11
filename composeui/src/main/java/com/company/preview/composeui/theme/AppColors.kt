@@ -8,7 +8,7 @@ import androidx.compose.ui.graphics.Color
 @Immutable
 data class AppColors (
     val primary: Color,
-    val secondary: Color,
+    val onPrimary: Color,
     val white: Color,
     val black: Color,
     val surface: Color,
@@ -23,7 +23,7 @@ data class AppColors (
 
 private val lightColors = AppColors(
     primary = Color(0xFF27272A),
-    secondary = Color(0xFFD2D0D0),
+    onPrimary = Color(0xFFD2D0D0),
     white = Color(0xFFFFFFFF),
     surface = Color(0xFFF4F4F5),
     black = Color(0xFF111111),

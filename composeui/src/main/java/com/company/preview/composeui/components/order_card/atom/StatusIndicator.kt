@@ -32,7 +32,7 @@ fun StatusIndicator(
         modifier = modifier
             .height(height)
             .clip(RoundedCornerShape(Theme.spacing.radiusPill))
-            .background(Theme.colors.secondary)
+            .background(Theme.colors.onPrimary)
     ){
         Box(
             modifier = Modifier
