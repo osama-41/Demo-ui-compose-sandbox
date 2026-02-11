@@ -52,7 +52,7 @@ fun OrderTimerBlock(
             Text(
                 text = labelText,
                 style = Theme.typography.titleSmall,
-                color = Theme.colors.labelGray
+                color = Theme.colors.secondaryText
             )
         }
     }

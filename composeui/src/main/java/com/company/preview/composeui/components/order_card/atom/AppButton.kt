@@ -122,7 +122,7 @@ fun AppButtonPreview_Ltr() {
                     contentDescription = "Location icon",
                     containerColor = Theme.colors.white,
                     contentColor = Theme.colors.black,
-                    border = BorderStroke(1.dp, Theme.colors.greyOutlined),
+                    border = BorderStroke(Theme.spacing.xxs, Theme.colors.greyOutlined),
                     defaultElevation = Theme.spacing.elevationNone,
                     iconRes = Theme.icons.location
                 )

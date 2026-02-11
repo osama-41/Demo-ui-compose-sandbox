@@ -40,7 +40,7 @@ fun StoreBadge(
         Text(
             text = text,
             style = Theme.typography.titleMedium,
-            color = Theme.colors.black
+            color = Theme.colors.primary
         )
     }
 }

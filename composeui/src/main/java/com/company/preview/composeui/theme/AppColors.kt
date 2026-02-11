@@ -16,10 +16,9 @@ data class AppColors (
     val greyOutlined: Color,
     val disabled: Color,
     val greenSuccess:Color,
-    val trackGray: Color,
-    val labelGray: Color,
     val mediumGray: Color,
     val completedGreen: Color,
+    val backGround: Color
 )
 
 private val lightColors = AppColors(
@@ -32,10 +31,10 @@ private val lightColors = AppColors(
     greyOutlined = Color(0xFFDCDBDB),
     greenSuccess = Color(0xFF16A34A),
     disabled = Color(0xFFBDBDBD),
-    labelGray = Color(0xFF707079),
-    trackGray = Color(0xFFD4D4D8),
     mediumGray = Color(0xFFA1A1AA),
     completedGreen = Color(0xFF22C55E),
-    )
+    backGround = Color(0xFFFAFAFA)
+)
+
 
 val localColors= staticCompositionLocalOf { lightColors }

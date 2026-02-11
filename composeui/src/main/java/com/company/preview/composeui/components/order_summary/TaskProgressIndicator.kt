@@ -80,7 +80,7 @@ fun TaskProgressIndicator(
                 text = subtitleText,
                 style = Theme.typography.labelSmallCompactLineHeight,
                 textAlign = TextAlign.Center,
-                color = Theme.colors.labelGray
+                color = Theme.colors.secondaryText
             )
         }
     }
@@ -95,7 +95,7 @@ private fun SegmentedRing(
     val ringSize = Theme.spacing.ringSizeLg
     val baseStroke = Theme.spacing.ringStroke
 
-    val trackColor = Theme.colors.trackGray
+    val trackColor = Theme.colors.secondary
     val currentColor = Theme.colors.primary
     val completedColor = Theme.colors.completedGreen
 
