@@ -34,6 +34,7 @@ private val lightColors = AppColors(
     mediumGray = Color(0xFFA1A1AA),
     completedGreen = Color(0xFF22C55E),
     backGround = Color(0xFFFAFAFA)
-    )
+)
+
 
 val localColors= staticCompositionLocalOf { lightColors }
