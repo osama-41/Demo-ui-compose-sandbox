@@ -1,8 +1,6 @@
 package com.company.preview.composeui.components.activeorder_ui_preview.task
 
-
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -21,11 +19,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.LayoutDirection
 import com.company.preview.composeui.components.activeorder_ui_preview.format.TaskProgressFormatter
-import com.company.preview.composeui.preview.LtrPreview
-import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
 
 @Composable
@@ -40,11 +35,12 @@ internal fun TaskItemContainer(
         modifier = modifier.heightIn(min = Theme.spacing.taskItemMinHeight),
         shape = shape,
         colors = CardDefaults.cardColors(containerColor = Theme.colors.white),
-        elevation = CardDefaults.cardElevation(defaultElevation = Theme.spacing.elevationSm)
+        elevation = CardDefaults.cardElevation(defaultElevation = Theme.spacing.elevationNone)
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
+                .border(Theme.spacing.buttonBorderSize,Theme.colors.greyOutlined, shape = shape)
                 .padding(contentPadding)
                 .padding(top = Theme.spacing.taskItemPadding)
         ) {
