@@ -1,6 +1,5 @@
 package com.company.preview.composeui.components.order_card.atom
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -26,6 +25,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
+import com.company.preview.composeui.components.icons_enum.OrderScreenIcons
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
@@ -44,7 +44,7 @@ fun AppButton(
     defaultElevation: Dp = Theme.spacing.elevationSm ,
     pressedElevation:Dp = Theme.spacing.elevationMd,
     disabledElevation:Dp = Theme.spacing.elevationNone,
-    @DrawableRes iconRes: Int?=null,
+    icon: OrderScreenIcons? = null,
     iconSize: Dp = Theme.spacing.buttonIconSize,
     iconTint: Color = contentColor,
     contentDescription: String? = null,
@@ -80,9 +80,9 @@ fun AppButton(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
-            if (iconRes != null) {
+            if (icon != null) {
                 Icon(
-                    painter = painterResource(iconRes),
+                    painter = painterResource(icon.resId),
                     contentDescription = contentDescription,
                     modifier = Modifier.size(iconSize),
                     tint = iconTint
@@ -123,7 +123,7 @@ fun AppButtonPreview_Ltr() {
                     contentColor = Theme.colors.black,
                     border = BorderStroke(Theme.spacing.xxs, Theme.colors.greyOutlined),
                     defaultElevation = Theme.spacing.elevationNone,
-                    iconRes = Theme.icons.location
+                    icon = OrderScreenIcons.Location
                 )
 
                 AppButton(
@@ -133,7 +133,7 @@ fun AppButtonPreview_Ltr() {
                     contentDescription = "Start icon",
                     containerColor = Theme.colors.primary,
                     contentColor = Theme.colors.white,
-                    iconRes = Theme.icons.start
+                    icon = OrderScreenIcons.Start
                 )
             }
         }
@@ -161,7 +161,7 @@ fun AppButtonPreview_Rtl() {
                     contentColor = Theme.colors.black,
                     border = BorderStroke(Theme.spacing.xxs, Theme.colors.greyOutlined),
                     defaultElevation = Theme.spacing.elevationNone,
-                    iconRes = Theme.icons.location
+                    icon = OrderScreenIcons.Location
                 )
 
                 AppButton(
@@ -171,7 +171,7 @@ fun AppButtonPreview_Rtl() {
                     contentDescription = "Start icon",
                     containerColor = Theme.colors.primary,
                     contentColor = Theme.colors.white,
-                    iconRes = Theme.icons.start
+                    icon = OrderScreenIcons.Start
                 )
             }
         }

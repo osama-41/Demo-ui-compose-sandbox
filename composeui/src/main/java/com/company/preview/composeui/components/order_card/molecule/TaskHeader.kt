@@ -1,6 +1,5 @@
 package com.company.preview.composeui.components.order_card.molecule
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -17,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.company.preview.composeui.components.icons_enum.OrderScreenIcons
 import com.company.preview.composeui.components.order_card.atom.OrderTimer
 import com.company.preview.composeui.components.order_card.atom.StatusIndicator
 import com.company.preview.composeui.components.order_card.atom.TaskTypeIcon
@@ -30,7 +30,7 @@ fun TaskHeader(
     progressText: String,
     timer: String,
     progress: Float,
-    @DrawableRes taskIconRes: Int,
+    taskIcon: OrderScreenIcons,
     modifier: Modifier = Modifier,
 ) {
     Row(
@@ -39,7 +39,7 @@ fun TaskHeader(
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            TaskTypeIcon(iconRes = taskIconRes)
+            TaskTypeIcon(icon = taskIcon)
 
             Spacer(modifier = Modifier.width(Theme.spacing.md))
 
@@ -95,14 +95,14 @@ fun TaskHeaderPreview_Ltr() {
                     progressText = "(1/3)",
                     timer = "01:16",
                     progress = 0.35f,
-                    taskIconRes = Theme.icons.taskPickup
+                    taskIcon = OrderScreenIcons.TaskPickup
                 )
                 TaskHeader(
                     title = "Pick up",
                     progressText = "(2/3)",
                     timer = "01:1616:61",
                     progress = 0.65f,
-                    taskIconRes = Theme.icons.taskPickup
+                    taskIcon = OrderScreenIcons.TaskPickup
                 )
             }
         }
@@ -126,14 +126,14 @@ fun TaskHeaderPreview_Rtl() {
                     progressText = "(١/٣)",
                     timer = "٠١:١٦",
                     progress = 0.35f,
-                    taskIconRes = Theme.icons.taskPickup
+                    taskIcon = OrderScreenIcons.TaskPickup
                 )
                 TaskHeader(
                     title = "التقاط",
                     progressText = "(٢/٣)",
                     timer = "٠١:١٦١٦:٦١",
                     progress = 0.65f,
-                    taskIconRes = Theme.icons.taskPickup
+                    taskIcon = OrderScreenIcons.TaskPickup
                 )
             }
         }

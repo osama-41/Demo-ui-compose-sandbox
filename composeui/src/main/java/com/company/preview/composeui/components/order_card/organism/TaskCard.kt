@@ -1,6 +1,5 @@
 package com.company.preview.composeui.components.order_card.organism
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -17,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.tooling.preview.Preview
+import com.company.preview.composeui.components.icons_enum.OrderScreenIcons
 import com.company.preview.composeui.components.order_card.atom.AppButton
 import com.company.preview.composeui.components.order_card.molecule.OrderInfoRow
 import com.company.preview.composeui.components.order_card.molecule.TaskHeader
@@ -33,8 +33,10 @@ fun TaskCard(
     orderNumber: String,
     storeName: String,
     locationText: String,
+    locationIcon: OrderScreenIcons,
     startText: String,
-    @DrawableRes taskIconRes: Int,
+    startIcon: OrderScreenIcons,
+    taskIcon: OrderScreenIcons,
     modifier: Modifier = Modifier,
     onLocationClick: () -> Unit,
     onStartClick: () -> Unit,
@@ -58,7 +60,7 @@ fun TaskCard(
             progressText = progressText,
             timer = timer,
             progress = progress,
-            taskIconRes = taskIconRes,
+            taskIcon = taskIcon,
             modifier = Modifier.fillMaxWidth()
         )
 
@@ -82,7 +84,7 @@ fun TaskCard(
             contentColor = Theme.colors.black,
             border = BorderStroke(Theme.spacing.buttonBorderSize, Theme.colors.greyOutlined),
             defaultElevation = Theme.spacing.elevationNone,
-            iconRes = Theme.icons.location,
+            icon = locationIcon,
 
         )
 
@@ -95,7 +97,7 @@ fun TaskCard(
             contentDescription = "Start icon",
             containerColor = Theme.colors.primary,
             contentColor = Theme.colors.white,
-            iconRes = Theme.icons.start
+            icon = startIcon
         )
     }
 }
@@ -121,8 +123,10 @@ fun TaskCard_Ltr() {
                         storeName = "Ninja Grocery",
                         locationText = "Pick-up Location",
                         startText = "Start Pickup",
-                        taskIconRes = Theme.icons.taskPickup,
+                        taskIcon = OrderScreenIcons.TaskPickup,
                         onLocationClick = {},
+                        startIcon = OrderScreenIcons.Start,
+                        locationIcon = OrderScreenIcons.Location,
                         onStartClick = {}
                     )
 
@@ -135,8 +139,10 @@ fun TaskCard_Ltr() {
                     storeName = "Ninja Grocery",
                     locationText = "Pick-up Location",
                     startText = "Start Pickup",
-                    taskIconRes = Theme.icons.taskPickup,
+                    taskIcon = OrderScreenIcons.TaskPickup,
                     onLocationClick = {},
+                    startIcon = OrderScreenIcons.Start,
+                    locationIcon = OrderScreenIcons.Location,
                     onStartClick = {}
                 )
             }
@@ -165,7 +171,9 @@ fun TaskCard_Rtl() {
                     storeName = "متجر نينجا",
                     locationText = "موقع الالتقاط",
                     startText = "ابدأ الالتقاط",
-                    taskIconRes = Theme.icons.taskPickup,
+                    startIcon = OrderScreenIcons.Start,
+                    locationIcon = OrderScreenIcons.Location,
+                    taskIcon = OrderScreenIcons.TaskPickup,
                     onLocationClick = {},
                     onStartClick = {}
                 )
@@ -179,7 +187,9 @@ fun TaskCard_Rtl() {
                     storeName = "متجر نينجا",
                     locationText = "موقع الالتقاط",
                     startText = "ابدأ الالتقاط",
-                    taskIconRes = Theme.icons.taskPickup,
+                    taskIcon = OrderScreenIcons.TaskPickup,
+                    startIcon = OrderScreenIcons.Start,
+                    locationIcon = OrderScreenIcons.Location,
                     onLocationClick = {},
                     onStartClick = {}
                 )
