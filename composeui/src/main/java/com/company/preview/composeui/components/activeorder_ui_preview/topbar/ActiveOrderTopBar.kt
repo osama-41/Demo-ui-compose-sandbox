@@ -25,13 +25,12 @@ import androidx.compose.ui.semantics.Role
 @Composable
 fun ActiveOrderTopBar(
     title: String,
+    isSupportVisible: Boolean = true,
     modifier: Modifier = Modifier,
     onBackClick: (() -> Unit)? = null,
     onSupportClick: (() -> Unit)? = null,
 ) {
-    val colors = Theme.colors
     val spacing = Theme.spacing
-    val typography = Theme.typography
 
     Box(
         modifier = modifier
@@ -79,18 +78,20 @@ fun ActiveOrderTopBar(
                 modifier = Modifier.size(spacing.topBarSideSlotSize),
                 contentAlignment = Alignment.CenterEnd
             ) {
-                Icon(
-                    painter = painterResource(Theme.icons.headSet),
-                    contentDescription = "Support",
-                    tint = Theme.colors.white,
-                    modifier = Modifier
-                        .size(Theme.spacing.xl)
-                        .clickable(
-                            enabled = onSupportClick != null,
-                            role = Role.Button,
-                            onClickLabel = "Support"
-                        ) { onSupportClick?.invoke() }
-                )
+                if (isSupportVisible) {
+                    Icon(
+                        painter = painterResource(Theme.icons.headSet),
+                        contentDescription = "Support",
+                        tint = Theme.colors.white,
+                        modifier = Modifier
+                            .size(Theme.spacing.xl)
+                            .clickable(
+                                enabled = onSupportClick != null,
+                                role = Role.Button,
+                                onClickLabel = "Support"
+                            ) { onSupportClick?.invoke() }
+                    )
+                }
             }
         }
     }
@@ -100,7 +101,10 @@ fun ActiveOrderTopBar(
 @Composable
 private fun ActiveOrderTopBarPreview_Ltr() {
     LtrPreview{
-        ActiveOrderTopBar(title = "Active Order")
+        ActiveOrderTopBar(
+            title = "Active Order",
+            isSupportVisible = true
+        )
     }
 }
 
@@ -108,6 +112,9 @@ private fun ActiveOrderTopBarPreview_Ltr() {
 @Composable
 private fun ActiveOrderTopBarPreview_Rtl() {
     RtlPreview{
-        ActiveOrderTopBar(title = "الطلبات الحالية")
+        ActiveOrderTopBar(
+            title = "الطلبات الحالية",
+            isSupportVisible = false
+        )
     }
 }
