@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.company.preview.composeui.components.activeorder_ui_preview.task.ActiveOrderTaskStack
 import com.company.preview.composeui.components.activeorder_ui_preview.topbar.ActiveOrderTopBar
+import com.company.preview.composeui.components.activeorder_ui_preview.topbar.ActiveOrderTopBarUiModel
 import com.company.preview.composeui.components.order_card.organism.TaskCard
 import com.company.preview.composeui.components.order_summary.ActiveOrderSummaryCard
 import com.company.preview.composeui.components.order_summary.SectionHeaderDivider
@@ -36,7 +37,10 @@ fun ActiveOrderScreen(
         modifier = modifier.fillMaxSize(),
         topBar = {
             ActiveOrderTopBar(
-                title = "Active Order",
+                uiModel = ActiveOrderTopBarUiModel(
+                    title = "Active Order",
+                    isSupportVisible = true
+                ),
                 onBackClick = onBackClick,
                 onSupportClick = onSupportClick
             )

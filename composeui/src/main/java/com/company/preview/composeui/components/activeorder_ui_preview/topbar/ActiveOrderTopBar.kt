@@ -24,8 +24,7 @@ import androidx.compose.ui.semantics.Role
 
 @Composable
 fun ActiveOrderTopBar(
-    title: String,
-    isSupportVisible: Boolean = true,
+    uiModel: ActiveOrderTopBarUiModel,
     modifier: Modifier = Modifier,
     onBackClick: (() -> Unit)? = null,
     onSupportClick: (() -> Unit)? = null,
@@ -67,7 +66,7 @@ fun ActiveOrderTopBar(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = title,
+                    text = uiModel.title,
                     color = Theme.colors.white,
                     style = Theme.typography.titleLarge,
                     textAlign = TextAlign.Center
@@ -78,7 +77,7 @@ fun ActiveOrderTopBar(
                 modifier = Modifier.size(spacing.topBarSideSlotSize),
                 contentAlignment = Alignment.CenterEnd
             ) {
-                if (isSupportVisible) {
+                if (uiModel.isSupportVisible) {
                     Icon(
                         painter = painterResource(Theme.icons.headSet),
                         contentDescription = "Support",
@@ -102,8 +101,10 @@ fun ActiveOrderTopBar(
 private fun ActiveOrderTopBarPreview_Ltr() {
     LtrPreview{
         ActiveOrderTopBar(
+            uiModel = ActiveOrderTopBarUiModel(
             title = "Active Order",
             isSupportVisible = true
+        )
         )
     }
 }
@@ -113,8 +114,10 @@ private fun ActiveOrderTopBarPreview_Ltr() {
 private fun ActiveOrderTopBarPreview_Rtl() {
     RtlPreview{
         ActiveOrderTopBar(
+            uiModel = ActiveOrderTopBarUiModel(
             title = "الطلبات الحالية",
-            isSupportVisible = false
+            isSupportVisible = true
+        )
         )
     }
 }
