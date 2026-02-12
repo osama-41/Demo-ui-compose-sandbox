@@ -36,7 +36,7 @@ import com.company.preview.composeui.theme.Theme
             )
         )
 
-        DeliveryTaskCard(
+        TaskCard(
             title = deliveryTitle,
             orderNumber = deliveryOrderNumber,
             current = deliveryCurrent,
@@ -51,12 +51,13 @@ import com.company.preview.composeui.theme.Theme
                 bottom = spacing.sm
             )
         )
-
-        BackToStoreTaskCard(
+        TaskCard(
             title = backToStoreTitle,
             current = backToStoreCurrent,
-            total = backToStoreTotal
+            total = backToStoreTotal,
+            iconResId = Theme.icons.store
         )
+
     }
 }
 
