@@ -36,7 +36,7 @@ private fun TaskConnectorDividerPreviewEn() {
             modifier = Modifier
                 .fillMaxWidth()
                 .background(Theme.colors.white)
-                .padding(vertical = Theme.spacing.lg)
+                .padding(vertical = Theme.spacing.md)
         ) {
             TaskConnectorDivider()
         }
@@ -51,7 +51,7 @@ private fun TaskConnectorDividerPreviewAr() {
             modifier = Modifier
                 .fillMaxWidth()
                 .background(Theme.colors.white)
-                .padding(vertical = Theme.spacing.lg)
+                .padding(vertical = Theme.spacing.md)
         ) {
             TaskConnectorDivider()
         }

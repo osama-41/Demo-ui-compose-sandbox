@@ -31,8 +31,8 @@ import com.company.preview.composeui.theme.Theme
     ) {
         TaskConnectorDivider(
             modifier = Modifier.padding(
-                start = spacing.sm,
-                bottom = spacing.sm
+                start = spacing.lg,
+                bottom = spacing.xs
             )
         )
 
@@ -46,9 +46,9 @@ import com.company.preview.composeui.theme.Theme
 
         TaskConnectorDivider(
             modifier = Modifier.padding(
-                start = spacing.sm,
-                top = spacing.sm,
-                bottom = spacing.sm
+                start = spacing.lg ,
+                top = spacing.xs,
+                bottom = spacing.xs
             )
         )
         TaskCard(
