@@ -1,6 +1,5 @@
 package com.company.preview.composeui.components.order_summary
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.company.preview.composeui.components.icons_enum.OrderScreenIcons
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
@@ -24,7 +24,7 @@ import com.company.preview.composeui.theme.Theme
 fun OrderTimerBlock(
     timeText: String,
     labelText: String,
-    @DrawableRes iconRes: Int,
+    icon: OrderScreenIcons,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -41,7 +41,7 @@ fun OrderTimerBlock(
 
         Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(
-                painter = painterResource(iconRes),
+                painter = painterResource(icon.resId),
                 contentDescription = null,
                 modifier = Modifier.size(Theme.spacing.lg),
                 tint = Theme.colors.mediumGray
@@ -70,23 +70,19 @@ fun OrderTimerBlock_AllCases_Preview() {
             OrderTimerBlock(
                 timeText = "1:55:12",
                 labelText = "Order timer",
-                iconRes = Theme.icons.timerFlash,
-            )
+                icon = OrderScreenIcons.TimerFlash,            )
             OrderTimerBlock(
                 timeText = "44:23",
                 labelText = "Order timer",
-                iconRes = Theme.icons.timerFlash,
-            )
+                icon = OrderScreenIcons.TimerFlash,            )
             OrderTimerBlock(
                 timeText = "7:32",
                 labelText = "Order timer",
-                iconRes = Theme.icons.timerFlash,
-            )
+                icon = OrderScreenIcons.TimerFlash,            )
             OrderTimerBlock(
                 timeText = "0:44",
                 labelText = "Order timer",
-                iconRes = Theme.icons.timerFlash,
-            )
+                icon = OrderScreenIcons.TimerFlash,            )
         }
     }
 }
@@ -103,23 +99,19 @@ fun OrderTimerBlock_RTL_Preview() {
             OrderTimerBlock(
                 timeText = "١:٥٥:١٢",
                 labelText = "مؤقت الطلب",
-                iconRes = Theme.icons.timerFlash,
-            )
+                icon = OrderScreenIcons.TimerFlash,            )
             OrderTimerBlock(
                 timeText = "٤٤:٢٣",
                 labelText = "مؤقت الطلب",
-                iconRes = Theme.icons.timerFlash,
-            )
+                icon = OrderScreenIcons.TimerFlash,            )
             OrderTimerBlock(
                 timeText = "٧:٣٢",
                 labelText = "مؤقت الطلب",
-                iconRes = Theme.icons.timerFlash,
-            )
+                icon = OrderScreenIcons.TimerFlash,            )
             OrderTimerBlock(
                 timeText = "٠:٤٤",
                 labelText = "مؤقت الطلب",
-                iconRes = Theme.icons.timerFlash,
-            )
+                icon = OrderScreenIcons.TimerFlash,            )
         }
     }
 }

@@ -1,6 +1,5 @@
 package com.company.preview.composeui.components.order_summary
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -18,6 +17,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.LayoutDirection
+import com.company.preview.composeui.components.icons_enum.OrderScreenIcons
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
@@ -28,7 +28,7 @@ fun ActiveOrderSummaryCard(
     completed: Int,
     total: Int,
     timeText: String,
-    @DrawableRes timerIconRes: Int,
+    icon: OrderScreenIcons,
     progressSubtitleText: String,
     timerLabelText: String,
     modifier: Modifier = Modifier,
@@ -78,7 +78,7 @@ fun ActiveOrderSummaryCard(
         OrderTimerBlock(
             timeText = timeText,
             labelText = timerLabelText,
-            iconRes = timerIconRes,
+            icon = icon,
             modifier = Modifier.weight(1f)
         )
     }
@@ -107,7 +107,7 @@ fun ActiveOrderSummaryCardPreview_EN() {
                 completed = 12,
                 total = 30,
                 timeText = "1:55:12",
-                timerIconRes = Theme.icons.timerFlash,
+                icon = OrderScreenIcons.TimerFlash,
                 progressSubtitleText = "Tasks",
                 timerLabelText = "Order timer",
             )
@@ -115,7 +115,7 @@ fun ActiveOrderSummaryCardPreview_EN() {
                 completed = 4,
                 total = 7,
                 timeText = "44:23",
-                timerIconRes = Theme.icons.timerFlash,
+                icon = OrderScreenIcons.TimerFlash,
                 progressSubtitleText = "Tasks",
                 timerLabelText = "Order timer",
             )
@@ -135,7 +135,7 @@ fun ActiveOrderSummaryCardPreview_RTL() {
                 completed = 12,
                 total = 30,
                 timeText = "١:٥٥:١٢",
-                timerIconRes = Theme.icons.timerFlash,
+                icon = OrderScreenIcons.TimerFlash,
                 progressSubtitleText = "المهام",
                 timerLabelText = "مؤقت الطلب",
             )
@@ -143,8 +143,7 @@ fun ActiveOrderSummaryCardPreview_RTL() {
                 completed = 4,
                 total = 7,
                 timeText = "٤٤:٢٣",
-                timerIconRes = Theme.icons.timerFlash,
-                progressSubtitleText = "المهام",
+                icon = OrderScreenIcons.TimerFlash,                progressSubtitleText = "المهام",
                 timerLabelText = "مؤقت الطلب",
             )
         }
