@@ -1,8 +1,10 @@
 package com.company.preview.composeui.screens
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,9 +16,14 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import com.company.preview.composeui.components.activeorder_ui_preview.task.ActiveOrderTaskStack
 import com.company.preview.composeui.components.activeorder_ui_preview.topbar.ActiveOrderTopBar
-import com.company.preview.composeui.components.icons_enum.OrderScreenIcons
+import com.company.preview.composeui.components.enums.OrderScreenIcons
+import com.company.preview.composeui.components.model.AppButtonElevationModel
+import com.company.preview.composeui.components.model.AppButtonModel
+import com.company.preview.composeui.components.model.TaskCardModel
+import com.company.preview.composeui.components.model.TaskHeaderModel
 import com.company.preview.composeui.components.order_card.organism.TaskCard
 import com.company.preview.composeui.components.order_summary.ActiveOrderSummaryCard
 import com.company.preview.composeui.components.order_summary.SectionHeaderDivider
@@ -73,21 +80,71 @@ fun ActiveOrderScreen(
             )
 
             TaskCard(
-                taskTitle = "Pick up",
-                progressText = "(1/3)",
-                timer = "01:16",
-                progress = 0.35f,
-                orderNumber = "Order #05323",
-                storeName = "Ninja Grocery",
-                locationText = "Pick-up Location",
-                startText = "Start Pickup",
-                startIcon = OrderScreenIcons.Start,
-                locationIcon = OrderScreenIcons.Location,
+                model = TaskCardModel(
+                    header = TaskHeaderModel(
+                        icon = OrderScreenIcons.TaskPickup,
+                        title = "Pick up",
+                        progressText = "(1/3)",
+                        timerText = "01:16",
+                        progress = 0.35f
+                    ),
+                    orderNumber = "Order #05323",
+                    storeName = "Ninja Grocery",
+                    locationButton = AppButtonModel(
+                        text = "Pick-up Location",
+                        textStyle = Theme.typography.button,
+                        enabled = true,
+                        height = spacing.buttonHeight,
+                        radius = spacing.radiusMd,
+                        contentPadding = PaddingValues(
+                            horizontal = spacing.lg,
+                            vertical = spacing.md
+                        ),
+                        containerColor = Theme.colors.white,
+                        contentColor = Theme.colors.black,
+                        border = BorderStroke(
+                            spacing.buttonBorderSize,
+                            Theme.colors.greyOutlined
+                        ),
+                        elevation = AppButtonElevationModel(
+                            defaultElevation = Dp.Unspecified,
+                            pressedElevation = Dp.Unspecified,
+                            disabledElevation = Dp.Unspecified
+                        ),
+                        icon = OrderScreenIcons.Location,
+                        iconSize = spacing.buttonIconSize,
+                        iconTint = Theme.colors.black,
+                        contentDescription = "Location icon"
+                    ),
+                    startButton = AppButtonModel(
+                        text = "Start Pickup",
+                        textStyle = Theme.typography.button,
+                        enabled = true,
+                        height = spacing.buttonHeight,
+                        radius = spacing.radiusMd,
+                        contentPadding = PaddingValues(
+                            horizontal = spacing.lg,
+                            vertical = spacing.md
+                        ),
+                        containerColor = Theme.colors.primary,
+                        contentColor = Theme.colors.white,
+                        border = null,
+                        elevation = AppButtonElevationModel(
+                            defaultElevation = Dp.Unspecified,
+                            pressedElevation = Dp.Unspecified,
+                            disabledElevation = Dp.Unspecified
+                        ),
+                        icon = OrderScreenIcons.Start,
+                        iconSize = spacing.buttonIconSize,
+                        iconTint = Theme.colors.white,
+                        contentDescription = "Start icon"
+                    )
+                ),
                 onLocationClick = { onLocationClick?.invoke() },
                 onStartClick = { onStartClick?.invoke() },
-                taskIcon = OrderScreenIcons.TaskPickup,
                 modifier = Modifier.fillMaxWidth()
             )
+
 
             Column(
                 modifier = Modifier.fillMaxWidth(),

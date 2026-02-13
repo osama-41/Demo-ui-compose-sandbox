@@ -1,4 +1,4 @@
-package com.company.preview.composeui.components.icons_enum
+package com.company.preview.composeui.components.enums
 
 import androidx.annotation.DrawableRes
 import com.company.preview.composeui.R

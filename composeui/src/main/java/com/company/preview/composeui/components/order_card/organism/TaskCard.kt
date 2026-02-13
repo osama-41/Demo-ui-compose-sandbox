@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -16,7 +17,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.tooling.preview.Preview
-import com.company.preview.composeui.components.icons_enum.OrderScreenIcons
+import androidx.compose.ui.unit.Dp
+import com.company.preview.composeui.components.enums.OrderScreenIcons
+import com.company.preview.composeui.components.model.AppButtonElevationModel
+import com.company.preview.composeui.components.model.AppButtonModel
+import com.company.preview.composeui.components.model.TaskCardModel
+import com.company.preview.composeui.components.model.TaskHeaderModel
 import com.company.preview.composeui.components.order_card.atom.AppButton
 import com.company.preview.composeui.components.order_card.molecule.OrderInfoRow
 import com.company.preview.composeui.components.order_card.molecule.TaskHeader
@@ -26,17 +32,7 @@ import com.company.preview.composeui.theme.Theme
 
 @Composable
 fun TaskCard(
-    taskTitle: String,
-    progressText: String,
-    timer: String,
-    progress: Float,
-    orderNumber: String,
-    storeName: String,
-    locationText: String,
-    locationIcon: OrderScreenIcons,
-    startText: String,
-    startIcon: OrderScreenIcons,
-    taskIcon: OrderScreenIcons,
+    model: TaskCardModel,
     modifier: Modifier = Modifier,
     onLocationClick: () -> Unit,
     onStartClick: () -> Unit,
@@ -56,48 +52,32 @@ fun TaskCard(
             .padding(Theme.spacing.lg)
     ) {
         TaskHeader(
-            title = taskTitle,
-            progressText = progressText,
-            timer = timer,
-            progress = progress,
-            taskIcon = taskIcon,
-            modifier = Modifier.fillMaxWidth()
+            model = model.header
         )
 
         Spacer(modifier = Modifier.height(Theme.spacing.md))
 
         OrderInfoRow(
-            orderText = orderNumber,
-            storeName = storeName,
+            orderText = model.orderNumber,
+            storeName = model.storeName,
             modifier = Modifier.fillMaxWidth()
         )
 
         Spacer(modifier = Modifier.height(Theme.spacing.lg))
 
-        AppButton(
-            text = locationText,
-            onClick = onLocationClick,
-            modifier = Modifier.fillMaxWidth(),
-            radius = Theme.spacing.radiusMd,
-            contentDescription = "Location icon",
-            containerColor = Theme.colors.white,
-            contentColor = Theme.colors.black,
-            border = BorderStroke(Theme.spacing.buttonBorderSize, Theme.colors.greyOutlined),
-            defaultElevation = Theme.spacing.elevationNone,
-            icon = locationIcon,
 
+        AppButton(
+            model = model.locationButton,
+            onClick = onLocationClick,
+            modifier = Modifier.fillMaxWidth()
         )
 
         Spacer(modifier = Modifier.height(Theme.spacing.md))
 
         AppButton(
-            text = startText,
+            model = model.startButton,
             onClick = onStartClick,
-            modifier = Modifier.fillMaxWidth(),
-            contentDescription = "Start icon",
-            containerColor = Theme.colors.primary,
-            contentColor = Theme.colors.white,
-            icon = startIcon
+            modifier = Modifier.fillMaxWidth()
         )
     }
 }
@@ -114,35 +94,132 @@ fun TaskCard_Ltr() {
             Column (
                 verticalArrangement = Arrangement.spacedBy(Theme.spacing.lg)
             ) {
-                    TaskCard (
-                        taskTitle = "Pick up",
-                        progressText = "(1/3)",
-                        timer = "01:16",
-                        progress = 0.35f,
+                TaskCard(
+                    model = TaskCardModel(
+                        header = TaskHeaderModel(
+                            icon = OrderScreenIcons.TaskPickup,
+                            title = "Pick up",
+                            progressText = "(1/3)",
+                            timerText = "01:16",
+                            progress = 0.35f
+                        ),
                         orderNumber = "Order #05323",
                         storeName = "Ninja Grocery",
-                        locationText = "Pick-up Location",
-                        startText = "Start Pickup",
-                        taskIcon = OrderScreenIcons.TaskPickup,
-                        onLocationClick = {},
-                        startIcon = OrderScreenIcons.Start,
-                        locationIcon = OrderScreenIcons.Location,
-                        onStartClick = {}
-                    )
-
-                TaskCard (
-                    taskTitle = "Pick up",
-                    progressText = "(2/3)",
-                    timer = "01:1616:16",
-                    progress = 0.65f,
-                    orderNumber = "Order #3205323",
-                    storeName = "Ninja Grocery",
-                    locationText = "Pick-up Location",
-                    startText = "Start Pickup",
-                    taskIcon = OrderScreenIcons.TaskPickup,
+                        locationButton = AppButtonModel(
+                            text = "Pick-up Location",
+                            textStyle = Theme.typography.button,
+                            enabled = true,
+                            height = Theme.spacing.buttonHeight,
+                            radius = Theme.spacing.radiusMd,
+                            contentPadding = PaddingValues(
+                                horizontal = Theme.spacing.lg,
+                                vertical = Theme.spacing.md
+                            ),
+                            containerColor = Theme.colors.white,
+                            contentColor = Theme.colors.black,
+                            border = BorderStroke(
+                                Theme.spacing.buttonBorderSize,
+                                Theme.colors.greyOutlined
+                            ),
+                            elevation = AppButtonElevationModel(
+                                defaultElevation = Dp.Unspecified,
+                                pressedElevation = Dp.Unspecified,
+                                disabledElevation = Dp.Unspecified
+                            ),
+                            icon = OrderScreenIcons.Location,
+                            iconSize = Theme.spacing.buttonIconSize,
+                            iconTint = Theme.colors.black,
+                            contentDescription = "Location icon"
+                        ),
+                        startButton = AppButtonModel(
+                            text = "Start Pickup",
+                            textStyle = Theme.typography.button,
+                            enabled = true,
+                            height = Theme.spacing.buttonHeight,
+                            radius = Theme.spacing.radiusMd,
+                            contentPadding = PaddingValues(
+                                horizontal = Theme.spacing.lg,
+                                vertical = Theme.spacing.md
+                            ),
+                            containerColor = Theme.colors.primary,
+                            contentColor = Theme.colors.white,
+                            border = null,
+                            elevation = AppButtonElevationModel(
+                                defaultElevation = Dp.Unspecified,
+                                pressedElevation = Dp.Unspecified,
+                                disabledElevation = Dp.Unspecified
+                            ),
+                            icon = OrderScreenIcons.Start,
+                            iconSize = Theme.spacing.buttonIconSize,
+                            iconTint = Theme.colors.white,
+                            contentDescription = "Start icon"
+                        )
+                    ),
                     onLocationClick = {},
-                    startIcon = OrderScreenIcons.Start,
-                    locationIcon = OrderScreenIcons.Location,
+                    onStartClick = {}
+                )
+                TaskCard(
+                    model = TaskCardModel(
+                        header = TaskHeaderModel(
+                            icon = OrderScreenIcons.TaskPickup,
+                            title = "Pick up",
+                            progressText = "(2/3)",
+                            timerText = "01:1616:16",
+                            progress = 0.65f
+                        ),
+                        orderNumber = "Order #3205323",
+                        storeName = "Ninja Grocery",
+                        locationButton = AppButtonModel(
+                            text = "Pick-up Location",
+                            textStyle = Theme.typography.button,
+                            enabled = true,
+                            height = Theme.spacing.buttonHeight,
+                            radius = Theme.spacing.radiusMd,
+                            contentPadding = PaddingValues(
+                                horizontal = Theme.spacing.lg,
+                                vertical = Theme.spacing.md
+                            ),
+                            containerColor = Theme.colors.white,
+                            contentColor = Theme.colors.black,
+                            border = BorderStroke(
+                                Theme.spacing.buttonBorderSize,
+                                Theme.colors.greyOutlined
+                            ),
+                            elevation = AppButtonElevationModel(
+                                defaultElevation = Dp.Unspecified,
+                                pressedElevation = Dp.Unspecified,
+                                disabledElevation = Dp.Unspecified
+                            ),
+                            icon = OrderScreenIcons.Location,
+                            iconSize = Theme.spacing.buttonIconSize,
+                            iconTint = Theme.colors.black,
+                            contentDescription = "Location icon"
+                        ),
+                        startButton = AppButtonModel(
+                            text = "Start Pickup",
+                            textStyle = Theme.typography.button,
+                            enabled = true,
+                            height = Theme.spacing.buttonHeight,
+                            radius = Theme.spacing.radiusMd,
+                            contentPadding = PaddingValues(
+                                horizontal = Theme.spacing.lg,
+                                vertical = Theme.spacing.md
+                            ),
+                            containerColor = Theme.colors.primary,
+                            contentColor = Theme.colors.white,
+                            border = null,
+                            elevation = AppButtonElevationModel(
+                                defaultElevation = Dp.Unspecified,
+                                pressedElevation = Dp.Unspecified,
+                                disabledElevation = Dp.Unspecified
+                            ),
+                            icon = OrderScreenIcons.Start,
+                            iconSize = Theme.spacing.buttonIconSize,
+                            iconTint = Theme.colors.white,
+                            contentDescription = "Start icon"
+                        )
+                    ),
+                    onLocationClick = {},
                     onStartClick = {}
                 )
             }
@@ -163,36 +240,136 @@ fun TaskCard_Rtl() {
                 verticalArrangement = Arrangement.spacedBy(Theme.spacing.lg)
             ) {
                 TaskCard(
-                    taskTitle = "التقاط",
-                    progressText = "(١/٣)",
-                    timer = "٠١:١٦",
-                    progress = 0.35f,
-                    orderNumber = "طلب #٠٥٣٢٣",
-                    storeName = "متجر نينجا",
-                    locationText = "موقع الالتقاط",
-                    startText = "ابدأ الالتقاط",
-                    startIcon = OrderScreenIcons.Start,
-                    locationIcon = OrderScreenIcons.Location,
-                    taskIcon = OrderScreenIcons.TaskPickup,
+                    model = TaskCardModel(
+                        header = TaskHeaderModel(
+                            icon = OrderScreenIcons.TaskPickup,
+                            title = "التقاط",
+                            progressText = "(١/٣)",
+                            timerText = "٠١:١٦",
+                            progress = 0.35f
+                        ),
+                        orderNumber = "طلب #٠٥٣٢٣",
+                        storeName = "متجر نينجا",
+                        locationButton = AppButtonModel(
+                            text = "موقع الالتقاط",
+                            textStyle = Theme.typography.button,
+                            enabled = true,
+                            height = Theme.spacing.buttonHeight,
+                            radius = Theme.spacing.radiusMd,
+                            contentPadding = PaddingValues(
+                                horizontal = Theme.spacing.lg,
+                                vertical = Theme.spacing.md
+                            ),
+                            containerColor = Theme.colors.white,
+                            contentColor = Theme.colors.black,
+                            border = BorderStroke(
+                                Theme.spacing.buttonBorderSize,
+                                Theme.colors.greyOutlined
+                            ),
+                            elevation = AppButtonElevationModel(
+                                defaultElevation = Dp.Unspecified,
+                                pressedElevation = Dp.Unspecified,
+                                disabledElevation = Dp.Unspecified
+                            ),
+                            icon = OrderScreenIcons.Location,
+                            iconSize = Theme.spacing.buttonIconSize,
+                            iconTint = Theme.colors.black,
+                            contentDescription = "Location icon"
+                        ),
+                        startButton = AppButtonModel(
+                            text = "ابدأ الالتقاط",
+                            textStyle = Theme.typography.button,
+                            enabled = true,
+                            height = Theme.spacing.buttonHeight,
+                            radius = Theme.spacing.radiusMd,
+                            contentPadding = PaddingValues(
+                                horizontal = Theme.spacing.lg,
+                                vertical = Theme.spacing.md
+                            ),
+                            containerColor = Theme.colors.primary,
+                            contentColor = Theme.colors.white,
+                            border = null,
+                            elevation = AppButtonElevationModel(
+                                defaultElevation = Dp.Unspecified,
+                                pressedElevation = Dp.Unspecified,
+                                disabledElevation = Dp.Unspecified
+                            ),
+                            icon = OrderScreenIcons.Start,
+                            iconSize = Theme.spacing.buttonIconSize,
+                            iconTint = Theme.colors.white,
+                            contentDescription = "Start icon"
+                        )
+                    ),
                     onLocationClick = {},
                     onStartClick = {}
                 )
 
+
                 TaskCard(
-                    taskTitle = "التقاط",
-                    progressText = "(٢/٣)",
-                    timer = "٠١:١٦١٦:١٦",
-                    progress = 0.65f,
-                    orderNumber = "طلب #٣٢٠٥٣٢٣",
-                    storeName = "متجر نينجا",
-                    locationText = "موقع الالتقاط",
-                    startText = "ابدأ الالتقاط",
-                    taskIcon = OrderScreenIcons.TaskPickup,
-                    startIcon = OrderScreenIcons.Start,
-                    locationIcon = OrderScreenIcons.Location,
+                    model = TaskCardModel(
+                        header = TaskHeaderModel(
+                            icon = OrderScreenIcons.TaskPickup,
+                            title = "التقاط",
+                            progressText = "(٢/٣)",
+                            timerText = "٠١:١٦١٦:١٦",
+                            progress = 0.65f
+                        ),
+                        orderNumber = "طلب #٣٢٠٥٣٢٣",
+                        storeName = "متجر نينجا",
+                        locationButton = AppButtonModel(
+                            text = "موقع الالتقاط",
+                            textStyle = Theme.typography.button,
+                            enabled = true,
+                            height = Theme.spacing.buttonHeight,
+                            radius = Theme.spacing.radiusMd,
+                            contentPadding = PaddingValues(
+                                horizontal = Theme.spacing.lg,
+                                vertical = Theme.spacing.md
+                            ),
+                            containerColor = Theme.colors.white,
+                            contentColor = Theme.colors.black,
+                            border = BorderStroke(
+                                Theme.spacing.buttonBorderSize,
+                                Theme.colors.greyOutlined
+                            ),
+                            elevation = AppButtonElevationModel(
+                                defaultElevation = Dp.Unspecified,
+                                pressedElevation = Dp.Unspecified,
+                                disabledElevation = Dp.Unspecified
+                            ),
+                            icon = OrderScreenIcons.Location,
+                            iconSize = Theme.spacing.buttonIconSize,
+                            iconTint = Theme.colors.black,
+                            contentDescription = "Location icon"
+                        ),
+                        startButton = AppButtonModel(
+                            text = "ابدأ الالتقاط",
+                            textStyle = Theme.typography.button,
+                            enabled = true,
+                            height = Theme.spacing.buttonHeight,
+                            radius = Theme.spacing.radiusMd,
+                            contentPadding = PaddingValues(
+                                horizontal = Theme.spacing.lg,
+                                vertical = Theme.spacing.md
+                            ),
+                            containerColor = Theme.colors.primary,
+                            contentColor = Theme.colors.white,
+                            border = null,
+                            elevation = AppButtonElevationModel(
+                                defaultElevation = Dp.Unspecified,
+                                pressedElevation = Dp.Unspecified,
+                                disabledElevation = Dp.Unspecified
+                            ),
+                            icon = OrderScreenIcons.Start,
+                            iconSize = Theme.spacing.buttonIconSize,
+                            iconTint = Theme.colors.white,
+                            contentDescription = "Start icon"
+                        )
+                    ),
                     onLocationClick = {},
                     onStartClick = {}
                 )
+
             }
         }
     }
