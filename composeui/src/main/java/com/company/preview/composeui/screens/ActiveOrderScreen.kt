@@ -21,6 +21,7 @@ import com.company.preview.composeui.components.activeorder_ui_preview.task.Acti
 import com.company.preview.composeui.components.activeorder_ui_preview.topbar.ActiveOrderTopBar
 import com.company.preview.composeui.components.model.ActiveOrderTopBarModel
 import com.company.preview.composeui.components.enums.OrderScreenIcons
+import com.company.preview.composeui.components.model.ActiveOrderSummaryModel
 import com.company.preview.composeui.components.model.AppButtonElevationModel
 import com.company.preview.composeui.components.model.AppButtonModel
 import com.company.preview.composeui.components.model.TaskCardModel
@@ -39,8 +40,7 @@ fun ActiveOrderScreen(
     onSupportClick: (() -> Unit)? = null,
     onLocationClick: (() -> Unit)? = null,
     onStartClick: (() -> Unit)? = null,
-    )
-{
+) {
     Scaffold(
         modifier = modifier.fillMaxSize(),
         topBar = {
@@ -53,8 +53,7 @@ fun ActiveOrderScreen(
                 onSupportClick = onSupportClick
             )
         }
-    ) {
-            innerPadding ->
+    ) { innerPadding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -67,12 +66,14 @@ fun ActiveOrderScreen(
             Spacer(modifier = Modifier.height(spacing.sm))
 
             ActiveOrderSummaryCard(
-                completed = 1,
-                total = 3,
-                timeText = "00:44",
-                icon = OrderScreenIcons.TimerFlash,
-                progressSubtitleText = "Tasks",
-                timerLabelText = "Order timer",
+                model = ActiveOrderSummaryModel(
+                    completed = 1,
+                    total = 3,
+                    timeText = "00:44",
+                    icon = OrderScreenIcons.TimerFlash,
+                    progressSubtitleText = "Tasks",
+                    timerLabelText = "Order timer",
+                ),
                 modifier = Modifier.fillMaxWidth()
             )
 
@@ -168,6 +169,7 @@ fun ActiveOrderScreen(
         }
     }
 }
+
 @Preview(showBackground = true, name = "ActiveOrderScreen - LTR")
 @Composable
 private fun ActiveOrderScreenPreview_Ltr() {
