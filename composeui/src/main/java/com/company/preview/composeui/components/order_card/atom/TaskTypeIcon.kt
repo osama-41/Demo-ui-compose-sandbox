@@ -1,6 +1,5 @@
 package com.company.preview.composeui.components.order_card.atom
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -17,13 +16,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.company.preview.composeui.components.enums.OrderScreenIcons
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
 
 @Composable
 fun TaskTypeIcon(
-    @DrawableRes iconRes:Int,
+    icon: OrderScreenIcons,
     modifier: Modifier= Modifier,
     contentDescription: String?=null,
 ){
@@ -41,7 +41,7 @@ fun TaskTypeIcon(
         contentAlignment = Alignment.Center
     ){
         Image(
-            painter = painterResource(iconRes),
+            painter = painterResource(icon.resId),
             contentDescription = contentDescription,
                 modifier = Modifier.size(Theme.spacing.iconSize)
         )
@@ -59,7 +59,7 @@ private fun TaskTypeIconPreview_LTR() {
             Column(
                 verticalArrangement = Arrangement.spacedBy(Theme.spacing.lg)
             ) {
-        TaskTypeIcon(iconRes = Theme.icons.taskPickup)
+        TaskTypeIcon(icon = OrderScreenIcons.TaskPickup)
              }
         }
     }
@@ -75,7 +75,7 @@ private fun TaskTypeIconPreview_RTL() {
             Column(
                 verticalArrangement = Arrangement.spacedBy(Theme.spacing.lg)
             ) {
-        TaskTypeIcon(iconRes = Theme.icons.taskPickup)
+        TaskTypeIcon(icon = OrderScreenIcons.TaskPickup)
             }
         }
     }

@@ -1,6 +1,5 @@
 package com.company.preview.composeui.components.order_card.molecule
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -17,6 +16,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.company.preview.composeui.components.enums.OrderScreenIcons
+import com.company.preview.composeui.components.model.TaskHeaderModel
 import com.company.preview.composeui.components.order_card.atom.OrderTimer
 import com.company.preview.composeui.components.order_card.atom.StatusIndicator
 import com.company.preview.composeui.components.order_card.atom.TaskTypeIcon
@@ -26,11 +27,7 @@ import com.company.preview.composeui.theme.Theme
 
 @Composable
 fun TaskHeader(
-    title: String,
-    progressText: String,
-    timer: String,
-    progress: Float,
-    @DrawableRes taskIconRes: Int,
+    model: TaskHeaderModel,
     modifier: Modifier = Modifier,
 ) {
     Row(
@@ -39,20 +36,20 @@ fun TaskHeader(
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            TaskTypeIcon(iconRes = taskIconRes)
+            TaskTypeIcon(icon = model.icon)
 
             Spacer(modifier = Modifier.width(Theme.spacing.md))
 
             Column {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
-                        text = title,
+                        text = model.title,
                         style = Theme.typography.titleMedium,
                         color = Theme.colors.primary
                     )
                     Spacer(modifier = Modifier.width(Theme.spacing.xs))
                     Text(
-                        text = progressText,
+                        text = model.progressText,
                         style = Theme.typography.titleSmallExtraBold,
                         color = Theme.colors.secondaryText
                     )
@@ -65,12 +62,12 @@ fun TaskHeader(
             modifier = Modifier.width(IntrinsicSize.Max)
         ) {
             OrderTimer(
-                time = timer,
+                time = model.timerText,
                 modifier = Modifier.wrapContentWidth(unbounded = true)
             )
             Spacer(modifier = Modifier.height(Theme.spacing.xs))
             StatusIndicator(
-                progress = progress,
+                progress = model.progress,
                 modifier = Modifier.fillMaxWidth()
             )
         }
@@ -91,19 +88,24 @@ fun TaskHeaderPreview_Ltr() {
             ) {
 
                 TaskHeader(
-                    title = "Pick up",
-                    progressText = "(1/3)",
-                    timer = "01:16",
-                    progress = 0.35f,
-                    taskIconRes = Theme.icons.taskPickup
+                    model = TaskHeaderModel(
+                        icon = OrderScreenIcons.TaskPickup,
+                        title = "Pick up",
+                        progressText = "(1/3)",
+                        timerText = "01:16",
+                        progress = 0.35f
+                    )
                 )
                 TaskHeader(
-                    title = "Pick up",
-                    progressText = "(2/3)",
-                    timer = "01:1616:61",
-                    progress = 0.65f,
-                    taskIconRes = Theme.icons.taskPickup
+                    model = TaskHeaderModel(
+                        icon = OrderScreenIcons.TaskPickup,
+                        title = "Pick up",
+                        progressText = "(2/3)",
+                        timerText = "01:1616:61",
+                        progress = 0.65f
+                    )
                 )
+
             }
         }
     }
@@ -120,20 +122,25 @@ fun TaskHeaderPreview_Rtl() {
             Column(
                 verticalArrangement = Arrangement.spacedBy(Theme.spacing.lg)
             ) {
+                TaskHeader(
+                    model = TaskHeaderModel(
+                        icon = OrderScreenIcons.TaskPickup,
+                        title = "التقاط",
+                        progressText = "(١/٣)",
+                        timerText = "٠١:١٦",
+                        progress = 0.35f
+                    )
+                )
+
 
                 TaskHeader(
-                    title = "التقاط",
-                    progressText = "(١/٣)",
-                    timer = "٠١:١٦",
-                    progress = 0.35f,
-                    taskIconRes = Theme.icons.taskPickup
-                )
-                TaskHeader(
-                    title = "التقاط",
-                    progressText = "(٢/٣)",
-                    timer = "٠١:١٦١٦:٦١",
-                    progress = 0.65f,
-                    taskIconRes = Theme.icons.taskPickup
+                    model = TaskHeaderModel(
+                        icon = OrderScreenIcons.TaskPickup,
+                        title = "التقاط",
+                        progressText = "(٢/٣)",
+                        timerText = "٠١:١٦١٦:٦١",
+                        progress = 0.65f
+                    )
                 )
             }
         }
