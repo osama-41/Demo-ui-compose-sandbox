@@ -8,5 +8,9 @@ enum class OrderScreenIcons(@DrawableRes val resId: Int) {
     TimerFlash(R.drawable.ic_timer_flash),
     TaskPickup(R.drawable.ic_task_pick),
     Location(R.drawable.ic_location),
-    Start(R.drawable.ic_start)
+    Start(R.drawable.ic_start),
+    ArrowBack(R.drawable.ic_arrow_back),
+    Headset(R.drawable.ic_headset),
+    AccountCircle(R.drawable.ic_account_circle),
+    Store(R.drawable.ic_store),
 }

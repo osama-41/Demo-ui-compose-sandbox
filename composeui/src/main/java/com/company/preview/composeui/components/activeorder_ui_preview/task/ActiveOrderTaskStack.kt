@@ -1,18 +1,19 @@
 package com.company.preview.composeui.components.activeorder_ui_preview.task
 
-
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.company.preview.composeui.components.enums.OrderScreenIcons
+import com.company.preview.composeui.components.model.ActiveOrderTaskCompactCardModel
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
 
 @Composable
- fun ActiveOrderTaskStack(
+fun ActiveOrderTaskStack(
     modifier: Modifier = Modifier,
     deliveryTitle: String,
     deliveryOrderNumber: String,
@@ -25,9 +26,7 @@ import com.company.preview.composeui.theme.Theme
     val spacing = Theme.spacing
 
     Column(
-        modifier = modifier
-            .fillMaxWidth()
-
+        modifier = modifier.fillMaxWidth()
     ) {
         TaskConnectorDivider(
             modifier = Modifier.padding(
@@ -36,28 +35,33 @@ import com.company.preview.composeui.theme.Theme
             )
         )
 
-        TaskCard(
-            title = deliveryTitle,
-            orderNumber = deliveryOrderNumber,
-            current = deliveryCurrent,
-            total = deliveryTotal,
-            iconResId = Theme.icons.accountCircle
+        ActiveOrderTaskCompactCard(
+            model = ActiveOrderTaskCompactCardModel(
+                title = deliveryTitle,
+                current = deliveryCurrent,
+                total = deliveryTotal,
+                icon = OrderScreenIcons.AccountCircle,
+                orderNumber = deliveryOrderNumber
+            )
         )
 
         TaskConnectorDivider(
             modifier = Modifier.padding(
-                start = spacing.lg ,
+                start = spacing.lg,
                 top = spacing.xs,
                 bottom = spacing.xs
             )
         )
-        TaskCard(
-            title = backToStoreTitle,
-            current = backToStoreCurrent,
-            total = backToStoreTotal,
-            iconResId = Theme.icons.store
-        )
 
+        ActiveOrderTaskCompactCard(
+            model = ActiveOrderTaskCompactCardModel(
+                title = backToStoreTitle,
+                current = backToStoreCurrent,
+                total = backToStoreTotal,
+                icon = OrderScreenIcons.Store,
+                orderNumber = null
+            )
+        )
     }
 }
 
