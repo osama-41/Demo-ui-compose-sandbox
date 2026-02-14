@@ -24,14 +24,12 @@ import androidx.compose.ui.semantics.Role
 
 @Composable
 fun ActiveOrderTopBar(
-    title: String,
+    uiModel: ActiveOrderTopBarUiModel,
     modifier: Modifier = Modifier,
     onBackClick: (() -> Unit)? = null,
     onSupportClick: (() -> Unit)? = null,
 ) {
-    val colors = Theme.colors
     val spacing = Theme.spacing
-    val typography = Theme.typography
 
     Box(
         modifier = modifier
@@ -68,7 +66,7 @@ fun ActiveOrderTopBar(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = title,
+                    text = uiModel.title,
                     color = Theme.colors.white,
                     style = Theme.typography.titleLarge,
                     textAlign = TextAlign.Center
@@ -79,18 +77,20 @@ fun ActiveOrderTopBar(
                 modifier = Modifier.size(spacing.topBarSideSlotSize),
                 contentAlignment = Alignment.CenterEnd
             ) {
-                Icon(
-                    painter = painterResource(Theme.icons.headSet),
-                    contentDescription = "Support",
-                    tint = Theme.colors.white,
-                    modifier = Modifier
-                        .size(Theme.spacing.xl)
-                        .clickable(
-                            enabled = onSupportClick != null,
-                            role = Role.Button,
-                            onClickLabel = "Support"
-                        ) { onSupportClick?.invoke() }
-                )
+                if (uiModel.isSupportVisible) {
+                    Icon(
+                        painter = painterResource(Theme.icons.headSet),
+                        contentDescription = "Support",
+                        tint = Theme.colors.white,
+                        modifier = Modifier
+                            .size(Theme.spacing.xl)
+                            .clickable(
+                                enabled = onSupportClick != null,
+                                role = Role.Button,
+                                onClickLabel = "Support"
+                            ) { onSupportClick?.invoke() }
+                    )
+                }
             }
         }
     }
@@ -100,7 +100,12 @@ fun ActiveOrderTopBar(
 @Composable
 private fun ActiveOrderTopBarPreview_Ltr() {
     LtrPreview{
-        ActiveOrderTopBar(title = "Active Order")
+        ActiveOrderTopBar(
+            uiModel = ActiveOrderTopBarUiModel(
+            title = "Active Order",
+            isSupportVisible = true
+        )
+        )
     }
 }
 
@@ -108,6 +113,11 @@ private fun ActiveOrderTopBarPreview_Ltr() {
 @Composable
 private fun ActiveOrderTopBarPreview_Rtl() {
     RtlPreview{
-        ActiveOrderTopBar(title = "الطلبات الحالية")
+        ActiveOrderTopBar(
+            uiModel = ActiveOrderTopBarUiModel(
+            title = "الطلبات الحالية",
+            isSupportVisible = true
+        )
+        )
     }
 }
