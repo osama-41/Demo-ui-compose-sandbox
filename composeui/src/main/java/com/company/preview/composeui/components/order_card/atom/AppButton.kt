@@ -1,6 +1,5 @@
 package com.company.preview.composeui.components.order_card.atom
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -21,81 +20,60 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
+import com.company.preview.composeui.components.enums.OrderScreenIcons
+import com.company.preview.composeui.components.model.AppButtonElevationModel
+import com.company.preview.composeui.components.model.AppButtonModel
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
 
 @Composable
 fun AppButton(
-    text: String,
-    onClick: ()-> Unit,
+    model: AppButtonModel,
+    onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    enabled: Boolean=true,
-    height: Dp = Theme.spacing.buttonHeight,
-    radius: Dp = Theme.spacing.sm,
-    containerColor: Color = Theme.colors.primary,
-    contentColor: Color = Theme.colors.white,
-    border: BorderStroke? = null,
-    defaultElevation: Dp = Theme.spacing.elevationSm ,
-    pressedElevation:Dp = Theme.spacing.elevationMd,
-    disabledElevation:Dp = Theme.spacing.elevationNone,
-    @DrawableRes iconRes: Int?=null,
-    iconSize: Dp = Theme.spacing.buttonIconSize,
-    iconTint: Color = contentColor,
-    contentDescription: String? = null,
-    textStyle: TextStyle=Theme.typography.button,
-    contentPaddingHorizontal: Dp = Theme.spacing.lg,
-    contentPaddingVertical :Dp = Theme.spacing.md
     ){
 
     Button(
         onClick = onClick,
-        enabled = enabled,
-        modifier = modifier
-            .height(height),
-        shape = RoundedCornerShape(radius),
-        border = border,
+        enabled = model.enabled,
+        modifier = modifier.height(model.height),
+        shape = RoundedCornerShape(model.radius),
+        border = model.border,
         colors = ButtonDefaults.buttonColors(
-            containerColor = containerColor,
-            contentColor = contentColor,
-            disabledContainerColor = containerColor.copy(alpha = 0.5f),
-            disabledContentColor = contentColor.copy(alpha = 0.7f),
+            containerColor = model.containerColor,
+            contentColor = model.contentColor,
+            disabledContainerColor = model.containerColor.copy(alpha = 0.5f),
+            disabledContentColor = model.contentColor.copy(alpha = 0.7f),
         ),
         elevation = ButtonDefaults.buttonElevation(
-            defaultElevation = defaultElevation,
-            pressedElevation = pressedElevation ,
-            disabledElevation = disabledElevation
+            defaultElevation = model.elevation.defaultElevation,
+            pressedElevation = model.elevation.pressedElevation,
+            disabledElevation = model.elevation.disabledElevation
         ),
-        contentPadding = PaddingValues(
-            horizontal = contentPaddingHorizontal,
-            vertical = contentPaddingVertical
-        )
+        contentPadding = model.contentPadding
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
-            if (iconRes != null) {
+            model.icon?.let { icon ->
                 Icon(
-                    painter = painterResource(iconRes),
-                    contentDescription = contentDescription,
-                    modifier = Modifier.size(iconSize),
-                    tint = iconTint
-
+                    painter = painterResource(icon.resId),
+                    contentDescription = model.contentDescription,
+                    modifier = Modifier.size(model.iconSize),
+                    tint = model.iconTint
                 )
-
                 Spacer(modifier = Modifier.width(Theme.spacing.sm))
             }
 
             Text(
-                text = text,
-                style = textStyle,
-                color = contentColor
+                text = model.text,
+                style = model.textStyle,
+                color = model.contentColor
             )
         }
     }
@@ -112,29 +90,70 @@ fun AppButtonPreview_Ltr() {
             Column(
                 verticalArrangement = Arrangement.spacedBy(Theme.spacing.lg)
             ) {
-
                 AppButton(
-                    text = "Pick-up Location",
+                    model = AppButtonModel(
+                        text = "Pick-up Location",
+                        textStyle = Theme.typography.button,
+                        enabled = true,
+
+                        height = Theme.spacing.buttonHeight,
+                        radius = Theme.spacing.radiusMd,
+                        contentPadding = PaddingValues(
+                            horizontal = Theme.spacing.lg,
+                            vertical = Theme.spacing.md
+                        ),
+
+                        containerColor = Theme.colors.white,
+                        contentColor = Theme.colors.primary,
+
+                        border = BorderStroke(Theme.spacing.xxs, Theme.colors.greyOutlined),
+                        elevation = AppButtonElevationModel(
+                            defaultElevation = Dp.Unspecified,
+                            pressedElevation = Dp.Unspecified,
+                            disabledElevation = Dp.Unspecified
+                        ),
+
+                        icon = OrderScreenIcons.Location,
+                        iconSize = Theme.spacing.buttonIconSize,
+                        iconTint = Theme.colors.primary,
+                        contentDescription = "Location icon",
+                    ),
                     onClick = {},
-                    modifier = Modifier.fillMaxWidth(),
-                    radius = Theme.spacing.radiusMd,
-                    contentDescription = "Location icon",
-                    containerColor = Theme.colors.white,
-                    contentColor = Theme.colors.black,
-                    border = BorderStroke(Theme.spacing.xxs, Theme.colors.greyOutlined),
-                    defaultElevation = Theme.spacing.elevationNone,
-                    iconRes = Theme.icons.location
+                    modifier = Modifier.fillMaxWidth()
+                )
+                AppButton(
+                    model = AppButtonModel(
+                        text = "Start Pickup",
+                        textStyle = Theme.typography.button,
+                        enabled = true,
+
+                        height = Theme.spacing.buttonHeight,
+                        radius = Theme.spacing.radiusMd,
+                        contentPadding = PaddingValues(
+                            horizontal = Theme.spacing.lg,
+                            vertical = Theme.spacing.md
+                        ),
+
+                        containerColor = Theme.colors.primary,
+                        contentColor = Theme.colors.white,
+
+                        border = null,
+
+                        elevation = AppButtonElevationModel(
+                            defaultElevation = Dp.Unspecified,
+                            pressedElevation = Dp.Unspecified,
+                            disabledElevation = Dp.Unspecified
+                        ),
+
+                        icon = OrderScreenIcons.Start,
+                        iconSize = Theme.spacing.buttonIconSize,
+                        iconTint = Theme.colors.white,
+                        contentDescription = "Start icon",
+                    ),
+                    onClick = {},
+                    modifier = Modifier.fillMaxWidth()
                 )
 
-                AppButton(
-                    text = "Start Pickup",
-                    onClick = {},
-                    modifier = Modifier.fillMaxWidth(),
-                    contentDescription = "Start icon",
-                    containerColor = Theme.colors.primary,
-                    contentColor = Theme.colors.white,
-                    iconRes = Theme.icons.start
-                )
             }
         }
     }
@@ -150,29 +169,71 @@ fun AppButtonPreview_Rtl() {
             Column(
                 verticalArrangement = Arrangement.spacedBy(Theme.spacing.lg)
             ) {
-
                 AppButton(
-                    text = "موقع الالتقاط",
+                    model = AppButtonModel(
+                        text = "موقع الالتقاط",
+                        textStyle = Theme.typography.button,
+                        enabled = true,
+
+                        height = Theme.spacing.buttonHeight,
+                        radius = Theme.spacing.radiusMd,
+                        contentPadding = PaddingValues(
+                            horizontal = Theme.spacing.lg,
+                            vertical = Theme.spacing.md
+                        ),
+
+                        containerColor = Theme.colors.white,
+                        contentColor = Theme.colors.primary,
+
+                        border = BorderStroke(Theme.spacing.xxs, Theme.colors.greyOutlined),
+                        elevation = AppButtonElevationModel(
+                            defaultElevation = Dp.Unspecified,
+                            pressedElevation = Dp.Unspecified,
+                            disabledElevation = Dp.Unspecified
+                        ),
+
+                        icon = OrderScreenIcons.Location,
+                        iconSize = Theme.spacing.buttonIconSize,
+                        iconTint = Theme.colors.primary,
+                        contentDescription = "Location icon",
+                    ),
                     onClick = {},
-                    modifier = Modifier.fillMaxWidth(),
-                    radius = Theme.spacing.radiusMd,
-                    contentDescription = "Location icon",
-                    containerColor = Theme.colors.white,
-                    contentColor = Theme.colors.black,
-                    border = BorderStroke(Theme.spacing.xxs, Theme.colors.greyOutlined),
-                    defaultElevation = Theme.spacing.elevationNone,
-                    iconRes = Theme.icons.location
+                    modifier = Modifier.fillMaxWidth()
                 )
 
                 AppButton(
-                    text = "ابدأ الالتقاط",
+                    model = AppButtonModel(
+                        text = "ابدأ الالتقاط",
+                        textStyle = Theme.typography.button,
+                        enabled = true,
+
+                        height = Theme.spacing.buttonHeight,
+                        radius = Theme.spacing.radiusMd,
+                        contentPadding = PaddingValues(
+                            horizontal = Theme.spacing.lg,
+                            vertical = Theme.spacing.md
+                        ),
+
+                        containerColor = Theme.colors.primary,
+                        contentColor = Theme.colors.white,
+
+                        border = null,
+
+                        elevation = AppButtonElevationModel(
+                            defaultElevation = Dp.Unspecified,
+                            pressedElevation = Dp.Unspecified,
+                            disabledElevation = Dp.Unspecified
+                        ),
+
+                        icon = OrderScreenIcons.Start,
+                        iconSize = Theme.spacing.buttonIconSize,
+                        iconTint = Theme.colors.white,
+                        contentDescription = "Start icon",
+                    ),
                     onClick = {},
-                    modifier = Modifier.fillMaxWidth(),
-                    contentDescription = "Start icon",
-                    containerColor = Theme.colors.primary,
-                    contentColor = Theme.colors.white,
-                    iconRes = Theme.icons.start
+                    modifier = Modifier.fillMaxWidth()
                 )
+
             }
         }
     }
