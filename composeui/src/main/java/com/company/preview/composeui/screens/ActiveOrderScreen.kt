@@ -21,6 +21,8 @@ import com.company.preview.composeui.components.activeorder_ui_preview.task.Acti
 import com.company.preview.composeui.components.activeorder_ui_preview.topbar.ActiveOrderTopBar
 import com.company.preview.composeui.components.model.ActiveOrderTopBarModel
 import com.company.preview.composeui.components.enums.OrderScreenIcons
+import com.company.preview.composeui.components.model.ActiveOrderTaskCompactCardModel
+import com.company.preview.composeui.components.model.ActiveOrderTaskStackModel
 import com.company.preview.composeui.components.model.AppButtonElevationModel
 import com.company.preview.composeui.components.model.AppButtonModel
 import com.company.preview.composeui.components.model.TaskCardModel
@@ -154,14 +156,24 @@ fun ActiveOrderScreen(
                 modifier = Modifier.fillMaxWidth(),
             ) {
                 ActiveOrderTaskStack(
-                    deliveryTitle = "Delivery",
-                    deliveryOrderNumber = "#Orders-8036-5323",
-                    deliveryCurrent = 2,
-                    deliveryTotal = 3,
-                    backToStoreTitle = "Back to Store",
-                    backToStoreCurrent = 3,
-                    backToStoreTotal = 3
+                    model = ActiveOrderTaskStackModel(
+                        first = ActiveOrderTaskCompactCardModel(
+                            title = "Delivery",
+                            orderNumber = "#Orders-8036-5323",
+                            current = 2,
+                            total = 3,
+                            icon = OrderScreenIcons.AccountCircle
+                        ),
+                        second = ActiveOrderTaskCompactCardModel(
+                            title = "Back to Store",
+                            orderNumber = null,
+                            current = 3,
+                            total = 3,
+                            icon = OrderScreenIcons.Store
+                        )
+                    )
                 )
+
             }
 
             Spacer(modifier = Modifier.height(spacing.lg))
