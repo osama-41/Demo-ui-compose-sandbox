@@ -31,12 +31,12 @@ import com.company.preview.composeui.theme.Theme
     ) {
         TaskConnectorDivider(
             modifier = Modifier.padding(
-                start = spacing.sm,
-                bottom = spacing.sm
+                start = spacing.lg,
+                bottom = spacing.xs
             )
         )
 
-        DeliveryTaskCard(
+        TaskCard(
             title = deliveryTitle,
             orderNumber = deliveryOrderNumber,
             current = deliveryCurrent,
@@ -46,17 +46,18 @@ import com.company.preview.composeui.theme.Theme
 
         TaskConnectorDivider(
             modifier = Modifier.padding(
-                start = spacing.sm,
-                top = spacing.sm,
-                bottom = spacing.sm
+                start = spacing.lg ,
+                top = spacing.xs,
+                bottom = spacing.xs
             )
         )
-
-        BackToStoreTaskCard(
+        TaskCard(
             title = backToStoreTitle,
             current = backToStoreCurrent,
-            total = backToStoreTotal
+            total = backToStoreTotal,
+            iconResId = Theme.icons.store
         )
+
     }
 }
 
