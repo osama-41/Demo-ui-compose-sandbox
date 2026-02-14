@@ -14,11 +14,10 @@ data class AppColors (
     val surface: Color,
     val secondaryText: Color,
     val greyOutlined: Color,
-    val disabled: Color,
     val greenSuccess:Color,
     val mediumGray: Color,
     val completedGreen: Color,
-    val backGround: Color
+    val background: Color
 )
 
 private val lightColors = AppColors(
@@ -30,10 +29,9 @@ private val lightColors = AppColors(
     secondaryText = Color(0xFF6B6B6B),
     greyOutlined = Color(0xFFDCDBDB),
     greenSuccess = Color(0xFF16A34A),
-    disabled = Color(0xFFBDBDBD),
     mediumGray = Color(0xFFA1A1AA),
     completedGreen = Color(0xFF22C55E),
-    backGround = Color(0xFFFAFAFA)
+    background = Color(0xFFFAFAFA)
 )
 
 

@@ -20,11 +20,13 @@ import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
 import androidx.compose.foundation.clickable
 import androidx.compose.ui.semantics.Role
+import com.company.preview.composeui.components.enums.OrderScreenIcons
+import com.company.preview.composeui.components.model.ActiveOrderTopBarModel
 
 
 @Composable
 fun ActiveOrderTopBar(
-    uiModel: ActiveOrderTopBarUiModel,
+    model: ActiveOrderTopBarModel,
     modifier: Modifier = Modifier,
     onBackClick: (() -> Unit)? = null,
     onSupportClick: (() -> Unit)? = null,
@@ -48,7 +50,7 @@ fun ActiveOrderTopBar(
                 contentAlignment = Alignment.CenterStart
             ) {
                 Icon(
-                    painter = painterResource(Theme.icons.arrowBack),
+                    painter = painterResource(OrderScreenIcons.ArrowBack.resId),
                     contentDescription = "Back",
                     tint = Theme.colors.white,
                     modifier = Modifier
@@ -66,7 +68,7 @@ fun ActiveOrderTopBar(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = uiModel.title,
+                    text = model.title,
                     color = Theme.colors.white,
                     style = Theme.typography.titleLarge,
                     textAlign = TextAlign.Center
@@ -77,9 +79,9 @@ fun ActiveOrderTopBar(
                 modifier = Modifier.size(spacing.topBarSideSlotSize),
                 contentAlignment = Alignment.CenterEnd
             ) {
-                if (uiModel.isSupportVisible) {
+                if (model.isSupportVisible) {
                     Icon(
-                        painter = painterResource(Theme.icons.headSet),
+                        painter = painterResource(OrderScreenIcons.Headset.resId),
                         contentDescription = "Support",
                         tint = Theme.colors.white,
                         modifier = Modifier
@@ -101,10 +103,10 @@ fun ActiveOrderTopBar(
 private fun ActiveOrderTopBarPreview_Ltr() {
     LtrPreview{
         ActiveOrderTopBar(
-            uiModel = ActiveOrderTopBarUiModel(
-            title = "Active Order",
-            isSupportVisible = true
-        )
+            model = ActiveOrderTopBarModel(
+                title = "Active Order",
+                isSupportVisible = true
+            )
         )
     }
 }
@@ -114,10 +116,10 @@ private fun ActiveOrderTopBarPreview_Ltr() {
 private fun ActiveOrderTopBarPreview_Rtl() {
     RtlPreview{
         ActiveOrderTopBar(
-            uiModel = ActiveOrderTopBarUiModel(
-            title = "الطلبات الحالية",
-            isSupportVisible = true
-        )
+            model = ActiveOrderTopBarModel(
+                title = "الطلبات الحالية",
+                isSupportVisible = true
+            )
         )
     }
 }

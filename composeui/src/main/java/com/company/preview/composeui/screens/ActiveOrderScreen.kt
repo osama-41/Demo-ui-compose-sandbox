@@ -19,7 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import com.company.preview.composeui.components.activeorder_ui_preview.task.ActiveOrderTaskStack
 import com.company.preview.composeui.components.activeorder_ui_preview.topbar.ActiveOrderTopBar
-import com.company.preview.composeui.components.activeorder_ui_preview.topbar.ActiveOrderTopBarUiModel
+import com.company.preview.composeui.components.model.ActiveOrderTopBarModel
 import com.company.preview.composeui.components.enums.OrderScreenIcons
 import com.company.preview.composeui.components.model.AppButtonElevationModel
 import com.company.preview.composeui.components.model.AppButtonModel
@@ -45,7 +45,7 @@ fun ActiveOrderScreen(
         modifier = modifier.fillMaxSize(),
         topBar = {
             ActiveOrderTopBar(
-                uiModel = ActiveOrderTopBarUiModel(
+                model = ActiveOrderTopBarModel(
                     title = "Active Order",
                     isSupportVisible = true
                 ),
@@ -58,7 +58,7 @@ fun ActiveOrderScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Theme.colors.backGround)
+                .background(Theme.colors.background)
                 .padding(innerPadding)
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = spacing.lg),
