@@ -8,20 +8,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.company.preview.composeui.components.enums.OrderScreenIcons
 import com.company.preview.composeui.components.model.ActiveOrderTaskCompactCardModel
+import com.company.preview.composeui.components.model.ActiveOrderTaskStackModel
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
 
 @Composable
 fun ActiveOrderTaskStack(
-    modifier: Modifier = Modifier,
-    deliveryTitle: String,
-    deliveryOrderNumber: String,
-    deliveryCurrent: Int,
-    deliveryTotal: Int,
-    backToStoreTitle: String,
-    backToStoreCurrent: Int,
-    backToStoreTotal: Int,
+    model: ActiveOrderTaskStackModel,
+    modifier: Modifier = Modifier
 ) {
     val spacing = Theme.spacing
 
@@ -36,13 +31,7 @@ fun ActiveOrderTaskStack(
         )
 
         ActiveOrderTaskCompactCard(
-            model = ActiveOrderTaskCompactCardModel(
-                title = deliveryTitle,
-                current = deliveryCurrent,
-                total = deliveryTotal,
-                icon = OrderScreenIcons.AccountCircle,
-                orderNumber = deliveryOrderNumber
-            )
+                model = model.first
         )
 
         TaskConnectorDivider(
@@ -54,13 +43,7 @@ fun ActiveOrderTaskStack(
         )
 
         ActiveOrderTaskCompactCard(
-            model = ActiveOrderTaskCompactCardModel(
-                title = backToStoreTitle,
-                current = backToStoreCurrent,
-                total = backToStoreTotal,
-                icon = OrderScreenIcons.Store,
-                orderNumber = null
-            )
+            model = model.second
         )
     }
 }
@@ -70,13 +53,22 @@ fun ActiveOrderTaskStack(
 private fun ActiveOrderTaskStackPreviewEn() {
     LtrPreview {
         ActiveOrderTaskStack(
-            deliveryTitle = "Delivery",
-            deliveryOrderNumber = "#Orders-8036-5323",
-            deliveryCurrent = 2,
-            deliveryTotal = 3,
-            backToStoreTitle = "Back to Store",
-            backToStoreCurrent = 3,
-            backToStoreTotal = 3
+            model = ActiveOrderTaskStackModel(
+                first = ActiveOrderTaskCompactCardModel(
+                    title = "Delivery",
+                    orderNumber = "#Orders-8036-5323",
+                    current = 2,
+                    total = 3,
+                    icon = OrderScreenIcons.AccountCircle
+                ),
+                second = ActiveOrderTaskCompactCardModel(
+                    title = "Back to Store",
+                    orderNumber = null,
+                    current = 3,
+                    total = 3,
+                    icon = OrderScreenIcons.Store
+                )
+            )
         )
     }
 }
@@ -86,13 +78,22 @@ private fun ActiveOrderTaskStackPreviewEn() {
 private fun ActiveOrderTaskStackPreviewAr() {
     RtlPreview {
         ActiveOrderTaskStack(
-            deliveryTitle = "التوصيل",
-            deliveryOrderNumber = "#الطلبات-٨٠٣٦-٥٣٢٣",
-            deliveryCurrent = 2,
-            deliveryTotal = 3,
-            backToStoreTitle = "العودة إلى المتجر",
-            backToStoreCurrent = 3,
-            backToStoreTotal = 3
+            model = ActiveOrderTaskStackModel(
+                first = ActiveOrderTaskCompactCardModel(
+                    title = "التوصيل",
+                    orderNumber = "#الطلبات-٨٠٣٦-٥٣٢٣",
+                    current = 2,
+                    total = 3,
+                    icon = OrderScreenIcons.AccountCircle
+                ),
+                second = ActiveOrderTaskCompactCardModel(
+                    title = "العودة إلى المتجر",
+                    orderNumber = null,
+                    current = 3,
+                    total = 3,
+                    icon = OrderScreenIcons.Store
+                )
+            )
         )
     }
 }
