@@ -18,45 +18,22 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import com.company.preview.composeui.components.model.TaskProgressIndicatorModel
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
 import com.company.preview.composeui.utils.AppLocales
-import java.text.NumberFormat
-import java.util.Locale
 import kotlin.math.cos
 import kotlin.math.max
 import kotlin.math.sin
 
-fun formatTaskProgressText(
-    completed: Int,
-    total: Int,
-    locale: Locale,
-): String {
-    val safeTotal = max(total, 1)
-    val safeCompleted = completed.coerceIn(0, safeTotal)
-
-    val nf = NumberFormat.getInstance(locale)
-    val c = nf.format(safeCompleted.toLong())
-    val t = nf.format(safeTotal.toLong())
-
-    return if (locale.language == "ar") {
-        "$c من $t"
-    } else {
-        "$c of $t"
-    }
-}
-
 @Composable
 fun TaskProgressIndicator(
-    completed: Int,
-    total: Int,
-    centerText: String,
-    subtitleText: String,
+    model: TaskProgressIndicatorModel,
     modifier: Modifier = Modifier
 ) {
-    val safeTotal = max(total, 1)
-    val safeCompleted = completed.coerceIn(0, safeTotal)
+    val safeTotal = max(model.total, 1)
+    val safeCompleted = model.completed.coerceIn(0, safeTotal)
 
     Box(
         modifier = modifier.size(Theme.spacing.ringSizeLg),
@@ -69,7 +46,7 @@ fun TaskProgressIndicator(
 
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(
-                text = centerText,
+                text = model.centerText,
                 style = Theme.typography.titleSmallExtraBold,
                 textAlign = TextAlign.Center,
                 color = Theme.colors.primary,
@@ -77,7 +54,7 @@ fun TaskProgressIndicator(
             )
             Spacer(Modifier.height(Theme.spacing.xxs))
             Text(
-                text = subtitleText,
+                text = model.subtitleText,
                 style = Theme.typography.labelSmallCompactLineHeight,
                 textAlign = TextAlign.Center,
                 color = Theme.colors.secondaryText
@@ -177,52 +154,17 @@ fun TaskProgressIndicator_Preview1() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             TaskProgressIndicator(
-                completed = 12,
-                total = 30,
-                centerText = formatTaskProgressText(12, 30, locale),
-                subtitleText = "Tasks"
+                model = TaskProgressIndicatorModel(
+                    completed = 12,
+                    total = 30,
+                    centerText = AppLocales.formatTaskProgress(12, 30, locale),
+                    subtitleText = "Tasks"
+                )
             )
         }
     }
 }
-@Preview(showBackground = true)
-@Composable
-fun TaskProgressIndicator_Preview2() {
-    val locale = AppLocales.ENGLISH
-    LtrPreview {
-        Column(
-            modifier = Modifier.padding(Theme.spacing.lg),
-            verticalArrangement = Arrangement.spacedBy(Theme.spacing.xxl),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            TaskProgressIndicator(
-                completed = 4,
-                total = 7,
-                centerText = formatTaskProgressText(4, 7, locale),
-                subtitleText = "Tasks"
-            )
-        }
-    }
-}
-@Preview(showBackground = true)
-@Composable
-fun TaskProgressIndicator_Preview3() {
-    val locale = AppLocales.ENGLISH
-    LtrPreview {
-        Column(
-            modifier = Modifier.padding(Theme.spacing.lg),
-            verticalArrangement = Arrangement.spacedBy(Theme.spacing.xxl),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            TaskProgressIndicator(
-                completed = 0,
-                total = 10,
-                centerText = formatTaskProgressText(0, 10, locale),
-                subtitleText = "Tasks"
-            )
-        }
-    }
-}
+
 @Preview(showBackground = true)
 @Composable
 fun TaskProgressIndicator_Preview_Rtl1() {
@@ -234,48 +176,12 @@ fun TaskProgressIndicator_Preview_Rtl1() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             TaskProgressIndicator(
-                completed = 12,
-                total = 30,
-                centerText = formatTaskProgressText(12, 30, locale),
-                subtitleText = "المهام"
-            )
-        }
-    }
-}
-@Preview(showBackground = true)
-@Composable
-fun TaskProgressIndicator_Preview_Rtl2() {
-    val locale = AppLocales.ARABIC
-    RtlPreview {
-        Column(
-            modifier = Modifier.padding(Theme.spacing.lg),
-            verticalArrangement = Arrangement.spacedBy(Theme.spacing.xxl),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            TaskProgressIndicator(
-                completed = 4,
-                total = 7,
-                centerText = formatTaskProgressText(4, 7, locale),
-                subtitleText = "المهام"
-            )
-        }
-    }
-}
-@Preview(showBackground = true)
-@Composable
-fun TaskProgressIndicator_Preview_Rtl3() {
-    val locale = AppLocales.ARABIC
-    RtlPreview {
-        Column(
-            modifier = Modifier.padding(Theme.spacing.lg),
-            verticalArrangement = Arrangement.spacedBy(Theme.spacing.xxl),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            TaskProgressIndicator(
-                completed = 0,
-                total = 10,
-                centerText = formatTaskProgressText(0, 10, locale),
-                subtitleText = "المهام"
+                model = TaskProgressIndicatorModel(
+                    completed = 12,
+                    total = 30,
+                    centerText = AppLocales.formatTaskProgress(12, 30, locale),
+                    subtitleText = "المهام"
+                )
             )
         }
     }

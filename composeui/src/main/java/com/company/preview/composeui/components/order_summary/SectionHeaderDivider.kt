@@ -55,30 +55,6 @@ fun SectionHeaderDivider_Preview1() {
         }
     }
 }
-@Preview(showBackground = true)
-@Composable
-fun SectionHeaderDivider_Preview2() {
-    LtrPreview {
-        Column(
-            modifier = Modifier.padding(Theme.spacing.lg),
-            verticalArrangement = Arrangement.spacedBy(Theme.spacing.xl)
-        ) {
-            SectionHeaderDivider(title = "Order summary")
-        }
-    }
-}
-@Preview(showBackground = true)
-@Composable
-fun SectionHeaderDivider_Preview3() {
-    LtrPreview {
-        Column(
-            modifier = Modifier.padding(Theme.spacing.lg),
-            verticalArrangement = Arrangement.spacedBy(Theme.spacing.xl)
-        ) {
-            SectionHeaderDivider(title = "Payment details")
-        }
-    }
-}
 
 @Preview(showBackground = true)
 @Composable
@@ -89,30 +65,6 @@ fun SectionHeaderDivider_RTL_Preview1() {
             verticalArrangement = Arrangement.spacedBy(Theme.spacing.xl)
         ) {
             SectionHeaderDivider(title = "قائمة المهام")
-        }
-    }
-}
-@Preview(showBackground = true)
-@Composable
-fun SectionHeaderDivider_RTL_Preview2() {
-    RtlPreview {
-        Column(
-            modifier = Modifier.padding(Theme.spacing.lg),
-            verticalArrangement = Arrangement.spacedBy(Theme.spacing.xl)
-        ) {
-            SectionHeaderDivider(title = "ملخص الطلب")
-        }
-    }
-}
-@Preview(showBackground = true)
-@Composable
-fun SectionHeaderDivider_RTL_Preview3() {
-    RtlPreview {
-        Column(
-            modifier = Modifier.padding(Theme.spacing.lg),
-            verticalArrangement = Arrangement.spacedBy(Theme.spacing.xl)
-        ) {
-            SectionHeaderDivider(title = "تفاصيل الدفع")
         }
     }
 }

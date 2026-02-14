@@ -16,15 +16,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.company.preview.composeui.components.enums.OrderScreenIcons
+import com.company.preview.composeui.components.model.OrderTimerModel
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
 
 @Composable
 fun OrderTimerBlock(
-    timeText: String,
-    labelText: String,
-    icon: OrderScreenIcons,
+    model: OrderTimerModel,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -32,7 +31,7 @@ fun OrderTimerBlock(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(
-            text = timeText,
+            text = model.timeText,
             style = Theme.typography.titleLargeBold,
             color = Theme.colors.primary
         )
@@ -41,10 +40,8 @@ fun OrderTimerBlock(
 
         Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(
-                painter = painterResource(icon.resId),
+                painter = painterResource(model.icon.resId),
                 contentDescription = null,
-
-
                 modifier = Modifier.size(Theme.spacing.lg),
                 tint = Theme.colors.mediumGray
             )
@@ -52,7 +49,7 @@ fun OrderTimerBlock(
             Spacer(modifier = Modifier.width(Theme.spacing.xs))
 
             Text(
-                text = labelText,
+                text = model.labelText,
                 style = Theme.typography.titleSmall,
                 color = Theme.colors.secondaryText
             )
@@ -70,60 +67,11 @@ fun OrderTimerBlock_Preview1() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             OrderTimerBlock(
-                timeText = "1:55:12",
-                labelText = "Order timer",
-                icon = OrderScreenIcons.TimerFlash,
-            )
-        }
-    }
-}
-@Preview(showBackground = true)
-@Composable
-fun OrderTimerBlock_Preview2() {
-    LtrPreview {
-        Column(
-            modifier = Modifier.padding(Theme.spacing.lg),
-            verticalArrangement = Arrangement.spacedBy(Theme.spacing.lg),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            OrderTimerBlock(
-                timeText = "44:23",
-                labelText = "Order timer",
-                icon = OrderScreenIcons.TimerFlash,
-            )
-        }
-    }
-}
-@Preview(showBackground = true)
-@Composable
-fun OrderTimerBlock_Preview3() {
-    LtrPreview {
-        Column(
-            modifier = Modifier.padding(Theme.spacing.lg),
-            verticalArrangement = Arrangement.spacedBy(Theme.spacing.lg),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            OrderTimerBlock(
-                timeText = "7:32",
-                labelText = "Order timer",
-                icon = OrderScreenIcons.TimerFlash,
-            )
-        }
-    }
-}
-@Preview(showBackground = true)
-@Composable
-fun OrderTimerBlock_Preview4() {
-    LtrPreview {
-        Column(
-            modifier = Modifier.padding(Theme.spacing.lg),
-            verticalArrangement = Arrangement.spacedBy(Theme.spacing.lg),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            OrderTimerBlock(
-                timeText = "0:44",
-                labelText = "Order timer",
-                icon = OrderScreenIcons.TimerFlash,
+                model = OrderTimerModel(
+                    timeText = "1:55:12",
+                    labelText = "Order timer",
+                    icon = OrderScreenIcons.TimerFlash,
+                )
             )
         }
     }
@@ -139,63 +87,11 @@ fun OrderTimerBlock_RTL_Preview1() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             OrderTimerBlock(
-                timeText = "١:٥٥:١٢",
-                labelText = "مؤقت الطلب",
-                icon = OrderScreenIcons.TimerFlash,
-            )
-        }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun OrderTimerBlock_RTL_Preview2() {
-    RtlPreview {
-        Column(
-            modifier = Modifier.padding(Theme.spacing.lg),
-            verticalArrangement = Arrangement.spacedBy(Theme.spacing.lg),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            OrderTimerBlock(
-                timeText = "٤٤:٢٣",
-                labelText = "مؤقت الطلب",
-                icon = OrderScreenIcons.TimerFlash,
-            )
-        }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun OrderTimerBlock_RTL_Preview3() {
-    RtlPreview {
-        Column(
-            modifier = Modifier.padding(Theme.spacing.lg),
-            verticalArrangement = Arrangement.spacedBy(Theme.spacing.lg),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            OrderTimerBlock(
-                timeText = "٧:٣٢",
-                labelText = "مؤقت الطلب",
-                icon = OrderScreenIcons.TimerFlash,
-            )
-        }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun OrderTimerBlock_RTL_Preview4() {
-    RtlPreview {
-        Column(
-            modifier = Modifier.padding(Theme.spacing.lg),
-            verticalArrangement = Arrangement.spacedBy(Theme.spacing.lg),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            OrderTimerBlock(
-                timeText = "٠:٤٤",
-                labelText = "مؤقت الطلب",
-                icon = OrderScreenIcons.TimerFlash,
+                model = OrderTimerModel(
+                    timeText = "١:٥٥:١٢",
+                    labelText = "مؤقت الطلب",
+                    icon = OrderScreenIcons.TimerFlash,
+                )
             )
         }
     }
