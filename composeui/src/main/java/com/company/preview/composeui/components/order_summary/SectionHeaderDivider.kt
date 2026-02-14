@@ -11,13 +11,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.company.preview.composeui.components.model.SectionHeaderDividerModel
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
 
 @Composable
 fun SectionHeaderDivider(
-    title: String,
+    model: SectionHeaderDividerModel,
     modifier: Modifier = Modifier
 ) {
     Row(
@@ -30,7 +31,7 @@ fun SectionHeaderDivider(
             color = Theme.colors.greyOutlined
         )
         Text(
-            text = title,
+            text = model.title,
             modifier = Modifier.padding(horizontal = Theme.spacing.md),
             style = Theme.typography.bodyMedium,
             color = Theme.colors.mediumGray
@@ -51,31 +52,7 @@ fun SectionHeaderDivider_Preview1() {
             modifier = Modifier.padding(Theme.spacing.lg),
             verticalArrangement = Arrangement.spacedBy(Theme.spacing.xl)
         ) {
-            SectionHeaderDivider(title = "Tasks list")
-        }
-    }
-}
-@Preview(showBackground = true)
-@Composable
-fun SectionHeaderDivider_Preview2() {
-    LtrPreview {
-        Column(
-            modifier = Modifier.padding(Theme.spacing.lg),
-            verticalArrangement = Arrangement.spacedBy(Theme.spacing.xl)
-        ) {
-            SectionHeaderDivider(title = "Order summary")
-        }
-    }
-}
-@Preview(showBackground = true)
-@Composable
-fun SectionHeaderDivider_Preview3() {
-    LtrPreview {
-        Column(
-            modifier = Modifier.padding(Theme.spacing.lg),
-            verticalArrangement = Arrangement.spacedBy(Theme.spacing.xl)
-        ) {
-            SectionHeaderDivider(title = "Payment details")
+            SectionHeaderDivider(model = SectionHeaderDividerModel(title = "Tasks list"))
         }
     }
 }
@@ -88,31 +65,7 @@ fun SectionHeaderDivider_RTL_Preview1() {
             modifier = Modifier.padding(Theme.spacing.lg),
             verticalArrangement = Arrangement.spacedBy(Theme.spacing.xl)
         ) {
-            SectionHeaderDivider(title = "قائمة المهام")
-        }
-    }
-}
-@Preview(showBackground = true)
-@Composable
-fun SectionHeaderDivider_RTL_Preview2() {
-    RtlPreview {
-        Column(
-            modifier = Modifier.padding(Theme.spacing.lg),
-            verticalArrangement = Arrangement.spacedBy(Theme.spacing.xl)
-        ) {
-            SectionHeaderDivider(title = "ملخص الطلب")
-        }
-    }
-}
-@Preview(showBackground = true)
-@Composable
-fun SectionHeaderDivider_RTL_Preview3() {
-    RtlPreview {
-        Column(
-            modifier = Modifier.padding(Theme.spacing.lg),
-            verticalArrangement = Arrangement.spacedBy(Theme.spacing.xl)
-        ) {
-            SectionHeaderDivider(title = "تفاصيل الدفع")
+            SectionHeaderDivider(model = SectionHeaderDividerModel(title = "قائمة المهام"))
         }
     }
 }

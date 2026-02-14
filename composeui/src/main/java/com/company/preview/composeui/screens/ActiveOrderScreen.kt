@@ -21,8 +21,10 @@ import com.company.preview.composeui.components.activeorder_ui_preview.task.Acti
 import com.company.preview.composeui.components.activeorder_ui_preview.topbar.ActiveOrderTopBar
 import com.company.preview.composeui.components.activeorder_ui_preview.topbar.ActiveOrderTopBarUiModel
 import com.company.preview.composeui.components.enums.OrderScreenIcons
+import com.company.preview.composeui.components.model.ActiveOrderSummaryModel
 import com.company.preview.composeui.components.model.AppButtonElevationModel
 import com.company.preview.composeui.components.model.AppButtonModel
+import com.company.preview.composeui.components.model.SectionHeaderDividerModel
 import com.company.preview.composeui.components.model.TaskCardModel
 import com.company.preview.composeui.components.model.TaskHeaderModel
 import com.company.preview.composeui.components.order_card.organism.TaskCard
@@ -39,8 +41,7 @@ fun ActiveOrderScreen(
     onSupportClick: (() -> Unit)? = null,
     onLocationClick: (() -> Unit)? = null,
     onStartClick: (() -> Unit)? = null,
-    )
-{
+) {
     Scaffold(
         modifier = modifier.fillMaxSize(),
         topBar = {
@@ -53,12 +54,11 @@ fun ActiveOrderScreen(
                 onSupportClick = onSupportClick
             )
         }
-    ) {
-            innerPadding ->
+    ) { innerPadding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Theme.colors.backGround)
+                .background(Theme.colors.background)
                 .padding(innerPadding)
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = spacing.lg),
@@ -67,17 +67,19 @@ fun ActiveOrderScreen(
             Spacer(modifier = Modifier.height(spacing.sm))
 
             ActiveOrderSummaryCard(
-                completed = 1,
-                total = 3,
-                timeText = "00:44",
-                icon = OrderScreenIcons.TimerFlash,
-                progressSubtitleText = "Tasks",
-                timerLabelText = "Order timer",
+                model = ActiveOrderSummaryModel(
+                    completed = 1,
+                    total = 3,
+                    timeText = "00:44",
+                    icon = OrderScreenIcons.TimerFlash,
+                    progressSubtitleText = "Tasks",
+                    timerLabelText = "Order timer",
+                ),
                 modifier = Modifier.fillMaxWidth()
             )
 
             SectionHeaderDivider(
-                title = "Tasks list",
+                model = SectionHeaderDividerModel(title = "Tasks list"),
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = spacing.xs)
@@ -168,6 +170,7 @@ fun ActiveOrderScreen(
         }
     }
 }
+
 @Preview(showBackground = true, name = "ActiveOrderScreen - LTR")
 @Composable
 private fun ActiveOrderScreenPreview_Ltr() {
