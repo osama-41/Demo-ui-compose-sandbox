@@ -45,14 +45,36 @@ fun SectionHeaderDivider(
 
 @Preview(showBackground = true)
 @Composable
-fun SectionHeaderDivider_AllCases_Preview() {
+fun SectionHeaderDivider_Preview1() {
     LtrPreview {
         Column(
             modifier = Modifier.padding(Theme.spacing.lg),
             verticalArrangement = Arrangement.spacedBy(Theme.spacing.xl)
         ) {
             SectionHeaderDivider(title = "Tasks list")
+        }
+    }
+}
+@Preview(showBackground = true)
+@Composable
+fun SectionHeaderDivider_Preview2() {
+    LtrPreview {
+        Column(
+            modifier = Modifier.padding(Theme.spacing.lg),
+            verticalArrangement = Arrangement.spacedBy(Theme.spacing.xl)
+        ) {
             SectionHeaderDivider(title = "Order summary")
+        }
+    }
+}
+@Preview(showBackground = true)
+@Composable
+fun SectionHeaderDivider_Preview3() {
+    LtrPreview {
+        Column(
+            modifier = Modifier.padding(Theme.spacing.lg),
+            verticalArrangement = Arrangement.spacedBy(Theme.spacing.xl)
+        ) {
             SectionHeaderDivider(title = "Payment details")
         }
     }
@@ -60,14 +82,36 @@ fun SectionHeaderDivider_AllCases_Preview() {
 
 @Preview(showBackground = true)
 @Composable
-fun SectionHeaderDivider_RTL_Preview() {
+fun SectionHeaderDivider_RTL_Preview1() {
     RtlPreview {
         Column(
             modifier = Modifier.padding(Theme.spacing.lg),
             verticalArrangement = Arrangement.spacedBy(Theme.spacing.xl)
         ) {
             SectionHeaderDivider(title = "قائمة المهام")
+        }
+    }
+}
+@Preview(showBackground = true)
+@Composable
+fun SectionHeaderDivider_RTL_Preview2() {
+    RtlPreview {
+        Column(
+            modifier = Modifier.padding(Theme.spacing.lg),
+            verticalArrangement = Arrangement.spacedBy(Theme.spacing.xl)
+        ) {
             SectionHeaderDivider(title = "ملخص الطلب")
+        }
+    }
+}
+@Preview(showBackground = true)
+@Composable
+fun SectionHeaderDivider_RTL_Preview3() {
+    RtlPreview {
+        Column(
+            modifier = Modifier.padding(Theme.spacing.lg),
+            verticalArrangement = Arrangement.spacedBy(Theme.spacing.xl)
+        ) {
             SectionHeaderDivider(title = "تفاصيل الدفع")
         }
     }
