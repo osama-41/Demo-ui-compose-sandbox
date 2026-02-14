@@ -66,7 +66,7 @@ fun ActiveOrderScreen(
                 completed = 1,
                 total = 3,
                 timeText = "00:44",
-                timerIconRes = Theme.icons.timerFlash,
+                icon = OrderScreenIcons.TimerFlash,
                 progressSubtitleText = "Tasks",
                 timerLabelText = "Order timer",
                 modifier = Modifier.fillMaxWidth()
