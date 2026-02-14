@@ -24,7 +24,6 @@ import com.company.preview.composeui.components.enums.OrderScreenIcons
 import com.company.preview.composeui.components.model.ActiveOrderSummaryModel
 import com.company.preview.composeui.components.model.AppButtonElevationModel
 import com.company.preview.composeui.components.model.AppButtonModel
-import com.company.preview.composeui.components.model.SectionHeaderDividerModel
 import com.company.preview.composeui.components.model.TaskCardModel
 import com.company.preview.composeui.components.model.TaskHeaderModel
 import com.company.preview.composeui.components.order_card.organism.TaskCard
@@ -79,7 +78,7 @@ fun ActiveOrderScreen(
             )
 
             SectionHeaderDivider(
-                model = SectionHeaderDividerModel(title = "Tasks list"),
+                title = "Tasks list",
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = spacing.xs)

@@ -11,14 +11,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.company.preview.composeui.components.model.SectionHeaderDividerModel
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
 
 @Composable
 fun SectionHeaderDivider(
-    model: SectionHeaderDividerModel,
+    title: String,
     modifier: Modifier = Modifier
 ) {
     Row(
@@ -31,7 +30,7 @@ fun SectionHeaderDivider(
             color = Theme.colors.greyOutlined
         )
         Text(
-            text = model.title,
+            text = title,
             modifier = Modifier.padding(horizontal = Theme.spacing.md),
             style = Theme.typography.bodyMedium,
             color = Theme.colors.mediumGray
@@ -52,7 +51,7 @@ fun SectionHeaderDivider_Preview1() {
             modifier = Modifier.padding(Theme.spacing.lg),
             verticalArrangement = Arrangement.spacedBy(Theme.spacing.xl)
         ) {
-            SectionHeaderDivider(model = SectionHeaderDividerModel(title = "Tasks list"))
+            SectionHeaderDivider(title = "Tasks list")
         }
     }
 }
@@ -65,7 +64,7 @@ fun SectionHeaderDivider_RTL_Preview1() {
             modifier = Modifier.padding(Theme.spacing.lg),
             verticalArrangement = Arrangement.spacedBy(Theme.spacing.xl)
         ) {
-            SectionHeaderDivider(model = SectionHeaderDividerModel(title = "قائمة المهام"))
+            SectionHeaderDivider(title = "قائمة المهام")
         }
     }
 }
