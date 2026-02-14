@@ -21,27 +21,30 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
+import com.company.preview.composeui.utils.AppLocales
 import java.text.NumberFormat
 import java.util.Locale
 import kotlin.math.cos
 import kotlin.math.max
 import kotlin.math.sin
 
-
 fun formatTaskProgressText(
     completed: Int,
     total: Int,
     locale: Locale,
-    isRtl: Boolean,
 ): String {
     val safeTotal = max(total, 1)
     val safeCompleted = completed.coerceIn(0, safeTotal)
 
     val nf = NumberFormat.getInstance(locale)
-    val c = nf.format(safeCompleted)
-    val t = nf.format(safeTotal)
+    val c = nf.format(safeCompleted.toLong())
+    val t = nf.format(safeTotal.toLong())
 
-    return if (isRtl) "$c من $t" else "$c of $t"
+    return if (locale.language == "ar") {
+        "$c من $t"
+    } else {
+        "$c of $t"
+    }
 }
 
 @Composable
@@ -165,8 +168,8 @@ private fun SegmentedRing(
 
 @Preview(showBackground = true)
 @Composable
-fun TaskProgressIndicator_PhotoCases_Preview() {
-    val locale = Locale.ENGLISH
+fun TaskProgressIndicator_Preview1() {
+    val locale = AppLocales.ENGLISH
     LtrPreview {
         Column(
             modifier = Modifier.padding(Theme.spacing.lg),
@@ -176,29 +179,54 @@ fun TaskProgressIndicator_PhotoCases_Preview() {
             TaskProgressIndicator(
                 completed = 12,
                 total = 30,
-                centerText = formatTaskProgressText(12, 30, locale, isRtl = false),
-                subtitleText = "Tasks"
-            )
-            TaskProgressIndicator(
-                completed = 4,
-                total = 7,
-                centerText = formatTaskProgressText(4, 7, locale, isRtl = false),
-                subtitleText = "Tasks"
-            )
-            TaskProgressIndicator(
-                completed = 0,
-                total = 10,
-                centerText = formatTaskProgressText(0, 10, locale, isRtl = false),
+                centerText = formatTaskProgressText(12, 30, locale),
                 subtitleText = "Tasks"
             )
         }
     }
 }
-
 @Preview(showBackground = true)
 @Composable
-fun TaskProgressIndicator_PhotoCases_Preview_Rtl() {
-    val locale = Locale("ar")
+fun TaskProgressIndicator_Preview2() {
+    val locale = AppLocales.ENGLISH
+    LtrPreview {
+        Column(
+            modifier = Modifier.padding(Theme.spacing.lg),
+            verticalArrangement = Arrangement.spacedBy(Theme.spacing.xxl),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            TaskProgressIndicator(
+                completed = 4,
+                total = 7,
+                centerText = formatTaskProgressText(4, 7, locale),
+                subtitleText = "Tasks"
+            )
+        }
+    }
+}
+@Preview(showBackground = true)
+@Composable
+fun TaskProgressIndicator_Preview3() {
+    val locale = AppLocales.ENGLISH
+    LtrPreview {
+        Column(
+            modifier = Modifier.padding(Theme.spacing.lg),
+            verticalArrangement = Arrangement.spacedBy(Theme.spacing.xxl),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            TaskProgressIndicator(
+                completed = 0,
+                total = 10,
+                centerText = formatTaskProgressText(0, 10, locale),
+                subtitleText = "Tasks"
+            )
+        }
+    }
+}
+@Preview(showBackground = true)
+@Composable
+fun TaskProgressIndicator_Preview_Rtl1() {
+    val locale = AppLocales.ARABIC
     RtlPreview {
         Column(
             modifier = Modifier.padding(Theme.spacing.lg),
@@ -208,19 +236,45 @@ fun TaskProgressIndicator_PhotoCases_Preview_Rtl() {
             TaskProgressIndicator(
                 completed = 12,
                 total = 30,
-                centerText = formatTaskProgressText(12, 30, locale, isRtl = true),
+                centerText = formatTaskProgressText(12, 30, locale),
                 subtitleText = "المهام"
             )
+        }
+    }
+}
+@Preview(showBackground = true)
+@Composable
+fun TaskProgressIndicator_Preview_Rtl2() {
+    val locale = AppLocales.ARABIC
+    RtlPreview {
+        Column(
+            modifier = Modifier.padding(Theme.spacing.lg),
+            verticalArrangement = Arrangement.spacedBy(Theme.spacing.xxl),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             TaskProgressIndicator(
                 completed = 4,
                 total = 7,
-                centerText = formatTaskProgressText(4, 7, locale, isRtl = true),
+                centerText = formatTaskProgressText(4, 7, locale),
                 subtitleText = "المهام"
             )
+        }
+    }
+}
+@Preview(showBackground = true)
+@Composable
+fun TaskProgressIndicator_Preview_Rtl3() {
+    val locale = AppLocales.ARABIC
+    RtlPreview {
+        Column(
+            modifier = Modifier.padding(Theme.spacing.lg),
+            verticalArrangement = Arrangement.spacedBy(Theme.spacing.xxl),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             TaskProgressIndicator(
                 completed = 0,
                 total = 10,
-                centerText = formatTaskProgressText(0, 10, locale, isRtl = true),
+                centerText = formatTaskProgressText(0, 10, locale),
                 subtitleText = "المهام"
             )
         }

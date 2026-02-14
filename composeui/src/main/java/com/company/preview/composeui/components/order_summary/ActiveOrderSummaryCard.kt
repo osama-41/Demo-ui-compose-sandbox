@@ -17,11 +17,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.LayoutDirection
-import com.company.preview.composeui.components.icons_enum.OrderScreenIcons
+import com.company.preview.composeui.components.enums.OrderScreenIcons
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.preview.RtlPreview
 import com.company.preview.composeui.theme.Theme
-import java.util.Locale
+import com.company.preview.composeui.utils.AppLocales
 
 @Composable
 fun ActiveOrderSummaryCard(
@@ -36,13 +36,12 @@ fun ActiveOrderSummaryCard(
     val shape = RoundedCornerShape(Theme.spacing.radiusCard)
 
     val isRtl = LocalLayoutDirection.current == LayoutDirection.Rtl
-    val locale = if (isRtl) Locale("ar") else Locale.ENGLISH
+    val locale = AppLocales.getLocale(isRtl)
 
     val progressCenterText = formatTaskProgressText(
         completed = completed,
         total = total,
-        locale = locale,
-        isRtl = isRtl
+        locale = locale
     )
 
     Row(
@@ -97,7 +96,7 @@ private fun CardVerticalDivider(
 
 @Preview(showBackground = true)
 @Composable
-fun ActiveOrderSummaryCardPreview_EN() {
+fun ActiveOrderSummaryCardPreview_EN1() {
     LtrPreview {
         Column(
             modifier = Modifier.padding(Theme.spacing.lg),
@@ -111,6 +110,17 @@ fun ActiveOrderSummaryCardPreview_EN() {
                 progressSubtitleText = "Tasks",
                 timerLabelText = "Order timer",
             )
+        }
+    }
+}
+@Preview(showBackground = true)
+@Composable
+fun ActiveOrderSummaryCardPreview_EN2() {
+    LtrPreview {
+        Column(
+            modifier = Modifier.padding(Theme.spacing.lg),
+            verticalArrangement = Arrangement.spacedBy(Theme.spacing.lg)
+        ) {
             ActiveOrderSummaryCard(
                 completed = 4,
                 total = 7,
@@ -125,7 +135,7 @@ fun ActiveOrderSummaryCardPreview_EN() {
 
 @Preview(showBackground = true)
 @Composable
-fun ActiveOrderSummaryCardPreview_RTL() {
+fun ActiveOrderSummaryCardPreview_RTL1() {
     RtlPreview {
         Column(
             modifier = Modifier.padding(Theme.spacing.lg),
@@ -139,11 +149,23 @@ fun ActiveOrderSummaryCardPreview_RTL() {
                 progressSubtitleText = "المهام",
                 timerLabelText = "مؤقت الطلب",
             )
+        }
+    }
+}
+@Preview(showBackground = true)
+@Composable
+fun ActiveOrderSummaryCardPreview_RTL2() {
+    RtlPreview {
+        Column(
+            modifier = Modifier.padding(Theme.spacing.lg),
+            verticalArrangement = Arrangement.spacedBy(Theme.spacing.lg)
+        ) {
             ActiveOrderSummaryCard(
                 completed = 4,
                 total = 7,
                 timeText = "٤٤:٢٣",
-                icon = OrderScreenIcons.TimerFlash,                progressSubtitleText = "المهام",
+                icon = OrderScreenIcons.TimerFlash,
+                progressSubtitleText = "المهام",
                 timerLabelText = "مؤقت الطلب",
             )
         }

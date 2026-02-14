@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.company.preview.composeui.components.activeorder_ui_preview.task.ActiveOrderTaskStack
 import com.company.preview.composeui.components.activeorder_ui_preview.topbar.ActiveOrderTopBar
-import com.company.preview.composeui.components.icons_enum.OrderScreenIcons
+import com.company.preview.composeui.components.enums.OrderScreenIcons
 import com.company.preview.composeui.components.order_card.organism.TaskCard
 import com.company.preview.composeui.components.order_summary.ActiveOrderSummaryCard
 import com.company.preview.composeui.components.order_summary.SectionHeaderDivider
