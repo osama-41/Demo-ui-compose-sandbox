@@ -10,7 +10,6 @@ fun AppTheme(
     colors: AppColors = localColors.current,
     typography: AppTypography = localAppTypography.current,
     spacing: AppSpacing = localSpacing.current,
-    icons: AppIcons = localIcons.current,
     content: @Composable () -> Unit
 ){
     val scheme = lightColorScheme(
@@ -26,7 +25,6 @@ fun AppTheme(
 
 
         localSpacing provides spacing,
-        localIcons provides icons,
     ) {
         MaterialTheme(
             colorScheme = scheme,
