@@ -18,9 +18,4 @@ object Theme {
         @Composable
         @ReadOnlyComposable
         get() = localSpacing.current
-
-    val icons: AppIcons
-        @Composable
-        @ReadOnlyComposable
-        get() = localIcons.current
 }
