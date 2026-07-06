@@ -58,7 +58,6 @@ fun ActiveOrderScreen(
     ) { innerPadding ->
         Column(
             modifier = Modifier
-                .fillMaxSize()
                 .background(Theme.colors.background)
                 .padding(innerPadding)
                 .verticalScroll(rememberScrollState())
