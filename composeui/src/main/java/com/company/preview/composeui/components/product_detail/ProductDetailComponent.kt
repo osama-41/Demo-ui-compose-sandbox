@@ -21,18 +21,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.company.preview.composeui.R
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.theme.Theme
-
-private val ProductPriceColor = Color(0xFFFF3D57)
-private val AddToCartButtonColor = Color(0xFF12C7C7)
-private val ProductDetailCardShape = 24.dp
-private val AddToCartButtonHeight = 48.dp
 
 @Composable
 fun ProductDetailComponent(
@@ -48,7 +42,7 @@ fun ProductDetailComponent(
     Surface(
         modifier = modifier,
         color = Theme.colors.white,
-        shape = RoundedCornerShape(ProductDetailCardShape),
+        shape = RoundedCornerShape(Theme.spacing.radiusLg),
     ) {
         Column(
             modifier = Modifier.padding(Theme.spacing.lg),
@@ -65,7 +59,7 @@ fun ProductDetailComponent(
             Text(
                 text = productPrice,
                 style = Theme.typography.titleLargeBold,
-                color = ProductPriceColor,
+                color = Theme.colors.priceHighlight,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )
@@ -84,10 +78,10 @@ fun ProductDetailComponent(
 
             ProductDetailInfoCards()
 
-            Spacer(modifier = Modifier.height(28.dp))
+            Spacer(modifier = Modifier.height(Theme.spacing.sectionSpacing))
 
             AddToCartButton(
-                text = "Add to cart",
+                text = stringResource(R.string.product_detail_add_to_cart),
                 onClick = onAddToCart,
                 modifier = Modifier.fillMaxWidth(),
             )
@@ -106,15 +100,15 @@ private fun ProductDetailInfoCards() {
         ) {
             ProductDetailInfoCardComponent(
                 iconResId = R.drawable.ic_organic,
-                value = "100%",
-                label = "Organic",
+                value = stringResource(R.string.product_detail_organic_value),
+                label = stringResource(R.string.product_detail_organic_label),
                 modifier = Modifier.weight(1f),
             )
 
             ProductDetailInfoCardComponent(
                 iconResId = R.drawable.ic_expiration,
-                value = "1 Year",
-                label = "Expiration",
+                value = stringResource(R.string.product_detail_expiration_value),
+                label = stringResource(R.string.product_detail_expiration_label),
                 modifier = Modifier.weight(1f),
             )
         }
@@ -125,16 +119,16 @@ private fun ProductDetailInfoCards() {
         ) {
             ProductDetailInfoCardComponent(
                 iconResId = R.drawable.ic_review_star,
-                value = "4.8",
-                valueSuffix = "(256)",
-                label = "Reviews",
+                value = stringResource(R.string.product_detail_reviews_value),
+                valueSuffix = stringResource(R.string.product_detail_reviews_count),
+                label = stringResource(R.string.product_detail_reviews_label),
                 modifier = Modifier.weight(1f),
             )
 
             ProductDetailInfoCardComponent(
                 iconResId = R.drawable.ic_calories,
-                value = "80 kcal",
-                label = "100 Gram",
+                value = stringResource(R.string.product_detail_calories_value),
+                label = stringResource(R.string.product_detail_calories_label),
                 modifier = Modifier.weight(1f),
             )
         }
@@ -149,9 +143,9 @@ private fun AddToCartButton(
 ) {
     Box(
         modifier = modifier
-            .height(AddToCartButtonHeight)
-            .clip(RoundedCornerShape(AddToCartButtonHeight))
-            .background(AddToCartButtonColor)
+            .height(Theme.spacing.buttonHeightSm)
+            .clip(RoundedCornerShape(Theme.spacing.buttonHeightSm))
+            .background(Theme.colors.accent)
             .clickable(onClick = onClick),
         contentAlignment = Alignment.Center,
     ) {

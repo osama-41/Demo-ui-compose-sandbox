@@ -17,8 +17,12 @@ data class AppSpacing(
     val topBarSideSlotSize:Dp = 48.dp,
     val indicatorWidth: Dp = 50.dp,
     val buttonHeight: Dp = 56.dp,
+    val buttonHeightSm: Dp = 48.dp,
     val topBarHeight: Dp = 56.dp,
     val taskItemMinHeight: Dp = 72.dp,
+    val infoCardHeight: Dp = 60.dp,
+    val infoCardIconSize: Dp = 42.dp,
+    val sectionSpacing: Dp = 28.dp,
 
     val xxs: Dp = 1.dp,
     val xs: Dp = 4.dp,
@@ -33,6 +37,7 @@ data class AppSpacing(
     val radiusSm: Dp = 10.dp,
     val radiusMd: Dp = 12.dp,
     val radiusCard: Dp = 16.dp,
+    val radiusLg: Dp = 24.dp,
     val radiusPill: Dp = 999.dp,
 
     val cardPaddingV: Dp = 14.dp,

@@ -1,0 +1,12 @@
+<resources>
+    <string name="product_detail_add_to_cart">Add to cart</string>
+    <string name="product_detail_organic_value">100%</string>
+    <string name="product_detail_organic_label">Organic</string>
+    <string name="product_detail_expiration_value">1 Year</string>
+    <string name="product_detail_expiration_label">Expiration</string>
+    <string name="product_detail_reviews_value">4.8</string>
+    <string name="product_detail_reviews_count">(256)</string>
+    <string name="product_detail_reviews_label">Reviews</string>
+    <string name="product_detail_calories_value">80 kcal</string>
+    <string name="product_detail_calories_label">100 Gram</string>
+</resources>
