@@ -80,7 +80,7 @@ private fun ShoppingItemComponentPreview() {
             color = Theme.colors.white,
         ) {
             ShoppingItemComponent(
-                productImageResId = R.drawable.bell_pepper_red,
+                productImageResId = R.drawable.bell_pepper_red2,
                 productName = "Bell Pepper Red",
                 productPrice = "1kg, 6$",
                 quantity = quantity,

@@ -74,7 +74,7 @@ private fun ProductInfoComponentPreview() {
             color = Theme.colors.white,
         ) {
             ProductInfoComponent(
-                productImageResId = R.drawable.bell_pepper_red,
+                productImageResId = R.drawable.bell_pepper_red2,
                 productName = "Bell Pepper Red",
                 productPrice = "1kg, 6$",
             )
