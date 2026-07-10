@@ -23,6 +23,8 @@ data class AppSpacing(
     val infoCardHeight: Dp = 60.dp,
     val infoCardIconSize: Dp = 42.dp,
     val sectionSpacing: Dp = 28.dp,
+    val productImageSize: Dp = 72.dp,
+    val productInfoMinWidth: Dp = 230.dp,
 
     val xxs: Dp = 1.dp,
     val xs: Dp = 4.dp,

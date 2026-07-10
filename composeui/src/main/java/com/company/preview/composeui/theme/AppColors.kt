@@ -21,6 +21,8 @@ data class AppColors (
     val priceHighlight: Color,
     val accent: Color,
     val cardBorder: Color
+    val neutralSurface: Color,
+    val neutralText: Color
 )
 
 private val lightColors = AppColors(
@@ -38,6 +40,8 @@ private val lightColors = AppColors(
     priceHighlight = Color(0xFFFF3D57),
     accent = Color(0xFF12C7C7),
     cardBorder = Color(0xFFEDEDED)
+    neutralSurface = Color(0xFFF5F6F8),
+    neutralText = Color(0xFF8D8D8D)
 )
 
 

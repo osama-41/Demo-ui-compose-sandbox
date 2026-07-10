@@ -20,7 +20,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
@@ -28,13 +27,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.theme.Theme
-
-private val IncreaseButtonColor = Color(0xFF12C7C7)
-private val DecreaseButtonColor = Color(0xFFF5F6F8)
-private val DecreaseButtonTextColor = Color(0xFF8D8D8D)
-private val DefaultQuantityButtonSize = 56.dp
-private val DefaultQuantityButtonTextSize = 30.sp
-private val DefaultQuantityItemSpacing = 16.dp
 
 @Composable
 fun QuantitySelectorComponent(
@@ -53,10 +45,9 @@ fun QuantitySelectorComponent(
     ) {
         QuantityButton(
             text = "-",
-            containerColor = DecreaseButtonColor,
-            contentColor = DecreaseButtonTextColor,
             buttonSize = buttonSize,
-            buttonTextSize = buttonTextSize,
+            containerColor = Theme.colors.neutralSurface,
+            contentColor = Theme.colors.neutralText,
             onClick = onDecrease,
         )
 
@@ -72,7 +63,7 @@ fun QuantitySelectorComponent(
 
         QuantityButton(
             text = "+",
-            containerColor = IncreaseButtonColor,
+            containerColor = Theme.colors.accent,
             contentColor = Theme.colors.white,
             buttonSize = buttonSize,
             buttonTextSize = buttonTextSize,
@@ -102,8 +93,7 @@ private fun QuantityButton(
         Text(
             text = text,
             color = contentColor,
-            fontSize = buttonTextSize,
-            fontWeight = FontWeight.Bold,
+            style = Theme.typography.displayBold,
         )
     }
 }
