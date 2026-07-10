@@ -17,7 +17,7 @@ import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.theme.Theme
 
 private data class VegetableProduct(
-    @DrawableRes val imageResId: Int,
+    @param:DrawableRes val imageResId: Int,
     val name: String,
     val price: String,
 )
@@ -41,7 +41,6 @@ fun VegetablesGridComponent(
         Spacer(modifier = Modifier.height(Theme.spacing.lg))
 
         VegetablesProductsGrid(
-            products = vegetablesProducts,
             onAddProductClick = onAddProductClick,
         )
     }
@@ -49,13 +48,12 @@ fun VegetablesGridComponent(
 
 @Composable
 private fun VegetablesProductsGrid(
-    products: List<VegetableProduct>,
     onAddProductClick: (String) -> Unit,
 ) {
     Column(
         verticalArrangement = Arrangement.spacedBy(Theme.spacing.md),
     ) {
-        products.chunked(2).forEach { rowProducts ->
+        vegetablesProducts.chunked(2).forEach { rowProducts ->
             Row(
                 horizontalArrangement = Arrangement.spacedBy(Theme.spacing.md),
             ) {
