@@ -9,4 +9,5 @@
     <string name="product_detail_reviews_label">Reviews</string>
     <string name="product_detail_calories_value">80 kcal</string>
     <string name="product_detail_calories_label">100 Gram</string>
+    <string name="vegetables_title">Vegetables</string>
 </resources>

@@ -29,9 +29,7 @@ import androidx.compose.ui.unit.sp
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.theme.Theme
 
-private val TopBarButtonBorderColor = Color(0xFFEDEDED)
 private val TopBarIconColor = Color(0xFF222222)
-private val TopBarButtonSize = 36.dp
 private val SearchIconSize = 13.dp
 private val SearchIconStrokeWidth = 1.4.dp
 private val CornIconSize = 12.sp
@@ -95,12 +93,12 @@ private fun TopBarCircleButton(
 ) {
     Box(
         modifier = modifier
-            .size(TopBarButtonSize)
+            .size(Theme.spacing.x3l)
             .clip(CircleShape)
             .background(Theme.colors.white)
             .border(
                 width = Theme.spacing.borderThin,
-                color = TopBarButtonBorderColor,
+                color = Theme.colors.cardBorder,
                 shape = CircleShape,
             )
             .clickable(onClick = onClick),

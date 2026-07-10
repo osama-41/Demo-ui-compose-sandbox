@@ -30,16 +30,11 @@ import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.theme.Theme
 
 private val ProductCardBackgroundColor = Color(0xFFF3F4F6)
-private val ProductPriceColor = Color(0xFFFF3D57)
-private val ProductAddButtonColor = Color(0xFF12C7C7)
-private val ProductCardShape = 10.dp
 private val ProductCardWidth = 122.dp
 private val ProductCardHeight = 160.dp
 private val ProductImageAreaHeight = 98.dp
 private val ProductImageSize = 78.dp
 private val ProductAddButtonSize = 30.dp
-private val ProductAddButtonOffsetX = (-8).dp
-private val ProductAddButtonOffsetY = (-8).dp
 private val ProductPriceEndPadding = 38.dp
 private val ProductNameTextSize = 10.sp
 private val ProductPriceTextSize = 10.sp
@@ -59,7 +54,7 @@ fun VegetableProductCardComponent(
             height = ProductCardHeight,
         ),
         color = ProductCardBackgroundColor,
-        shape = RoundedCornerShape(ProductCardShape),
+        shape = RoundedCornerShape(Theme.spacing.radiusSm),
     ) {
         Box {
             Column(
@@ -93,7 +88,7 @@ fun VegetableProductCardComponent(
                 Text(
                     text = productPrice,
                     modifier = Modifier.padding(end = ProductPriceEndPadding),
-                    color = ProductPriceColor,
+                    color = Theme.colors.priceHighlight,
                     fontSize = ProductPriceTextSize,
                     fontWeight = FontWeight.Bold,
                     maxLines = 1,
@@ -103,16 +98,16 @@ fun VegetableProductCardComponent(
 
             CircleTextButtonComponent(
                 text = "+",
-                containerColor = ProductAddButtonColor,
+                containerColor = Theme.colors.accent,
                 contentColor = Theme.colors.white,
                 buttonSize = ProductAddButtonSize,
-                textSize = 22.sp,
+                textSize = Theme.typography.titleXlBold.fontSize,
                 onClick = onAddClick,
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
                     .offset(
-                        x = ProductAddButtonOffsetX,
-                        y = ProductAddButtonOffsetY,
+                        x = -Theme.spacing.sm,
+                        y = -Theme.spacing.sm,
                     ),
             )
         }
