@@ -16,20 +16,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.company.preview.composeui.R
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.theme.Theme
-
-private val InfoCardBorderColor = Color(0xFFEDEDED)
-private val InfoCardValueColor = Color(0xFF12C7C7)
-private val InfoCardIconSize = 42.dp
-private val InfoCardHeight = 60.dp
-private val InfoCardShape = 12.dp
 
 @Composable
 fun ProductDetailInfoCardComponent(
@@ -40,12 +31,12 @@ fun ProductDetailInfoCardComponent(
     valueSuffix: String? = null,
 ) {
     Surface(
-        modifier = modifier.height(InfoCardHeight),
+        modifier = modifier.height(Theme.spacing.infoCardHeight),
         color = Theme.colors.white,
-        shape = RoundedCornerShape(InfoCardShape),
+        shape = RoundedCornerShape(Theme.spacing.radiusMd),
         border = BorderStroke(
             width = Theme.spacing.borderThin,
-            color = InfoCardBorderColor,
+            color = Theme.colors.cardBorder,
         ),
     ) {
         Row(
@@ -58,7 +49,7 @@ fun ProductDetailInfoCardComponent(
             Image(
                 painter = painterResource(id = iconResId),
                 contentDescription = label,
-                modifier = Modifier.size(InfoCardIconSize),
+                modifier = Modifier.size(Theme.spacing.infoCardIconSize),
             )
 
             Spacer(modifier = Modifier.width(Theme.spacing.sm))
@@ -70,7 +61,7 @@ fun ProductDetailInfoCardComponent(
                     Text(
                         text = value,
                         style = Theme.typography.titleMediumBold,
-                        color = InfoCardValueColor,
+                        color = Theme.colors.accent,
                     )
 
                     valueSuffix?.let { suffixText ->
@@ -78,9 +69,8 @@ fun ProductDetailInfoCardComponent(
 
                         Text(
                             text = suffixText,
-                            style = Theme.typography.bodyMedium,
+                            style = Theme.typography.labelSmall,
                             color = Theme.colors.secondaryText,
-                            fontSize = 11.sp,
                         )
                     }
                 }

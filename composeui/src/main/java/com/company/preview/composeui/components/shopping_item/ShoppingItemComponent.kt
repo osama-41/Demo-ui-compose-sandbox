@@ -16,7 +16,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.company.preview.composeui.R
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.theme.Theme
@@ -54,7 +53,7 @@ fun ShoppingItemComponent(
                 productPrice = productPrice,
                 modifier = Modifier
                     .weight(1f)
-                    .widthIn(min = 230.dp),
+                    .widthIn(min = Theme.spacing.productInfoMinWidth),
             )
 
             QuantitySelectorComponent(

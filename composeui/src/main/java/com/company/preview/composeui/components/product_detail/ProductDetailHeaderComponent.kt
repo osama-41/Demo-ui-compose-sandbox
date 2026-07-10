@@ -16,15 +16,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.company.preview.composeui.components.shopping_item.QuantitySelectorComponent
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.theme.Theme
-
-private val ProductDetailQuantityButtonSize = 36.dp
-private val ProductDetailQuantityButtonTextSize = 22.sp
-private val ProductDetailQuantitySpacing = 12.dp
 
 @Composable
 fun ProductDetailHeaderComponent(
@@ -54,9 +48,9 @@ fun ProductDetailHeaderComponent(
             quantity = quantity,
             onIncrease = onIncrease,
             onDecrease = onDecrease,
-            buttonSize = ProductDetailQuantityButtonSize,
-            itemSpacing = ProductDetailQuantitySpacing,
-            buttonTextSize = ProductDetailQuantityButtonTextSize,
+            buttonSize = Theme.spacing.x3l,
+            itemSpacing = Theme.spacing.md,
+            buttonTextSize = Theme.typography.titleXlBold.fontSize,
             quantityTextStyle = Theme.typography.titleMediumBold,
         )
     }
