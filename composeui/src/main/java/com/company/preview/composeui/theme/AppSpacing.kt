@@ -19,6 +19,8 @@ data class AppSpacing(
     val buttonHeight: Dp = 56.dp,
     val topBarHeight: Dp = 56.dp,
     val taskItemMinHeight: Dp = 72.dp,
+    val productImageSize: Dp = 72.dp,
+    val productInfoMinWidth: Dp = 230.dp,
 
     val xxs: Dp = 1.dp,
     val xs: Dp = 4.dp,

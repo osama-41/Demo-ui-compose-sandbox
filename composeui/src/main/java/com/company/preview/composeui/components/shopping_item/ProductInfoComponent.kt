@@ -12,19 +12,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.dp
 import com.company.preview.composeui.theme.Theme
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Surface
 import androidx.compose.ui.tooling.preview.Preview
 import com.company.preview.composeui.R
 import com.company.preview.composeui.preview.LtrPreview
-private val ProductPriceColor = Color(0xFFFF3D57)
-private val ProductImageSize = 72.dp
 
 @Composable
 fun ProductInfoComponent(
@@ -40,7 +36,7 @@ fun ProductInfoComponent(
         Image(
             painter = painterResource(id = productImageResId),
             contentDescription = productName,
-            modifier = Modifier.size(ProductImageSize),
+            modifier = Modifier.size(Theme.spacing.productImageSize),
             contentScale = ContentScale.Fit,
         )
 
@@ -62,7 +58,7 @@ fun ProductInfoComponent(
             Text(
                 text = productPrice,
                 style = Theme.typography.titleLargeBold,
-                color = ProductPriceColor,
+                color = Theme.colors.priceHighlight,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )

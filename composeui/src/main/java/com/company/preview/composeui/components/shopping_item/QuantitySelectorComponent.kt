@@ -14,9 +14,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.company.preview.composeui.theme.Theme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.getValue
@@ -25,10 +22,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.tooling.preview.Preview
 import com.company.preview.composeui.preview.LtrPreview
-private val IncreaseButtonColor = Color(0xFF12C7C7)
-private val DecreaseButtonColor = Color(0xFFF5F6F8)
-private val DecreaseButtonTextColor = Color(0xFF8D8D8D)
-private val QuantityButtonSize = 56.dp
 
 @Composable
 fun QuantitySelectorComponent(
@@ -43,8 +36,8 @@ fun QuantitySelectorComponent(
     ) {
         QuantityButton(
             text = "-",
-            containerColor = DecreaseButtonColor,
-            contentColor = DecreaseButtonTextColor,
+            containerColor = Theme.colors.neutralSurface,
+            contentColor = Theme.colors.neutralText,
             onClick = onDecrease,
         )
 
@@ -60,7 +53,7 @@ fun QuantitySelectorComponent(
 
         QuantityButton(
             text = "+",
-            containerColor = IncreaseButtonColor,
+            containerColor = Theme.colors.accent,
             contentColor = Theme.colors.white,
             onClick = onIncrease,
         )
@@ -77,7 +70,7 @@ private fun QuantityButton(
 ) {
     Box(
         modifier = modifier
-            .size(QuantityButtonSize)
+            .size(Theme.spacing.buttonHeight)
             .clip(CircleShape)
             .background(containerColor)
             .clickable(onClick = onClick),
@@ -86,8 +79,7 @@ private fun QuantityButton(
         Text(
             text = text,
             color = contentColor,
-            fontSize = 30.sp,
-            fontWeight = FontWeight.Bold,
+            style = Theme.typography.displayBold,
         )
     }
 }
