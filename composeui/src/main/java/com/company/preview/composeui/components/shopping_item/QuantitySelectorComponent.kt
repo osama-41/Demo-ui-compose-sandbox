@@ -15,7 +15,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.company.preview.composeui.components.shared.CircleTextButtonComponent
 import com.company.preview.composeui.preview.LtrPreview
 import com.company.preview.composeui.theme.Theme
@@ -29,6 +31,7 @@ fun QuantitySelectorComponent(
     buttonSize: Dp = Theme.spacing.buttonHeight,
     itemSpacing: Dp = Theme.spacing.md,
     quantityTextStyle: TextStyle = Theme.typography.titleLargeBold,
+    buttonTextSize: TextUnit = 24.sp,
 ) {
     Row(
         modifier = modifier,
@@ -39,6 +42,7 @@ fun QuantitySelectorComponent(
             containerColor = Theme.colors.neutralSurface,
             contentColor = Theme.colors.neutralText,
             buttonSize = buttonSize,
+            textSize = buttonTextSize,
             onClick = onDecrease,
         )
 
@@ -57,6 +61,7 @@ fun QuantitySelectorComponent(
             containerColor = Theme.colors.accent,
             contentColor = Theme.colors.white,
             buttonSize = buttonSize,
+            textSize = buttonTextSize,
             onClick = onIncrease,
         )
     }

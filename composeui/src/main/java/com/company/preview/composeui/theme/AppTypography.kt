@@ -32,7 +32,7 @@ data class AppTypography(
     val titleLargeBold: TextStyle,
     val labelSmallCompactLineHeight: TextStyle,
     val appBarBold: TextStyle,
-    val titleXlBold: TextStyle
+    val titleXlBold: TextStyle,
     val displayBold: TextStyle
 )
 
